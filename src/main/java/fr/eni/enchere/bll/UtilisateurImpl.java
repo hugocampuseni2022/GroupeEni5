@@ -6,6 +6,7 @@ import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.enchere.dal.UtilisateurDAO;
+import fr.eni.temporaireHugo.BLLException;
 
 public class UtilisateurImpl implements UtilisateurManager{
 
@@ -27,6 +28,15 @@ public class UtilisateurImpl implements UtilisateurManager{
 		}
 	}
 	
+	@Override
+	public void CreerCompteUtilisateur (String pseudo,String nom, String prenom, String email, String tel, String rue, String CP, String ville, String mdp) throws BLLException {
+		
+		try {
+			utilisateurDao.insert(pseudo,nom,prenom,email,tel,rue,CP,ville,mdp);
+		} catch (DALException e) {
+			throw new BLLException(e.getMessage(),e);
+		}
+	}
 	/*
 	@Override
 	public List<Utilisateur> getAllUtilisateur() {
