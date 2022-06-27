@@ -6,4 +6,6 @@ public interface UtilisateurDAO {
 
 	Utilisateur connection(String login, String mdp) throws DALException; 
 	
+	void insert(Utilisateur utilisateur) throws DALException;
+	
 }

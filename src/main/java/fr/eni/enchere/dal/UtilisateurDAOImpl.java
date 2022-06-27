@@ -12,6 +12,10 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;
+	private static final String INSERT = "insert into UTILISATEURS (noUtilisateur, credit, pseudo, nom, "
+										+ "prenom, email, telephone, rue, codePostale, ville, motDePasse, administrateur) "
+										+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	
 	
 	@Override
 	public Utilisateur connection(String login, String mdp) throws DALException {
@@ -34,6 +38,30 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			throw new DALException("", e);
 		}
 	}
+
+
+	@Override
+	public void insert(Utilisateur utilisateur) throws DALException {
+		try (Connection connection = ConnectionProvider.getConnection()){
+			
+			PreparedStatement pStmt = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			pStmt.setInt(1, utilisateur.getNoUtilisateur());
+			pStmt.setInt(1, utilisateur.getCredit()); // default = 100
+			pStmt.setString(1, utilisateur.getPseudo());
+			pStmt.setString(1, utilisateur.getNom());
+			pStmt.setString(1, utilisateur.getPrenom());
+			pStmt.setString(1, utilisateur.getNom());
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
+	
+	
 	
 	
 }

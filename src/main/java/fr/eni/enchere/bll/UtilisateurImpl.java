@@ -18,10 +18,10 @@ public class UtilisateurImpl implements UtilisateurManager{
 
 
 	@Override
-	public Utilisateur connectionUtilisateur(String pseudo, String motDePasse) throws BLLException {
+	public Utilisateur connectionUtilisateur(String login, String mdp) throws BLLException {
 		
 		try {
-			return utilisateurDao.connection(pseudo, motDePasse);
+			return utilisateurDao.connection(login, mdp);
 		} catch (DALException e) {
 			throw new BLLException(e.getMessage(),e);
 		}
