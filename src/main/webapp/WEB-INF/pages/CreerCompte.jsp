@@ -13,25 +13,25 @@
 
 <form action="" method = "post">
 <label>Pseudo : </label>
- <input type="text" name = "pseudo"></input> 
+ <input type="text" name = "pseudo" required></input> 
 <label>Nom : </label>
- <input type="text" name = "nom"></input> 
+ <input type="text" name = "nom" required></input> 
  <label>Prénom : </label>
- <input type="text" name = "prenom"></input> 
+ <input type="text" name = "prenom" required></input> 
  <label>Email : </label>
- <input type="email" name = "mail"></input> 
+ <input type="email" name = "mail" required></input> 
  <label>Telephone : </label>
  <input type="tel" name = "telephone"></input> 
  <label>Rue : </label>
- <input type="number" name = "rue"></input> 
+ <input type="number" name = "rue" required></input> 
  <label>Code Postal : </label>
- <input type="text" name = "code postal"></input> 
+ <input type="text" name = "code postal" required></input> 
  <label>Ville : </label>
- <input type="text" name = "ville"></input> 
+ <input type="text" name = "ville" required></input> 
  <label>Mots de passe : </label>
- <input type="password" name = "mot de passe"></input> 
+ <input type="password" name = "mot de passe" required></input> 
  <label>Confirmation : </label>
- <input type="password" name = "Confirmation"></input> 
+ <input type="password" name = "Confirmation" required></input> 
  <button>Créer</button>
 </form>
 
