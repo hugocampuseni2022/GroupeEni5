@@ -5,11 +5,11 @@ public class Utilisateur {
 	// attributes
 	private int noUtilisateur, credit;
 	private String pseudo, nom, prenom, email, telephone, 
-	rue, codePostale, ville, motDePasse, administrateur;
-	
+	rue, codePostale, ville, motDePasse;
+	private boolean administrateur;
 	// construct
 	public Utilisateur(int noUtilisateur, int credit, String pseudo, String nom, String prenom, String email,
-			String telephone, String rue, String codePostale, String ville, String motDePasse, String administrateur) {
+			String telephone, String rue, String codePostale, String ville, String motDePasse, boolean administrateur) {
 		super();
 		this.noUtilisateur = noUtilisateur;
 		this.credit = credit;
@@ -114,15 +114,6 @@ public class Utilisateur {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
-
-	public String getAdministrateur() {
-		return administrateur;
-	}
-
-	public void setAdministrateur(String administrateur) {
-		this.administrateur = administrateur;
-	}
-	
 	
 	
 }
