@@ -6,8 +6,8 @@
 		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
 		type="javax.sql.DataSource"
 		
-		url="jdbc:sqlserver://localhost:1433;databasename=PIZZA_DB"
-		username="Pizza_user"
+		url="jdbc:sqlserver://localhost:1433;databasename=ENCHERE_DB"
+		username="user_enchere"
 		password="Pa$$w0rd"
 		
 		maxTotal="100"
