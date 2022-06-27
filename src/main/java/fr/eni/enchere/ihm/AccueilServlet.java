@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AcceuilServlet
  */
-@WebServlet(urlPatterns = {"/AcceuilServlet", ""})
-public class AcceuilServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/Accueil", ""})
+public class AccueilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AcceuilServlet() {
+    public AccueilServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

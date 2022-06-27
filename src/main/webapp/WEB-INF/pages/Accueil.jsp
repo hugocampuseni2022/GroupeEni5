@@ -12,7 +12,7 @@
 <body>
 	<header>
 		<h2>ENI-Encheres</h2>
-		<a href="connexion">S'inscrire - Se connecter</a>
+		<a href="<%=request.getContextPath()%>/Connexion">S'inscrire - Se connecter</a>
 	</header>
 	<main>
 		<h3>Liste des enchères</h3>
