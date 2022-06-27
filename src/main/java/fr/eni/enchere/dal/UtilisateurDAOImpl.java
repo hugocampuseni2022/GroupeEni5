@@ -47,11 +47,18 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			PreparedStatement pStmt = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			pStmt.setInt(1, utilisateur.getNoUtilisateur());
-			pStmt.setInt(1, utilisateur.getCredit()); // default = 100
-			pStmt.setString(1, utilisateur.getPseudo());
-			pStmt.setString(1, utilisateur.getNom());
-			pStmt.setString(1, utilisateur.getPrenom());
-			pStmt.setString(1, utilisateur.getNom());
+			pStmt.setInt(2, utilisateur.getCredit()); // default = 100
+			pStmt.setString(3, utilisateur.getPseudo());
+			pStmt.setString(4, utilisateur.getNom());
+			pStmt.setString(5, utilisateur.getPrenom());
+			pStmt.setString(6, utilisateur.getEmail());
+			pStmt.setString(7, utilisateur.getTelephone());
+			pStmt.setString(8, utilisateur.getRue());
+			pStmt.setString(9, utilisateur.getCodePostale());
+			pStmt.setString(10, utilisateur.getVille());
+			pStmt.setString(11, utilisateur.getMotDePasse());
+			pStmt.setBoolean(12, utilisateur.isAdministrateur()); // default = membre
+			
 			
 			
 		} catch (Exception e) {

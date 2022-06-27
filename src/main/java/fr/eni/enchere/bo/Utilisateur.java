@@ -26,7 +26,39 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	
+	// construct sans 'telephone'
+	public Utilisateur(int noUtilisateur, int credit, String pseudo, String nom, String prenom, String email,
+			String rue, String codePostale, String ville, String motDePasse, boolean administrateur) {
+		super();
+		this.noUtilisateur = noUtilisateur;
+		this.credit = credit;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.rue = rue;
+		this.codePostale = codePostale;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+		this.administrateur = administrateur;
+	}
+
+	// construct sans 'telephone' ni 'administrateur'
+	public Utilisateur(int noUtilisateur, int credit, String pseudo, String nom, String prenom, String email,
+			String rue, String codePostale, String ville, String motDePasse) {
+		super();
+		this.noUtilisateur = noUtilisateur;
+		this.credit = credit;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.rue = rue;
+		this.codePostale = codePostale;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+	}
+
 	// getters and setters
 	public int getNoUtilisateur() {
 		return noUtilisateur;
@@ -115,6 +147,13 @@ public class Utilisateur {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
-	
+
+	public boolean isAdministrateur() {
+		return administrateur;
+	}
+
+	public void setAdministrateur(boolean administrateur) {
+		this.administrateur = administrateur;
+	}
 	
 }
