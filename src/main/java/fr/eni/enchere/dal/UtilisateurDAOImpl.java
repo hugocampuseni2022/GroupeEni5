@@ -26,7 +26,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			
 			if (rs.next()) {
 				return new Utilisateur(rs.getInt("no_utilisateur"), rs.getInt("credit"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getBoolean("administrateur"));
-			}else {
+			} else {
 				throw new DALException("Login ou Mot de passe incorrecte");
 			}
 			
