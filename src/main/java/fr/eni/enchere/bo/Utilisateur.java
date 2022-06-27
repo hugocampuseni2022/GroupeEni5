@@ -7,6 +7,7 @@ public class Utilisateur {
 	private String pseudo, nom, prenom, email, telephone, 
 	rue, codePostale, ville, motDePasse;
 	private boolean administrateur;
+	
 	// construct
 	public Utilisateur(int noUtilisateur, int credit, String pseudo, String nom, String prenom, String email,
 			String telephone, String rue, String codePostale, String ville, String motDePasse, boolean administrateur) {
