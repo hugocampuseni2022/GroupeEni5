@@ -3,6 +3,7 @@ package fr.eni.enchere.dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import fr.eni.enchere.bo.Utilisateur;
 
@@ -12,9 +13,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;
-	private static final String INSERT = "insert into UTILISATEURS (noUtilisateur, credit, pseudo, nom, "
-										+ "prenom, email, telephone, rue, codePostale, ville, motDePasse, administrateur) "
-										+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String INSERT = "insert into UTILISATEURS (credit, pseudo, nom, prenom, "
+										+ "email, telephone, rue, codePostale, ville, motDePasse, administrateur) "
+										+ "values (100, ?, ?, ?, ?, ?, ?, ?, ?, ?, membre)";
 	
 	
 	@Override
@@ -47,22 +48,35 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			PreparedStatement pStmt = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			pStmt.setInt(1, utilisateur.getNoUtilisateur());
-			pStmt.setInt(2, utilisateur.getCredit()); // default = 100
+			
+			pStmt.setInt(2, utilisateur.getCredit());
+			
 			pStmt.setString(3, utilisateur.getPseudo());
 			pStmt.setString(4, utilisateur.getNom());
 			pStmt.setString(5, utilisateur.getPrenom());
 			pStmt.setString(6, utilisateur.getEmail());
-			pStmt.setString(7, utilisateur.getTelephone());
+			if (utilisateur.getTelephone().isBlank()) { // ***************************** //
+				pStmt.setString(7, null);
+			}else {
+				pStmt.setString(7, utilisateur.getTelephone());
+			}
 			pStmt.setString(8, utilisateur.getRue());
 			pStmt.setString(9, utilisateur.getCodePostale());
 			pStmt.setString(10, utilisateur.getVille());
 			pStmt.setString(11, utilisateur.getMotDePasse());
-			pStmt.setBoolean(12, utilisateur.isAdministrateur()); // default = membre
+			
+			pStmt.setBoolean(12, utilisateur.isAdministrateur());
+			
+			pStmt.executeUpdate();
+			
+			ResultSet rs = pStmt.getGeneratedKeys();
+			if(rs.next()){
+				utilisateur.setNoUtilisateur(rs.getInt(1));
+			}
 			
 			
-			
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (SQLException e) {
+			throw new DALException("erreur sur l'insertion d'un utilisateur ",e);
 		}
 		
 	}
