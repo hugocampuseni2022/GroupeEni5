@@ -9,8 +9,33 @@
 <title>Creer Compte</title>
 </head>
 <h1> Enchère ENI</h1>
-<h2>Liste des Enchères</h2>
-<a href ></a>
+<h2>Mon Profil</h2>
+
+<form action="" method = "post">
+<label>Pseudo : </label>
+ <input type="text" name = "pseudo"></input> 
+<label>Nom : </label>
+ <input type="text" name = "nom"></input> 
+ <label>Prénom : </label>
+ <input type="text" name = "prenom"></input> 
+ <label>Email : </label>
+ <input type="email" name = "mail"></input> 
+ <label>Telephone : </label>
+ <input type="tel" name = "telephone"></input> 
+ <label>Rue : </label>
+ <input type="number" name = "rue"></input> 
+ <label>Code Postal : </label>
+ <input type="text" name = "code postal"></input> 
+ <label>Ville : </label>
+ <input type="text" name = "ville"></input> 
+ <label>Mots de passe : </label>
+ <input type="password" name = "mot de passe"></input> 
+ <label>Confirmation : </label>
+ <input type="password" name = "Confirmation"></input> 
+ <button>Créer</button>
+</form>
+
+<a href = "<%=request.getContextPath()%>/Accueil" ><button>Annuler</button> </a>
 
 
 <body>
