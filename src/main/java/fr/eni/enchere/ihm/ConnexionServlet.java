@@ -48,7 +48,8 @@ public class ConnexionServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/pages/ListeEncheres.jsp").forward(request, response);
 			
 		} catch (DALException e) {
-			request.setAttribute("error", "Mots de Passe differents de la Confirmation");
+			request.setAttribute("error", "Erreur Mot de Passe ou Identifiant");
+			request.getRequestDispatcher("/WEB-INF/pages/pagesConnexion.jsp").forward(request, response);
 			e.printStackTrace();
 		}
     		
