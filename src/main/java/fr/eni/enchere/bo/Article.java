@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class Article {
 
 	// attributes
-	private int noArticle, miseAPrix, prixVente;
+	private int noArticle, miseAPrix, prixVente, numero_utilisateur;
 	private String nomArticle, description, etatVente;
 	private Date dateDebutEncheres, dateFinEncheres;
 	

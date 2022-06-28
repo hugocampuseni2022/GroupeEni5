@@ -43,6 +43,10 @@ public class ArticleDAOImpl implements ArticleDAO{
 			stmt.setString(2, article.getDescription());
 			stmt.setDate(3, article.getDateDebutEncheres());
 			stmt.setDate(4, article.getDateFinEncheres());
+			stmt.setInt(5, article.getMiseAPrix());
+			stmt.setInt(6, article.getPrixVente());
+			stmt.setString(7, utilisateur.());
+			stmt.setString(8, article.getDescription());
 			
 			
 			//Etape : executer la requete
