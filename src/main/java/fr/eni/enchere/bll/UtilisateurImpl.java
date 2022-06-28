@@ -6,7 +6,7 @@ import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.enchere.dal.UtilisateurDAO;
-import fr.eni.temporaireHugo.BLLException;
+
 
 public class UtilisateurImpl implements UtilisateurManager{
 
