@@ -37,6 +37,12 @@ public class UtilisateurImpl implements UtilisateurManager{
 			throw new BLLException(e.getMessage(),e);
 		}
 	}
+	@Override
+	public void supprimerUtilisateur(int noUtilisateur) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	/*
 	@Override
 	public List<Utilisateur> getAllUtilisateur() {
@@ -50,17 +56,13 @@ public class UtilisateurImpl implements UtilisateurManager{
 		
 	}
 
-	@Override
-	public void supprimerUtilisateur(int noUtilisateur) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public Utilisateur getUtilisateurByNo(int noUtilisateur) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	*/
+	}*/
+	
 
 }

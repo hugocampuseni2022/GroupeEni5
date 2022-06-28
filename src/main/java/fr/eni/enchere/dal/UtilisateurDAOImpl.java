@@ -69,6 +69,11 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 		}
 	}
 			
+	
+	public void delete(int noUtilisateur) {
+		
+		
+	}
 		
 		
 	
