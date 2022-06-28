@@ -11,7 +11,6 @@ public interface ArticleDAO {
 
 		List<Article> selectAll() throws DALException;
 	
-		
 		void delete (int noArticle) throws DALException;
 		
 		void update(Article article) throws DALException;
