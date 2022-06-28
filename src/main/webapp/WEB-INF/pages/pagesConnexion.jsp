@@ -19,7 +19,7 @@
             <input type="text" name = "mot de passe"></input>
             <input type="checkbox"> Se souvenir de moi</input>
             <a href > Mot de passe oublié</a>
-            <button>Connextion</button> 
+            <button>Connection</button> 
         </form>
 
         <p>${error}</p>

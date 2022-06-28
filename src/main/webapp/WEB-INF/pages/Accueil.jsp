@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +9,49 @@
 <title>Acceuil</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
-<body>
-	<header>
-		<h2>ENI-Encheres</h2>
-		<a href="<%=request.getContextPath()%>/Connexion">S'inscrire - Se connecter</a>
+<body class="container-fluid">
+	<header class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<h2>ENI-Enchères</h2>
+			</div>
+			<div class="col-sm-12 col-md-6">
+				<c:choose>
+					<c:when test="${connected.equals(\"false\")}">
+						<ul>
+							<li>
+								<a href="<%=request.getContextPath()%>/Connexion">S'inscrire - Se connecter</a>
+							</li>
+						</ul>
+					</c:when>
+					<c:otherwise>
+						<div class="liste">
+							<ul>
+								<li>
+									<a href="<%=request.getContextPath()%>/Accueil?action=deconnexion">Déconnexion</a>
+								</li>
+							</ul>
+							<ul>
+								<li>
+									<a href="<%=request.getContextPath()%>">Mon profil</a>
+								</li>
+							</ul>
+							<ul>
+								<li>
+									<a href="<%=request.getContextPath()%>">Vendre un article</a>
+								</li>
+							</ul>
+							<ul>
+								<li>
+									<a href="<%=request.getContextPath()%>">Enchères</a>
+								</li>
+							</ul>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+
+		</div>
 	</header>
 	<main>
 		<h3>Liste des enchères</h3>
