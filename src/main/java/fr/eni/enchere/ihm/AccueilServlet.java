@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class AcceuilServlet
@@ -13,20 +14,25 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/Accueil", ""})
 public class AccueilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AccueilServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
+	private HttpSession session;
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		session = request.getSession();
+		String action = request.getParameter("action");
 		
+		if ("deconnexion".equals(action)) {
+			session.removeAttribute("id");
+			session.removeAttribute("connected");
+		}
+		
+		
+		if (!("true".equals( session.getAttribute("connected")))) {
+			session.setAttribute("connected", "false");
+		}
 		request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
 		
 	}

@@ -29,14 +29,44 @@ public class UtilisateurImpl implements UtilisateurManager{
 	}
 	
 	@Override
-	public void CreerCompteUtilisateur (String pseudo,String nom, String prenom, String email, String tel, String rue, String CP, String ville, String mdp) throws BLLException {
+	public void CreerCompteUtilisateur (Utilisateur utilisateur) throws BLLException {
 		
 		try {
-			utilisateurDao.insert(pseudo,nom,prenom,email,tel,rue,CP,ville,mdp);
+			utilisateurDao.insert(utilisateur);
 		} catch (DALException e) {
 			throw new BLLException(e.getMessage(),e);
 		}
 	}
+	
+	
+	@Override
+	public void supprimerUtilisateur(int noUtilisateur) throws BLLException {
+		
+		try {
+			utilisateurDao.delete(noUtilisateur);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			throw new BLLException(e.getMessage(),e);
+		}
+		
+	}
+
+
+
+	@Override
+	public void modifierUtilisateurByid(Utilisateur utilsateur, int noUtilisateur) throws BLLException {
+		try {
+			utilisateurDao.updateById(utilsateur, noUtilisateur);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			throw new BLLException(e.getMessage(),e);
+		}
+		
+	}
+	
+	
+	
+	
 	/*
 	@Override
 	public List<Utilisateur> getAllUtilisateur() {
@@ -50,17 +80,13 @@ public class UtilisateurImpl implements UtilisateurManager{
 		
 	}
 
-	@Override
-	public void supprimerUtilisateur(int noUtilisateur) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public Utilisateur getUtilisateurByNo(int noUtilisateur) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	*/
+	}*/
+	
 
 }

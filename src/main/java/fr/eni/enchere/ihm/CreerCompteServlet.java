@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.FactoryBLL;
 import fr.eni.enchere.bll.UtilisateurManager;
+import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.enchere.dal.UtilisateurDAO;
@@ -57,7 +58,7 @@ public class CreerCompteServlet extends HttpServlet {
 			if (request.getParameter("mot de passe").equals(request.getParameter("Confirmation"))){
 			try {
 				
-				UG.CreerCompteUtilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe"));
+				UG.CreerCompteUtilisateur(new Utilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe")));
 				request.getRequestDispatcher("/WEB-INF/pages/ListeEncheres.jsp").forward(request, response);
 			
 			} catch (BLLException e) {

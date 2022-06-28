@@ -13,10 +13,14 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;
-	private static final String INSERT = "insert into UTILISATEURS (credit, pseudo, nom, prenom, "
-										+ "email, telephone, rue, code_postal, ville, mot_de_passe, administrateur) "
-										+ "values (100, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)";
+	private static final String INSERT = "insert into UTILISATEURS (pseudo, nom, prenom, "
+										+ "email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
+										+ "values ( ?, ?, ?, ?, ?, ?, ?, ?, ?,100, 0)";
 	
+	private static final String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ? ";
+	private static final String UPDATE = "UPDATE UTILISATEURS SET pseudo = ? , nom = ? , prenom = ?, "
+											+ "email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?)";
+											
 	
 	@Override
 	public Utilisateur connection(String login, String mdp) throws DALException {
@@ -30,7 +34,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			rs = pStmt.executeQuery();
 			
 			if (rs.next()) {
-				return new Utilisateur(rs.getInt("no_utilisateur"), rs.getInt("credit"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getBoolean("administrateur"));
+				return new Utilisateur(rs.getInt("no_utilisateur"),rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
 			} else {
 				throw new DALException("Login ou Mot de passe incorrecte");
 			}
@@ -42,24 +46,24 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 
 
 	@Override
-	public void insert(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse) throws DALException {
+	public void insert(Utilisateur utilisateur) throws DALException {
 		try (Connection connection = ConnectionProvider.getConnection()){
 			
 			pStmt = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 			
-			pStmt.setString(1, pseudo);
-			pStmt.setString(2, nom);
-			pStmt.setString(3, prenom);
-			pStmt.setString(4, email);
-			if (telephone.isBlank()) { // ***************************** //
+			pStmt.setString(1,utilisateur.getPseudo());
+			pStmt.setString(2, utilisateur.getNom());
+			pStmt.setString(3, utilisateur.getPrenom());
+			pStmt.setString(4, utilisateur.getEmail());
+			if (utilisateur.getTelephone().isBlank()) { // ***************************** //
 				pStmt.setString(5, null);
 			}else {
-				pStmt.setString(5, telephone);
+				pStmt.setString(5, utilisateur.getTelephone());
 			}
-			pStmt.setString(6, rue);
-			pStmt.setString(7, codePostal);
-			pStmt.setString(8, ville);
-			pStmt.setString(9, motDePasse);
+			pStmt.setString(6, utilisateur.getCodePostale());
+			pStmt.setString(7, utilisateur.getVille());
+			pStmt.setString(8, utilisateur.getMotDePasse());
+			
 			
 			
 			pStmt.executeUpdate();
@@ -69,12 +73,50 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 		}
 	}
 			
+	
+	public void delete(int noUtilisateur) throws DALException {
+		
+	
+		try (Connection connection= ConnectionProvider.getConnection()){
+			
+					pStmt = connection.prepareStatement(DELETE);
+				pStmt.setInt(1,noUtilisateur);
+				 
+	
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					throw new DALException ("erreur sur la suppression d'un utilisateur");
+		}
+		
+	}
+	
+	@Override
+	public void updateById(Utilisateur utilisateur, int noUtilisateur) throws DALException {
+		
+		try (Connection connection= ConnectionProvider.getConnection()){
+			
+			pStmt = connection.prepareStatement(DELETE);
+			
+		pStmt.setInt(1,noUtilisateur);
+		pStmt.setString(2,utilisateur.getPseudo());
+		pStmt.setString(3,utilisateur.getNom());
+		pStmt.setString(4,utilisateur.getPrenom());
+		pStmt.setString(5,utilisateur.getEmail());
+		pStmt.setString(6,utilisateur.getTelephone());
+		pStmt.setString(7,utilisateur.getRue());
+		pStmt.setString(8,utilisateur.getCodePostale());
+		pStmt.setString(9,utilisateur.getVille());
+		pStmt.setString(10,utilisateur.getMotDePasse());
 		
 		
-	
-	
-	
-	
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new DALException ("erreur sur la suppression d'un utilisateur");
+}
 
+
+		
+	}
 	
 }
