@@ -17,6 +17,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 										+ "email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
 										+ "values ( ?, ?, ?, ?, ?, ?, ?, ?, ?,100, 0)";
 	
+	private static final String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ? ";
 	
 	@Override
 	public Utilisateur connection(String login, String mdp) throws DALException {
@@ -70,16 +71,20 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	}
 			
 	
-	public void delete(int noUtilisateur) {
+	public void delete(int noUtilisateur) throws DALException {
 		
+	
+		try (Connection connection= ConnectionProvider.getConnection()){
+			
+					pStmt = connection.prepareStatement(DELETE);
+				pStmt.setInt(1,noUtilisateur);
+				 
+	
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+		}
 		
 	}
-		
-		
-	
-	
-	
-	
-
 	
 }

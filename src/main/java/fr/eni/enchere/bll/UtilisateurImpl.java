@@ -38,8 +38,14 @@ public class UtilisateurImpl implements UtilisateurManager{
 		}
 	}
 	@Override
-	public void supprimerUtilisateur(int noUtilisateur) {
-		// TODO Auto-generated method stub
+	public void supprimerUtilisateur(int noUtilisateur) throws BLLException {
+		
+		try {
+			utilisateurDao.delete(noUtilisateur);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			throw new BLLException(e.getMessage(),e);
+		}
 		
 	}
 	

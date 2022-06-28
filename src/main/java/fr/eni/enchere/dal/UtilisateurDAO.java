@@ -8,4 +8,6 @@ public interface UtilisateurDAO {
 
 	void insert(Utilisateur utilisateur) throws DALException;
 	
+	void delete(int noUtilisateur) throws DALException;
+	
 }

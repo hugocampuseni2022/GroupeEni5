@@ -20,6 +20,8 @@ public interface UtilisateurManager {
 
 	void CreerCompteUtilisateur(Utilisateur utilsateur) throws BLLException;
 	
+	void supprimerUtilisateur (int noUtilisateur) throws BLLException;
+	
 	
 	
 	
