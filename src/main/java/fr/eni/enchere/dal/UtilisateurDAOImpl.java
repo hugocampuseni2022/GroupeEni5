@@ -14,7 +14,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;
 	private static final String INSERT = "insert into UTILISATEURS (credit, pseudo, nom, prenom, "
-										+ "email, telephone, rue, codePostale, ville, motDePasse, administrateur) "
+										+ "email, telephone, rue, code_postal, ville, mot_de_passe, administrateur) "
 										+ "values (100, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)";
 	
 	
