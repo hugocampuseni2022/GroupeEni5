@@ -2,8 +2,6 @@ package fr.eni.enchere.dal;
 
 public class ArticleDAOImpl {
 
-	package fr.eni.pizzas.dal;
-
 	import java.sql.Connection;
 	import java.sql.PreparedStatement;
 	import java.sql.ResultSet;
@@ -12,9 +10,7 @@ public class ArticleDAOImpl {
 	import java.util.ArrayList;
 	import java.util.List;
 
-	import fr.eni.pizzas.bo.Pizza;
-
-	public class PizzaDAOImpl implements PizzaDAO{
+	public class ArticleDAOImpl implements ArticleDAO {
 		
 		private static final String INSERT = "insert Into Pizza (nom, description, image, prix)"
 												+ " values (?, ?, ?, ?)";
