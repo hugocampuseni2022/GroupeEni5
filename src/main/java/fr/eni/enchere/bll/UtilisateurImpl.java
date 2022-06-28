@@ -32,7 +32,7 @@ public class UtilisateurImpl implements UtilisateurManager{
 	public void CreerCompteUtilisateur (Utilisateur utilisateur) throws BLLException {
 		
 		try {
-			utilisateurDao.insert(utilisateur.getPseudo(),utilisateur.getNom(),utilisateur.getPrenom(),utilisateur.getEmail(),utilisateur.getTelephone(),utilisateur.getRue(),utilisateur.getCodePostale(),utilisateur.getVille(),utilisateur.getMotDePasse());
+			utilisateurDao.insert(utilisateur);
 		} catch (DALException e) {
 			throw new BLLException(e.getMessage(),e);
 		}
