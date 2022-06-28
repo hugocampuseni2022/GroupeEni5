@@ -68,6 +68,21 @@ public class Utilisateur {
 	
 	
 
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			String codePostale, String ville, String motDePasse) {
+		super();
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostale = codePostale;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+		
+	}
+
 	// getters and setters
 	public int getNoUtilisateur() {
 		return noUtilisateur;

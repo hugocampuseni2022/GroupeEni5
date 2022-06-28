@@ -42,24 +42,24 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 
 
 	@Override
-	public void insert(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse) throws DALException {
+	public void insert(Utilisateur utilisateur) throws DALException {
 		try (Connection connection = ConnectionProvider.getConnection()){
 			
 			pStmt = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 			
-			pStmt.setString(1, pseudo);
-			pStmt.setString(2, nom);
-			pStmt.setString(3, prenom);
-			pStmt.setString(4, email);
-			if (telephone.isBlank()) { // ***************************** //
+			pStmt.setString(1,utilisateur.getPseudo());
+			pStmt.setString(2, utilisateur.getNom());
+			pStmt.setString(3, utilisateur.getPrenom());
+			pStmt.setString(4, utilisateur.getEmail());
+			if (utilisateur.getTelephone().isBlank()) { // ***************************** //
 				pStmt.setString(5, null);
 			}else {
-				pStmt.setString(5, telephone);
+				pStmt.setString(5, utilisateur.getTelephone());
 			}
-			pStmt.setString(6, rue);
-			pStmt.setString(7, codePostal);
-			pStmt.setString(8, ville);
-			pStmt.setString(9, motDePasse);
+			pStmt.setString(6, utilisateur.getCodePostale());
+			pStmt.setString(7, utilisateur.getVille());
+			pStmt.setString(8, utilisateur.getMotDePasse());
+			
 			
 			
 			pStmt.executeUpdate();

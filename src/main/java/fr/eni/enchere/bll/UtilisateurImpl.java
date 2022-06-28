@@ -29,10 +29,10 @@ public class UtilisateurImpl implements UtilisateurManager{
 	}
 	
 	@Override
-	public void CreerCompteUtilisateur (String pseudo,String nom, String prenom, String email, String tel, String rue, String CP, String ville, String mdp) throws BLLException {
+	public void CreerCompteUtilisateur (Utilisateur utilisateur) throws BLLException {
 		
 		try {
-			utilisateurDao.insert(pseudo,nom,prenom,email,tel,rue,CP,ville,mdp);
+			utilisateurDao.insert(utilisateur.getPseudo(),utilisateur.getNom(),utilisateur.getPrenom(),utilisateur.getEmail(),utilisateur.getTelephone(),utilisateur.getRue(),utilisateur.getCodePostale(),utilisateur.getVille(),utilisateur.getMotDePasse());
 		} catch (DALException e) {
 			throw new BLLException(e.getMessage(),e);
 		}
