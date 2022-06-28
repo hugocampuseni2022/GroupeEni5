@@ -2,7 +2,7 @@ package fr.eni.enchere.bo;
 
 import java.time.LocalDate;
 
-public class ArticleVendu {
+public class Article {
 
 	// attributes
 	private int noArticle, miseAPrix, prixVente;
@@ -10,7 +10,7 @@ public class ArticleVendu {
 	private LocalDate dateDebutEncheres, dateFinEncheres;
 	
 	// construct
-	public ArticleVendu(int noArticle, int miseAPrix, int prixVente, String nomArticle, String description,
+	public Article(int noArticle, int miseAPrix, int prixVente, String nomArticle, String description,
 			String etatVente, LocalDate dateDebutEncheres, LocalDate dateFinEncheres) {
 		super();
 		this.noArticle = noArticle;
