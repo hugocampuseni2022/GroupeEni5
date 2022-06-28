@@ -13,7 +13,7 @@
 <h1> Enchère ENI</h1>
 <h2>Mon Profil</h2>
 
-<form action="" method = "post">
+<form action="CreerCompte" method = "post">
 <label>Pseudo : </label>
  <input type="text" name = "pseudo" required></input> 
 <label>Nom : </label>

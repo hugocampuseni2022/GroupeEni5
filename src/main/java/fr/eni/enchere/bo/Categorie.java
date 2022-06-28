@@ -1,10 +1,13 @@
 package fr.eni.enchere.bo;
 
+import java.util.List;
+
 public class Categorie {
 
 	// attributes
 	private int noCategorie;
 	private String libelle;
+	private List<Article> listeArticleCategorie;
 	
 	// construct
 	public Categorie(int noCategorie, String libelle) {
@@ -28,6 +31,14 @@ public class Categorie {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+
+	public List<Article> getListeArticleCategorie() {
+		return listeArticleCategorie;
+	}
+
+	public void setListeArticleCategorie(List<Article> listeArticleCategorie) {
+		this.listeArticleCategorie = listeArticleCategorie;
 	}
 	
 	

@@ -1,17 +1,18 @@
 package fr.eni.enchere.bo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Article {
 
 	// attributes
-	private int noArticle, miseAPrix, prixVente;
+	private int noArticle, miseAPrix, prixVente, numero_utilisateur;
 	private String nomArticle, description, etatVente;
-	private LocalDate dateDebutEncheres, dateFinEncheres;
+	private Date dateDebutEncheres, dateFinEncheres;
 	
 	// construct
 	public Article(int noArticle, int miseAPrix, int prixVente, String nomArticle, String description,
-			String etatVente, LocalDate dateDebutEncheres, LocalDate dateFinEncheres) {
+			String etatVente,Date dateDebutEncheres, Date dateFinEncheres) {
 		super();
 		this.noArticle = noArticle;
 		this.miseAPrix = miseAPrix;
@@ -72,19 +73,19 @@ public class Article {
 		this.etatVente = etatVente;
 	}
 
-	public LocalDate getDateDebutEncheres() {
+	public Date getDateDebutEncheres() {
 		return dateDebutEncheres;
 	}
 
-	public void setDateDebutEncheres(LocalDate dateDebutEncheres) {
+	public void setDateDebutEncheres(Date dateDebutEncheres) {
 		this.dateDebutEncheres = dateDebutEncheres;
 	}
 
-	public LocalDate getDateFinEncheres() {
+	public Date getDateFinEncheres() {
 		return dateFinEncheres;
 	}
 
-	public void setDateFinEncheres(LocalDate dateFinEncheres) {
+	public void setDateFinEncheres(Date dateFinEncheres) {
 		this.dateFinEncheres = dateFinEncheres;
 	}
 	

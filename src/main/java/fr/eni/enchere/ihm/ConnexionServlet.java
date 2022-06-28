@@ -23,11 +23,9 @@ public class ConnexionServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
 	private UtilisateurManager UG;
-	private UtilisateurDAO UD;
 	
 	@Override
 	public void init() throws ServletException {
-		UD = DAOFactory.getDaoUtilisateur();//Couplage faible !!!!
 		UG = FactoryBLL.getManagerUtilisateur();
 		
 	}
@@ -46,10 +44,10 @@ public class ConnexionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	try {
-			UD.connection(request.getParameter("identifiant"), request.getParameter("mot de passe"));
+			UG.connectionUtilisateur(request.getParameter("identifiant"), request.getParameter("mot de passe"));
 			request.getRequestDispatcher("/WEB-INF/pages/ListeEncheres.jsp").forward(request, response);
 			
-		} catch (DALException e) {
+		} catch (BLLException e) {
 			request.setAttribute("error", "Erreur Mot de Passe ou Identifiant");
 			request.getRequestDispatcher("/WEB-INF/pages/pagesConnexion.jsp").forward(request, response);
 			e.printStackTrace();
