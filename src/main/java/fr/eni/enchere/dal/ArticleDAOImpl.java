@@ -13,16 +13,16 @@ public class ArticleDAOImpl implements ArticleDAO{
 
 	
 		
-		private static final String INSERT = "insert Into Article (nom_article, description, date_debut_encheres, date_fin_encheres, prix _initial, no_utilisateur, no_categorie )"
+		private static final String INSERT = "insert Into Article_Vendus (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_categorie )"
 												+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
 		
-		//private static final String SELECT_ALL = "Select id, nom, description, image, prix from Pizza";
+		private static final String SELECT_ALL = "Select * from Article_Vendus";
 		
-		//private static final String DELETE = "Delete FROM Pizza Where identifiant = ?";
+		private static final String DELETE = "Delete FROM Article_Vendus Where no_article = ?";
 		
-		//private static final String SELECT_ID = "SELECT id, nom, description, image , prix From PIZZA Where identifiant = ?";
+		private static final String SELECT_ID = "SELECT * From Article_Vendus Where no_article = ?";
 		
-		//private static final String UPDATE = "UPDATE PIZZA SET nom = ? ,description = ? ,image = ? ,prix = ?";
+		private static final String UPDATE = "UPDATE Article_Vendus SET nom_article = ? ,description = ? ,date_debut_encheres = ? ,date_fin_encheres = ?,prix_initial = ?, no_categorie = ?";
 		
 													
 		
@@ -45,8 +45,8 @@ public class ArticleDAOImpl implements ArticleDAO{
 			stmt.setDate(4, article.getDateFinEncheres());
 			stmt.setInt(5, article.getMiseAPrix());
 			stmt.setInt(6, article.getPrixVente());
-			stmt.setString(7, utilisateur.());
-			stmt.setString(8, article.getDescription());
+			stmt.setInt(7, article.getNumero_utilisateur());
+			stmt.setInt(8, article.getCategorie());
 			
 			
 			//Etape : executer la requete
@@ -57,7 +57,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 			
 			ResultSet rs = stmt.getGeneratedKeys();
 			if(rs.next()) {
-				pizza.setId(rs.getInt(1));
+				article.setNumero_utilisateur(1);
 			}
 				
 			} catch (SQLException e) {
@@ -68,10 +68,10 @@ public class ArticleDAOImpl implements ArticleDAO{
 			}	
 		
 		}
-		/*
+	
 		@Override
 
-		public List<Pizza> selectAll() throws DALException {
+		public List<Article> selectAll() throws DALException {
 			
 			//Etape 1 : se connecter la BD
 			
@@ -81,12 +81,12 @@ public class ArticleDAOImpl implements ArticleDAO{
 					Statement stmt = conn.createStatement();
 					ResultSet rs = stmt.executeQuery(SELECT_ALL);
 
-					List<Pizza> listePizza = new ArrayList<Pizza>();
+					List<Article> listeArticle = new ArrayList<Article>();
 
 					while (rs.next()) {
-					listePizza.add(new Pizza(rs.getInt("id"), rs.getString("nom"), rs.getString("description"), rs.getString("image"), rs.getFloat("prix")));
+						listeArticle.add(new Article(rs.getInt("no_article"), rs.getString("nom_article"), rs.getString("description"), rs.getDate("date_debut_encheres"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("no_categorie")));
 					}
-					return listePizza;
+					return listeArticle;
 						
 					} catch (SQLException e) {
 						
@@ -98,7 +98,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 				}
 
 		@Override
-		public void delete(Integer id ) throws DALException {
+		public void delete(int noArticle ) throws DALException {
 			
 			//Etape 1 : se connecter la BD
 			
@@ -109,7 +109,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 							
 							//Valoriser les parametres 
 							
-							stmt.setInt(1,id);
+							stmt.setInt(1,noArticle);
 							
 							//Etape : executer la requete
 							
@@ -126,7 +126,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 						}
 			
 		@Override
-		public void update(Pizza pizza) throws DALException {
+		public void update(Article article) throws DALException {
 			
 			
 			//Etape 1 : se connecter la BD
@@ -139,12 +139,14 @@ public class ArticleDAOImpl implements ArticleDAO{
 							
 				//Valoriser les parametres 
 					
-				stmt.setInt(1, pizza.getId());			
-				stmt.setString(2, pizza.getNom());
-				stmt.setString(3, pizza.getDescription());
-				stmt.setString(4, pizza.getImageUrl());
-				stmt.setFloat(5, pizza.getPrix());
-			
+					stmt.setString(1, article.getNomArticle());
+					stmt.setString(2, article.getDescription());
+					stmt.setDate(3, article.getDateDebutEncheres());
+					stmt.setDate(4, article.getDateFinEncheres());
+					stmt.setInt(5, article.getMiseAPrix());
+					stmt.setInt(6, article.getPrixVente());
+					stmt.setInt(7, article.getNumero_utilisateur());
+					stmt.setInt(8, article.getCategorie());
 				
 				
 				//Etape : executer la requete
@@ -161,7 +163,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 			}
 
 		@Override
-		public Pizza selectById(Integer id) throws DALException {
+		public Article selectById(int noArticle) throws DALException {
 			
 			//Etape 1 : se connecter la BD
 			
@@ -170,13 +172,13 @@ public class ArticleDAOImpl implements ArticleDAO{
 							
 							PreparedStatement stmt = conn.prepareStatement(SELECT_ID);
 						
-							stmt.setInt(1,id);
+							stmt.setInt(1,noArticle);
 							
 							ResultSet rs = stmt.executeQuery();
 							
 							if(rs.next()) {
 								
-							return new Pizza (rs.getInt("id"),rs.getString("nom"),rs.getString("description"),rs.getString("image"),rs.getFloat("prix"));	
+							return new Article(rs.getInt("no_article"), rs.getString("nom_article"), rs.getString("description"), rs.getDate("date_debut_encheres"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("no_categorie"));
 							
 							}else {
 								throw new DALException ("Mauvaise Id ");
@@ -188,7 +190,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 							}	
 			                                            
 			
-						}*/
+						}
 
 		
 		}
