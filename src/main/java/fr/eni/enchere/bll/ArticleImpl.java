@@ -5,6 +5,7 @@ import java.util.List;
 
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.dal.ArticleDAO;
+import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
 
 
@@ -24,45 +25,64 @@ private static ArticleManager instance;
 	}
 	
 	private  ArticleImpl() {
-		this.daoArticle = DAOFactory.();
+		this.daoArticle = DAOFactory.getDaoArticle();
 	}
 
 	@Override
 	public List<Article> getAllArticle() throws BLLException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return daoArticle.selectAll();
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			throw new BLLException("erreur Affichage All Article");
+		}
+	
 	}
 
 	@Override
 	public void enregistrerArticle(Article article) throws BLLException {
-		// TODO Auto-generated method stub
+		try {
+			daoArticle.insert(article);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			throw new BLLException ("erreur enregistrement Article");
+		}
 		
 	}
 
 	@Override
 	public void supprimerArticle(int noArticle) throws BLLException {
-		// TODO Auto-generated method stub
+		try {
+			daoArticle.delete(noArticle);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			throw new BLLException("Erreur supprimer Article");
+		}
 		
 	}
 
 	@Override
 	public Article getArticleById(int noArticle) throws BLLException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		try {
+			return daoArticle.selectById(noArticle);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			throw new BLLException("Erreur get Article by Id");
+		}
 	}
 
 	@Override
 	public void updateArticle(Article article) throws BLLException {
-		// TODO Auto-generated method stub
+		try {
+			daoArticle.update(article);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			throw new BLLException("Erreur Update Article");
+		}
 		
 	}
 
-	
-	
-	
-	
-	
-	
 /*
 	@Override
 	public Article nouvelleVente(int miseAPrix, String nomArticle, String description, LocalDate dateDebutEncheres) {

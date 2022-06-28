@@ -11,6 +11,11 @@ public class DALException extends Exception{
 	public DALException(String message) {
 		super(message);
 	}
+
+	public void BLLException(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

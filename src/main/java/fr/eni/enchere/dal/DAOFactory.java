@@ -1,7 +1,5 @@
 package fr.eni.enchere.dal;
 
-import fr.eni.enchere.bll.ArticleImpl;
-
 public class DAOFactory {
 
 	public static UtilisateurDAO getDaoUtilisateur() {
@@ -9,7 +7,7 @@ public class DAOFactory {
 	}
 	
 	public static ArticleDAO getDaoArticle() {
-		return new ArticleImpl();
+		return new ArticleDAOImpl();
 		
 	}
 }
