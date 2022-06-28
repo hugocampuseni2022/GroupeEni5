@@ -22,6 +22,8 @@ public interface UtilisateurManager {
 	
 	void supprimerUtilisateur (int noUtilisateur) throws BLLException;
 	
+	void modifierUtilisateurByid (Utilisateur utilsateur,int noUtilisateur)throws BLLException;
+	
 	
 	
 	

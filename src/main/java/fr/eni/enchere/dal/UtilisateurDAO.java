@@ -10,4 +10,6 @@ public interface UtilisateurDAO {
 	
 	void delete(int noUtilisateur) throws DALException;
 	
+	void updateById (Utilisateur utilisateur,int noUtilisateur) throws DALException;
+	
 }
