@@ -7,22 +7,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Acceuil</title>
+<link rel="stylesheet" href="style/Accueil.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
-<body class="container-fluid">
-	<header class="container">
+<body>
+	<header class="container-fluid ">
 		<div class="row">
-			<div class="col-sm-12 col-md-6">
-				<h2>ENI-Enchères</h2>
+			<div class="col-sm-12 col-md-4 logo">
+				<span>ENI-Enchères</span>
 			</div>
-			<div class="col-sm-12 col-md-6">
+			<div class="col-sm-12 col-md-8 nav-menu">
 				<c:choose>
 					<c:when test="${connected.equals(\"false\")}">
-						<ul>
-							<li>
-								<a href="<%=request.getContextPath()%>/Connexion">S'inscrire - Se connecter</a>
-							</li>
-						</ul>
+						<div class="liste">
+							<ul>
+								<li>
+									<a href="<%=request.getContextPath()%>/Connexion">S'inscrire - Se connecter</a>
+								</li>
+							</ul>
+						</div>					
 					</c:when>
 					<c:otherwise>
 						<div class="liste">
@@ -30,18 +33,12 @@
 								<li>
 									<a href="<%=request.getContextPath()%>/Accueil?action=deconnexion">Déconnexion</a>
 								</li>
-							</ul>
-							<ul>
 								<li>
 									<a href="<%=request.getContextPath()%>">Mon profil</a>
 								</li>
-							</ul>
-							<ul>
 								<li>
 									<a href="<%=request.getContextPath()%>">Vendre un article</a>
 								</li>
-							</ul>
-							<ul>
 								<li>
 									<a href="<%=request.getContextPath()%>">Enchères</a>
 								</li>
@@ -53,7 +50,10 @@
 
 		</div>
 	</header>
-	<main>
+	<main class="container">
+		<div>
+			
+		</div>
 		<h3>Liste des enchères</h3>
 		<h4>Filtres :</h4>
 		<form action="" method="get">
