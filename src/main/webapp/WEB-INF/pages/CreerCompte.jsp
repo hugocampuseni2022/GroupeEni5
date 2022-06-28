@@ -25,7 +25,7 @@
  <label>Telephone : </label>
  <input type="tel" name = "telephone"></input> 
  <label>Rue : </label>
- <input type="number" name = "rue" required></input> 
+ <input type="text" name = "rue" required></input> 
  <label>Code Postal : </label>
  <input type="text" name = "code postal" required></input> 
  <label>Ville : </label>
@@ -35,8 +35,8 @@
  <label>Confirmation : </label>
  <input type="password" name = "Confirmation" required></input> 
  <button>Créer</button>
- 
 </form>
+<p>${error2}</p>
 
 <a href = "<%=request.getContextPath()%>/Accueil" ><button>Annuler</button> </a>
 
