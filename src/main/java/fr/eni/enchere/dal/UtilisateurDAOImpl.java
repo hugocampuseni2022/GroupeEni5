@@ -15,7 +15,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	private static PreparedStatement pStmt = null;
 	private static final String INSERT = "insert into UTILISATEURS (credit, pseudo, nom, prenom, "
 										+ "email, telephone, rue, codePostale, ville, motDePasse, administrateur) "
-										+ "values (100, ?, ?, ?, ?, ?, ?, ?, ?, ?, membre)";
+										+ "values (100, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)";
 	
 	
 	@Override
@@ -45,7 +45,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	public void insert(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse) throws DALException {
 		try (Connection connection = ConnectionProvider.getConnection()){
 			
-			PreparedStatement pStmt = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+			pStmt = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			pStmt.setString(1, pseudo);
 			pStmt.setString(2, nom);
