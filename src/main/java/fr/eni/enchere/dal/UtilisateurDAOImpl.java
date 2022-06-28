@@ -42,47 +42,39 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 
 
 	@Override
-	public void insert(Utilisateur utilisateur) throws DALException {
+	public void insert(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse) throws DALException {
 		try (Connection connection = ConnectionProvider.getConnection()){
 			
 			PreparedStatement pStmt = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 			
-			pStmt.setInt(1, utilisateur.getNoUtilisateur());
-			
-			pStmt.setInt(2, utilisateur.getCredit());
-			
-			pStmt.setString(3, utilisateur.getPseudo());
-			pStmt.setString(4, utilisateur.getNom());
-			pStmt.setString(5, utilisateur.getPrenom());
-			pStmt.setString(6, utilisateur.getEmail());
-			if (utilisateur.getTelephone().isBlank()) { // ***************************** //
-				pStmt.setString(7, null);
+			pStmt.setString(1, pseudo);
+			pStmt.setString(2, nom);
+			pStmt.setString(3, prenom);
+			pStmt.setString(4, email);
+			if (telephone.isBlank()) { // ***************************** //
+				pStmt.setString(5, null);
 			}else {
-				pStmt.setString(7, utilisateur.getTelephone());
+				pStmt.setString(5, telephone);
 			}
-			pStmt.setString(8, utilisateur.getRue());
-			pStmt.setString(9, utilisateur.getCodePostale());
-			pStmt.setString(10, utilisateur.getVille());
-			pStmt.setString(11, utilisateur.getMotDePasse());
+			pStmt.setString(6, rue);
+			pStmt.setString(7, codePostal);
+			pStmt.setString(8, ville);
+			pStmt.setString(9, motDePasse);
 			
-			pStmt.setBoolean(12, utilisateur.isAdministrateur());
 			
 			pStmt.executeUpdate();
-			
-			ResultSet rs = pStmt.getGeneratedKeys();
-			if(rs.next()){
-				utilisateur.setNoUtilisateur(rs.getInt(1));
-			}
-			
 			
 		} catch (SQLException e) {
 			throw new DALException("erreur sur l'insertion d'un utilisateur ",e);
 		}
-		
 	}
+			
+		
+		
 	
 	
 	
 	
+
 	
 }
