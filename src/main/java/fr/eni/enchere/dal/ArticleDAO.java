@@ -8,14 +8,14 @@ public interface ArticleDAO {
 
 	
 		void insert (Article article) throws DALException;
+
+		List<Article> selectAll() throws DALException;
+	
+		void delete (int noArticle) throws DALException;
 		
-		//List<Article> selectAll() throws DALException;
+		void update(Article article) throws DALException;
 		
-		//void delete (Integer id) throws DALException;
-		
-		//void update(Article pizza) throws DALException;
-		
-	//	Article selectById (Integer id) throws DALException;
+		Article selectById (int noArticle) throws DALException;
 
 	}
 

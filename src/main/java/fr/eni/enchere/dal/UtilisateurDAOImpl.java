@@ -13,9 +13,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;
-	private static final String INSERT = "insert into UTILISATEURS (credit, pseudo, nom, prenom, "
-										+ "email, telephone, rue, code_postal, ville, mot_de_passe, administrateur) "
-										+ "values (100, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)";
+	private static final String INSERT = "insert into UTILISATEURS (pseudo, nom, prenom, "
+										+ "email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
+										+ "values ( ?, ?, ?, ?, ?, ?, ?, ?, ?,100, 0)";
 	
 	
 	@Override
@@ -30,7 +30,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			rs = pStmt.executeQuery();
 			
 			if (rs.next()) {
-				return new Utilisateur(rs.getInt("no_utilisateur"), rs.getInt("credit"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getBoolean("administrateur"));
+				return new Utilisateur(rs.getInt("no_utilisateur"),rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
 			} else {
 				throw new DALException("Login ou Mot de passe incorrecte");
 			}

@@ -1,5 +1,7 @@
 package fr.eni.enchere.bo;
 
+import java.util.List;
+
 public class Utilisateur {
 
 	// attributes
@@ -7,13 +9,15 @@ public class Utilisateur {
 	private String pseudo, nom, prenom, email, telephone, 
 	rue, codePostale, ville, motDePasse;
 	private boolean administrateur;
+	private List<Article> listeArticle;
+	private List<Enchere> listeEnchere;
 	
 	// construct
-	public Utilisateur(int noUtilisateur, int credit, String pseudo, String nom, String prenom, String email,
-			String telephone, String rue, String codePostale, String ville, String motDePasse, boolean administrateur) {
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email,
+			String telephone, String rue, String codePostale, String ville, String motDePasse, int credit, boolean administrateur) {
 		super();
 		this.noUtilisateur = noUtilisateur;
-		this.credit = credit;
+		
 		this.pseudo = pseudo;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -23,15 +27,16 @@ public class Utilisateur {
 		this.codePostale = codePostale;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
+		this.credit = credit;
 		this.administrateur = administrateur;
 	}
 
 	// construct sans 'telephone'
-	public Utilisateur(int noUtilisateur, int credit, String pseudo, String nom, String prenom, String email,
-			String rue, String codePostale, String ville, String motDePasse, boolean administrateur) {
+	public Utilisateur(int noUtilisateur,  String pseudo, String nom, String prenom, String email,
+			String rue, String codePostale, String ville, String motDePasse,int credit, boolean administrateur) {
 		super();
 		this.noUtilisateur = noUtilisateur;
-		this.credit = credit;
+		
 		this.pseudo = pseudo;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -40,15 +45,16 @@ public class Utilisateur {
 		this.codePostale = codePostale;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
+		this.credit = credit;
 		this.administrateur = administrateur;
 	}
 
 	// construct sans 'telephone' ni 'administrateur'
-	public Utilisateur(int noUtilisateur, int credit, String pseudo, String nom, String prenom, String email,
-			String rue, String codePostale, String ville, String motDePasse) {
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email,
+			String rue, String codePostale, String ville, String motDePasse ,int credit) {
 		super();
 		this.noUtilisateur = noUtilisateur;
-		this.credit = credit;
+		
 		this.pseudo = pseudo;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -57,7 +63,10 @@ public class Utilisateur {
 		this.codePostale = codePostale;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
-	}
+		this.credit = credit;
+		}
+	
+	
 
 	// getters and setters
 	public int getNoUtilisateur() {
@@ -155,5 +164,20 @@ public class Utilisateur {
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
 	}
-	
+
+	public List<Article> getListeArticle() {
+		return listeArticle;
+	}
+
+	public void setListeArticle(List<Article> listeArticle) {
+		this.listeArticle = listeArticle;
+	}
+
+	public List<Enchere> getListeEnchere() {
+		return listeEnchere;
+	}
+
+	public void setListeEnchere(List<Enchere> listeEnchere) {
+		this.listeEnchere = listeEnchere;
+	}
 }

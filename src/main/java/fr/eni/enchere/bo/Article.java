@@ -6,22 +6,25 @@ import java.time.LocalDate;
 public class Article {
 
 	// attributes
-	private int noArticle, miseAPrix, prixVente;
+	private int noArticle, miseAPrix, prixVente, numero_utilisateur, categorie;
 	private String nomArticle, description, etatVente;
+
 	private Date dateDebutEncheres, dateFinEncheres;
 	
 	// construct
-	public Article(int noArticle, int miseAPrix, int prixVente, String nomArticle, String description,
-			String etatVente,Date dateDebutEncheres, Date dateFinEncheres) {
+	public Article(int noArticle, String nomArticle, String description, Date dateDebutEncheres,Date dateFinEncheres, int miseAPrix,
+					int categorie) 
+	
+	{
 		super();
 		this.noArticle = noArticle;
-		this.miseAPrix = miseAPrix;
-		this.prixVente = prixVente;
 		this.nomArticle = nomArticle;
+		this.miseAPrix = miseAPrix;
 		this.description = description;
-		this.etatVente = etatVente;
+		this.categorie = categorie;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
+		
 	}
 
 	// getters and setters
@@ -87,6 +90,22 @@ public class Article {
 
 	public void setDateFinEncheres(Date dateFinEncheres) {
 		this.dateFinEncheres = dateFinEncheres;
+	}
+
+	public int getNumero_utilisateur() {
+		return numero_utilisateur;
+	}
+
+	public void setNumero_utilisateur(int numero_utilisateur) {
+		this.numero_utilisateur = numero_utilisateur;
+	}
+
+	public int getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(int categorie) {
+		this.categorie = categorie;
 	}
 	
 	
