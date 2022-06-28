@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.enchere.bll.FactoryBLL;
+import fr.eni.enchere.bll.UtilisateurManager;
+import fr.eni.enchere.dal.DAOFactory;
+import fr.eni.enchere.dal.UtilisateurDAO;
+
 
 
 /**
@@ -16,9 +21,15 @@ import javax.servlet.http.HttpServletResponse;
 public class CreerCompteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	private UtilisateurManager UG;
+	private UtilisateurDAO UD;
 	
-	
+	@Override
+	public void init() throws ServletException {
+		UD = DAOFactory.getDaoUtilisateur();//Couplage faible !!!!
+		UG = FactoryBLL.getManagerUtilisateur();
+		
+	}
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -41,6 +52,8 @@ public class CreerCompteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(("mot de passe").equals("Confirmation")){
+			
+			UD.insert(request.getParameter("identifiant"), request.getParameter("identifiant"), request.getParameter("identifiant"), request.getParameter("identifiant"), request.getParameter("identifiant"), request.getParameter("identifiant"), request.getParameter("identifiant"), request.getParameter("identifiant"), request.getParameter("identifiant"));
 			
 		
 			request.getRequestDispatcher("/WEB-INF/pages/ListeEncheres.jsp").forward(request, response);

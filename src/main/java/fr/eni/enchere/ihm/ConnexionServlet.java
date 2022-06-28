@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.enchere.bll.BLLException;
+import fr.eni.enchere.bll.FactoryBLL;
 import fr.eni.enchere.bll.UtilisateurManager;
 import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
@@ -26,7 +28,7 @@ public class ConnexionServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		UD = DAOFactory.getDaoUtilisateur();//Couplage faible !!!!
-		
+		UG = FactoryBLL.getManagerUtilisateur();
 		
 	}
     
