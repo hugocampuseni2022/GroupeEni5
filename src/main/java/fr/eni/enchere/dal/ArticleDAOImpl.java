@@ -1,7 +1,5 @@
 package fr.eni.enchere.dal;
 
-public class ArticleDAOImpl {
-
 	import java.sql.Connection;
 	import java.sql.PreparedStatement;
 	import java.sql.ResultSet;
@@ -9,23 +7,27 @@ public class ArticleDAOImpl {
 	import java.sql.Statement;
 	import java.util.ArrayList;
 	import java.util.List;
+	import fr.eni.enchere.bo.Article;
+	
+public class ArticleDAOImpl implements ArticleDAO{
 
-	public class ArticleDAOImpl implements ArticleDAO {
+	
 		
-		private static final String INSERT = "insert Into Pizza (nom, description, image, prix)"
-												+ " values (?, ?, ?, ?)";
+		private static final String INSERT = "insert Into Article (nom_article, description, date_debut_encheres, date_fin_encheres, prix _initial, no_utilisateur, no_categorie )"
+												+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
 		
-		private static final String SELECT_ALL = "Select id, nom, description, image, prix from Pizza";
+		//private static final String SELECT_ALL = "Select id, nom, description, image, prix from Pizza";
 		
-		private static final String DELETE = "Delete FROM Pizza Where identifiant = ?";
+		//private static final String DELETE = "Delete FROM Pizza Where identifiant = ?";
 		
-		private static final String SELECT_ID = "SELECT id, nom, description, image , prix From PIZZA Where identifiant = ?";
+		//private static final String SELECT_ID = "SELECT id, nom, description, image , prix From PIZZA Where identifiant = ?";
 		
-		private static final String UPDATE = "UPDATE PIZZA SET nom = ? ,description = ? ,image = ? ,prix = ?";
+		//private static final String UPDATE = "UPDATE PIZZA SET nom = ? ,description = ? ,image = ? ,prix = ?";
+		
 													
 		
 		@Override
-		public void insert (Pizza pizza) throws DALException {
+		public void insert (Article article) throws DALException {
 			
 		//Etape 1 : se connecter la BD
 			
@@ -37,10 +39,10 @@ public class ArticleDAOImpl {
 						
 			//Valoriser les parametres 
 						
-			stmt.setString(1, pizza.getNom());
-			stmt.setString(2, pizza.getDescription());
-			stmt.setString(3, pizza.getImageUrl());
-			stmt.setFloat(4, pizza.getPrix());
+			stmt.setString(1, article.getNomArticle());
+			stmt.setString(2, article.getDescription());
+			stmt.setDate(3, article.getDateDebutEncheres());
+			stmt.setFloat(4, article.getDateFinEncheres());
 			
 			
 			//Etape : executer la requete
@@ -62,7 +64,7 @@ public class ArticleDAOImpl {
 			}	
 		
 		}
-		
+		/*
 		@Override
 
 		public List<Pizza> selectAll() throws DALException {
@@ -182,8 +184,8 @@ public class ArticleDAOImpl {
 							}	
 			                                            
 			
-						}
+						}*/
 
 		
 		}
-}
+
