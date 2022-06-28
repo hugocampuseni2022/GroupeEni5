@@ -42,7 +42,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 			stmt.setString(1, article.getNomArticle());
 			stmt.setString(2, article.getDescription());
 			stmt.setDate(3, article.getDateDebutEncheres());
-			stmt.setFloat(4, article.getDateFinEncheres());
+			stmt.setDate(4, article.getDateFinEncheres());
 			
 			
 			//Etape : executer la requete
