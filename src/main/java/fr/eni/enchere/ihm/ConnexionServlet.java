@@ -30,6 +30,7 @@ public class ConnexionServlet extends HttpServlet {
     	
     	if(("mot de passe").equals("Confirmation")) {
     		
+    		request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
     	}
     		
     		
