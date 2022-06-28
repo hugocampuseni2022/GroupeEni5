@@ -16,7 +16,7 @@
             <label>Identifiant : </label>
             <input type="text" name = "identifiant"></input>
             <label>Mots de passe : </label>
-            <input type="text" name = "identifiant"></input>
+            <input type="text" name = "mots de passe"></input>
             <input type="checkbox"> Se souvenir de moi</input>
             <a href > Mot de passe oublié</a>
             <button>Connextion</button> 
