@@ -37,22 +37,22 @@
 					<td><!-- ${getTel} --></td>
 				</tr>
 				<tr>
-					<td>Rue</td>
+					<td>Rue :</td>
 					<td><!-- ${getRue} --></td>
 				</tr>
 				<tr>
-					<td>Code postal</td>
+					<td>Code postal :</td>
 					<td><!-- ${getCP} --></td>
 				</tr>
 				<tr>
-					<td>Ville</td>
+					<td>Ville :</td>
 					<td><!-- ${getVille} --></td>
 				</tr>
 			</table>
 		</div>
 		<div>
-			<form action="" method="post"> 
-				<button>Modifier</button> 				<!-- TODO (c:if user=userEnCours) -->
+			<form action="" method="post"> 				<!-- TODO lien vers la page de modif profil -->
+				<button>Modifier</button> 				<!-- TODO affichage button (c:if user=userEnCours) -->
 			</form>
 		</div>
 	
