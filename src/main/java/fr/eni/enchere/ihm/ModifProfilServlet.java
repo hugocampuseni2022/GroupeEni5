@@ -55,7 +55,7 @@ public class ModifProfilServlet extends HttpServlet {
 			
 			UG.modifierUtilisateurByid(new Utilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe")),Integer.parseInt((String) session.getAttribute("id")));
 			request.getRequestDispatcher("/WEB-INF/pages/ListeEncheres.jsp").forward(request, response);
-		}
+		} 
 		else {
 			
 			UG.supprimerUtilisateur(Integer.parseInt((String) session.getAttribute("id")));
