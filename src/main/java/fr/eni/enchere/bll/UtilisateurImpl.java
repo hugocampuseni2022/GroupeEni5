@@ -29,7 +29,7 @@ public class UtilisateurImpl implements UtilisateurManager{
 	}
 	
 	@Override
-	public void CreerCompteUtilisateur (Utilisateur utilisateur) throws BLLException {
+	public void creerCompteUtilisateur (Utilisateur utilisateur) throws BLLException {
 		
 		try {
 			utilisateurDao.insert(utilisateur);
@@ -54,7 +54,7 @@ public class UtilisateurImpl implements UtilisateurManager{
 
 
 	@Override
-	public void modifierUtilisateurByid(Utilisateur utilsateur, int noUtilisateur) throws BLLException {
+	public void modifierUtilisateurById(Utilisateur utilsateur, int noUtilisateur) throws BLLException {
 		try {
 			utilisateurDao.updateById(utilsateur, noUtilisateur);
 		} catch (DALException e) {
@@ -62,6 +62,17 @@ public class UtilisateurImpl implements UtilisateurManager{
 			throw new BLLException(e.getMessage(),e);
 		}
 		
+	}
+
+
+
+	@Override
+	public Utilisateur afficherUtilisateurByPseudo(String login) throws BLLException {
+		try {
+			return utilisateurDao.selectByPseudo(login);
+		} catch (DALException e) {
+			throw new BLLException(e.getMessage(), e);
+		}
 	}
 	
 	
