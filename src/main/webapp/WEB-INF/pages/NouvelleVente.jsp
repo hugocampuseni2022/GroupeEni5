@@ -11,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
+<input type = "hidden" name ="pseudo" value="${!empty utilisateur?'' : utilisateur.pseudo}"/></input> 
 <header class="container-fluid ">
 			<div class="col-sm-12 col-md-4 logo">
 				<span>ENI-Enchères</span>
@@ -21,102 +22,104 @@
 
 <form action="">
 
-	<div>
 		<div>
-			<label> Article :</label>
+			<div>
+				<label> Article :</label>
+			</div>
+			<div>
+				<input type="text" name="article" size="30"></input>
+			</div>
 		</div>
-		<div>
-			<input type="text" name="Article" size="30"></input>
-		</div>
-	</div>
-
-	<div>
-		<div>
-			<label> Description :</label>
-		</div>
-		<div>
-			<input type="text" name="description" size="30"></input>
-		</div>
-	</div>
 	
-	<div>
 		<div>
-			<label> Catégorie :</label>
+			<div>
+				<label> Description :</label>
+			</div>
+			<div>
+				<input type="text" name="description" size="30"></input>
+			</div>
 		</div>
+		
 		<div>
-			<input type="text" name="categorie" size="30"></input>
+			<div>
+				<label> Catégorie :</label>
+			</div>
+			<div>
+				<input type="text" name="categorie" size="30"></input>
+			</div>
 		</div>
-	</div>
-	
-	<div>
+		
 		<div>
-			<label> Photo de l'article :</label>
+			<div>
+				<label> Photo de l'article :</label>
+			</div>
+			<div>
+				<input type="image" name="photo" size="30"></input>
+			</div>
 		</div>
+		
 		<div>
-			<input type="image" name="photo" size="30"></input>
+			<div>
+				<label> Mise à prix :</label>
+			</div>
+			<div>
+				<input type="number" name="prix" size="30"></input>
+			</div>
 		</div>
-	</div>
-	
-	<div>
+		
 		<div>
-			<label> Mise à prix :</label>
+			<div>
+				<label> Début de l'enchère :</label>
+			</div>
+			<div>
+				<input type="date" name="dateDebut" size="30"></input>
+			</div>
 		</div>
+		
+		
 		<div>
-			<input type="number" name="prix" size="30"></input>
+			<div>
+				<label> Fin de l'enchère :</label>
+			</div>
+			<div>
+				<input type="date" name="dateFin" size="30"></input>
+			</div>
 		</div>
-	</div>
-	
-	<div>
+		
 		<div>
-			<label> Début de l'enchère :</label>
-		</div>
-		<div>
-			<input type="date" name="dateDebut" size="30"></input>
-		</div>
-	</div>
-	
-	
-	<div>
-		<div>
-			<label> Fin de l'enchère :</label>
-		</div>
-		<div>
-			<input type="date" name="dateFin" size="30"></input>
-		</div>
-	</div>
-	
-	<div>
-		<fieldset>
-   			 <legend>Retrait</legend>
-					<div>
+			<fieldset>
+	   			 <legend>Retrait</legend>
 						<div>
-							<label>Rue :</label>
+							<div>
+								<label>Rue :</label>
+							</div>
+							<div>
+								<input type="text" name="rue" size="30">${test}
+							</div>
 						</div>
+						
 						<div>
-							<input type="text" name="rue" size="30">${test}
+							<div>
+								<label>Code postal :</label>
+							</div>
+							<div>
+								<input type="text" name="codePostal" size="30">${test}
+							</div>
 						</div>
-					</div>
-					
-					<div>
+						
+						
 						<div>
-							<label>Code postal :</label>
+							<div>
+								<label>Ville :</label>
+							</div>
+							<div>
+								<input type="text" name="ville" size="30">${test}
+							</div>
 						</div>
-						<div>
-							<input type="text" name="codePostal" size="30">${test}
-						</div>
-					</div>
-					
-					
-					<div>
-						<div>
-							<label>Ville :</label>
-						</div>
-						<div>
-							<input type="text" name="ville" size="30">${test}
-						</div>
-					</div>
-		</fieldset>
-	</div>
+			</fieldset>
+		</div>
+	<button  name="btn" value="enregistrer">Enregister</button>
+	<button  name="btn" value="annuler">Annuler</button>
 	
 	
 </form>
