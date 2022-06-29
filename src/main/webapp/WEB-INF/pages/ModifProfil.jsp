@@ -21,8 +21,8 @@
 		<div>
 			<form action="" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
 				<input type = "hidden" name ="idutilisateur" value="${!empty utilisateur?'' : utilisateur.noUtilisateur}"/></input> 
-				<div>
-					<div id="line">
+				<div class="hstack gap-3">
+					<div>
 						<label>Pseudo :</label>
 					</div>
 					<div>
@@ -35,7 +35,7 @@
 						<input type="text" name="newNom" size="30"></input>
 					</div>
 				</div>
-				<div>
+				<div  class="hstack gap-3">
 					<div>
 						<label>Prénom :</label>
 					</div>
@@ -49,7 +49,7 @@
 						<input type="text" name="newEmail" size="30"></input>
 					</div>
 				</div>
-				<div>
+				<div  class="hstack gap-3">
 					<div>
 						<label>Téléphone :</label>
 					</div>
@@ -63,7 +63,7 @@
 						<input type="text" name="newRue" size="30"></input>
 					</div>
 				</div>
-				<div>
+				<div  class="hstack gap-3">
 					<div>
 						<label>Code postal :</label>
 					</div>
@@ -77,7 +77,7 @@
 						<input type="text" name="newVille" size="30"></input>
 					</div>
 				</div>
-				<div>
+				<div  class="hstack gap-3">
 					<div>
 						<label>Mot de passe actuel :</label>
 					</div>
@@ -88,7 +88,7 @@
 						<!-- Case vide -->
 					</div>
 				</div>
-				<div>
+				<div  class="hstack gap-3">
 					<div>
 						<label>Nouveau mot de passe :</label>
 					</div>
