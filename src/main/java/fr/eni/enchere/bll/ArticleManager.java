@@ -11,13 +11,13 @@ public interface ArticleManager {
 	
 	List<Article> getAllArticle() throws BLLException ;
 	
-	void enregistrerArticle(Article article) throws BLLException;
+	void enregistrerArticle(Article article, int id) throws BLLException;
 
 	void supprimerArticle(int noArticle) throws BLLException;
 
 	Article getArticleById(int noArticle) throws BLLException;
 	
-	void updateArticle(Article article) throws BLLException;
+	void updateArticle(Article article, int id) throws BLLException;
 	
 	List<Utilisateur> getAll() throws BLLException;
 	

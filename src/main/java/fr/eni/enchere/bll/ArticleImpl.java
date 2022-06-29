@@ -41,9 +41,9 @@ private static ArticleManager instance;
 	}
 
 	@Override
-	public void enregistrerArticle(Article article) throws BLLException {
+	public void enregistrerArticle(Article article, int id) throws BLLException {
 		try {
-			daoArticle.insert(article);
+			daoArticle.insert(article, id);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			throw new BLLException ("erreur enregistrement Article");
@@ -74,9 +74,9 @@ private static ArticleManager instance;
 	}
 
 	@Override
-	public void updateArticle(Article article) throws BLLException {
+	public void updateArticle(Article article, int id) throws BLLException {
 		try {
-			daoArticle.update(article);
+			daoArticle.update(article, id);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			throw new BLLException("Erreur Update Article");
