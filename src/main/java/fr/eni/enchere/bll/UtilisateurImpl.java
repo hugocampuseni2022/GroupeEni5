@@ -78,27 +78,13 @@ public class UtilisateurImpl implements UtilisateurManager{
 	
 	
 	
-	
 	/*
 	@Override
 	public List<Utilisateur> getAllUtilisateur() {
 		
 		return null;
 	}
-	
-	@Override
-	public void enregistrerUtilisateur(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-
-	@Override
-	public Utilisateur getUtilisateurByNo(int noUtilisateur) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
+	*/
 	
 
 }
