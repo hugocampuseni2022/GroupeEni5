@@ -16,6 +16,7 @@ public class UtilisateurImpl implements UtilisateurManager{
 		utilisateurDao = DAOFactory.getDaoUtilisateur();
 	}
 
+	
 
 
 	@Override
