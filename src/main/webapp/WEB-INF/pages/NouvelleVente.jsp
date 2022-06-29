@@ -20,7 +20,7 @@
 </header>
 <main class="container">
 
-<form action="">
+<form action="NouvelleVenteServlet" method = "post">
 
 		<div>
 			<div>
