@@ -1,26 +1,26 @@
 package fr.eni.enchere.bo;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Enchere {
 
 	// attributes
-	private LocalDate dateEnchere;
+	private Date dateEnchere;
 	private int montant_Enchere;
 	
 	// construct
-	public Enchere(LocalDate dateEnchere, int montant_Enchere) {
+	public Enchere(Date dateEnchere, int montant_Enchere) {
 		super();
 		this.dateEnchere = dateEnchere;
 		this.montant_Enchere = montant_Enchere;
 	}
 
 	// getters and setters
-	public LocalDate getDateEnchere() {
+	public Date getDateEnchere() {
 		return dateEnchere;
 	}
 
-	public void setDateEnchere(LocalDate dateEnchere) {
+	public void setDateEnchere(Date dateEnchere) {
 		this.dateEnchere = dateEnchere;
 	}
 

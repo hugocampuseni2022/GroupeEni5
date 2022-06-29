@@ -6,6 +6,10 @@ public class Retrait {
 	private String rue, code_postal, ville;
 
 	// construct
+	public Retrait() {
+		
+	}
+	
 	public Retrait(String rue, String code_postal, String ville) {
 		super();
 		this.rue = rue;
