@@ -69,8 +69,13 @@
 			<button>Rechercher</button>
 		</form>
 		<!-- Liste des articles dans la bdd -->
-		<c:forEach var="article" items="${listeArticle}">
+		<c:forEach var="utilisateur" items="${catalogue}">
 			<!-- TODO Card article -->
+			<c:forEach var="article" items="${utilisateur.getListeArticle()}">
+			<!-- TODO Card article -->
+				<p>${article.getNomArticle()}
+			</c:forEach>
+			<a href=""></a>
 		</c:forEach>
 	</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

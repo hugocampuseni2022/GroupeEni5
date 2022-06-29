@@ -218,11 +218,11 @@ public class ArticleDAOImpl implements ArticleDAO{
 		
 		try (Connection conn = ConnectionProvider.getConnection()) {
 			List<Article> articleUser = new ArrayList<Article>();
-			pStmt = conn.prepareStatement(SELECT_BY_USER);
+			PreparedStatement pStmt = conn.prepareStatement(SELECT_BY_USER);
 			
 			pStmt.setInt(1, idUser);
 			
-			rs = pStmt.executeQuery();
+			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
 				Article newArticle = new Article(rs.getInt("no_article"),rs.getString("nom_article") , rs.getString("description"), rs.getDate("date_debut_encheres"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("prix_vente"), rs.getInt("no_categorie"));
 				newArticle.setListeEnchere(selectEnchereByArticle(rs.getInt("no_article")));
@@ -239,11 +239,11 @@ public class ArticleDAOImpl implements ArticleDAO{
 	public List<Enchere> selectEnchereByArticle(int idArticle) throws DALException {
 		try (Connection conn = ConnectionProvider.getConnection()) {
 			List<Enchere> enchereArticle = new ArrayList<Enchere>();
-			pStmt = conn.prepareStatement(SELECT_ENCHERE_BY_ARTICLE);
+			PreparedStatement pStmt = conn.prepareStatement(SELECT_ENCHERE_BY_ARTICLE);
 			
 			pStmt.setInt(1, idArticle);
 			
-			rs = pStmt.executeQuery();
+			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
 				enchereArticle.add(new Enchere(rs.getDate("date_enchere"), rs.getInt("montant_enchere")));
 			}
@@ -255,11 +255,11 @@ public class ArticleDAOImpl implements ArticleDAO{
 	
 	public Retrait selectRetraitByArticle(int idArticle) throws DALException {
 		try (Connection conn = ConnectionProvider.getConnection()) {
-			pStmt = conn.prepareStatement(SELECT_RETRAIT_BY_ARTICLE);
+			PreparedStatement pStmt = conn.prepareStatement(SELECT_RETRAIT_BY_ARTICLE);
 			
 			pStmt.setInt(1, idArticle);
 			
-			rs = pStmt.executeQuery();
+			ResultSet rs = pStmt.executeQuery();
 			if (rs.next()) {
 				return new Retrait(rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"));
 			} else {
@@ -274,11 +274,11 @@ public class ArticleDAOImpl implements ArticleDAO{
 	public List<Enchere> selectEnchereByUser(int idUser) throws DALException {
 		try (Connection conn = ConnectionProvider.getConnection()) {
 			List<Enchere> enchereUser = new ArrayList<Enchere>();
-			pStmt = conn.prepareStatement(SELECT_ENCHERE_BY_USER);
+			PreparedStatement pStmt = conn.prepareStatement(SELECT_ENCHERE_BY_USER);
 			
 			pStmt.setInt(1, idUser);
 			
-			rs = pStmt.executeQuery();
+			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
 				enchereUser.add(new Enchere(rs.getDate("date_enchere"), rs.getInt("montant_enchere")));
 			}

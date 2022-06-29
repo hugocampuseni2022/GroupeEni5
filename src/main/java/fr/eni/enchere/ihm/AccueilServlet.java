@@ -52,6 +52,11 @@ public class AccueilServlet extends HttpServlet {
 		if (!("true".equals( session.getAttribute("connected")))) {
 			session.setAttribute("connected", "false");
 		}
+		for (Utilisateur utilisateur : catalogue) {
+			System.out.println(utilisateur.getPseudo());
+		}
+		System.out.println( catalogue.get(0).getListeArticle().get(0).getNomArticle());
+		request.setAttribute("catalogue", catalogue);
 		request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
 		
 	}
