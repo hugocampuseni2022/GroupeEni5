@@ -49,7 +49,7 @@ public class NouvelleVenteServlet extends HttpServlet {
 		
 		
 	
-			if(request.getParameter("button").equals(request.getParameter("enrengister"))) {
+			if(request.getParameter("button").equals(request.getParameter("enregister"))) {
 				
 				try {
 					manager.enregistrerArticle(new Article(request.getParameter("article"), request.getParameter("description"),Integer.parseInt(request.getParameter("categorie")), Integer.parseInt(request.getParameter("prix")), Date.valueOf(request.getParameter("dateDebut")), Date.valueOf(request.getParameter("dateFin")), new Retrait(request.getParameter("rue"), request.getParameter("codePostal"), request.getParameter("ville"))),Integer.parseInt(request.getParameter("pseudo")));
