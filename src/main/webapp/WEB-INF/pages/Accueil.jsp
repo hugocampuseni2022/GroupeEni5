@@ -37,7 +37,7 @@
 									<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${username}">Mon profil</a>
 								</li>
 								<li>
-									<a href="<%=request.getContextPath()%>">Vendre un article</a>
+									<a href="<%=request.getContextPath()%>/NouvelleVenteServlet">Vendre un article</a>
 								</li>
 								<li>
 									<a href="<%=request.getContextPath()%>">Enchères</a>

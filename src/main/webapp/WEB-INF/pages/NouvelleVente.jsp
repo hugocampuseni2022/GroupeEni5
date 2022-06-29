@@ -46,7 +46,6 @@
 			</div>
 			<div>
 				<select name="categorie" id = "categorie-select">
-						<option value=""></option>
 					    <option value="1">Informatique</option>
 					    <option value="2">Ameublement</option>
 					    <option value="3">Vêtement</option>
