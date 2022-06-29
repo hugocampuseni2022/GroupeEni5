@@ -11,7 +11,6 @@
 	
 </head>
 <body>
-<input type = "hidden" name ="pseudo" value="${!empty utilisateur?'' : utilisateur.pseudo}"/></input> 
 	<header>
 		<h2>ENI-Encheres</h2>
 	</header>
@@ -53,12 +52,11 @@
 			</table>
 		</div>
 		<div>
-			<c:if test="pseudo.equals} ">
+			<c:if test="${pseudo.equals(username)}">
 				<form action="ModifProfilServlet" method="get"> 				<!-- TODO lien vers la page de modif profil -->
 					<button>Modifier</button> 				<!-- TODO affichage button (c:if user=userEnCours) -->
 				</form>
 			</c:if>
-			
 		</div>
 	
 	</main>
