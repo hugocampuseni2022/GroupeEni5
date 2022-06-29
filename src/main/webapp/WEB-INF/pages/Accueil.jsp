@@ -34,7 +34,7 @@
 									<a href="<%=request.getContextPath()%>/Accueil?action=deconnexion">Déconnexion</a>
 								</li>
 								<li>
-									<a href="<%=request.getContextPath()%>/ModifProfilServlet">Mon profil</a>
+									<a href="<%=request.getContextPath()%>/ProfilServlet">Mon profil</a>
 								</li>
 								<li>
 									<a href="<%=request.getContextPath()%>">Vendre un article</a>

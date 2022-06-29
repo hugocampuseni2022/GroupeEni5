@@ -2,18 +2,20 @@ package fr.eni.enchere.bo;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Article {
 
 	// attributes
-	private int noArticle, miseAPrix, prixVente, numero_utilisateur, categorie;
+	private int noArticle, miseAPrix, prixVente, numero_utilisateur;
 	private String nomArticle, description, etatVente;
-
 	private Date dateDebutEncheres, dateFinEncheres;
+	private List<Enchere> listeEnchere = new ArrayList<Enchere>();
 	
 	// construct
 	public Article(int noArticle, String nomArticle, String description, Date dateDebutEncheres,Date dateFinEncheres, int miseAPrix,
-					int categorie) 
+					int prixVente) 
 	
 	{
 		super();
@@ -21,10 +23,10 @@ public class Article {
 		this.nomArticle = nomArticle;
 		this.miseAPrix = miseAPrix;
 		this.description = description;
-		this.categorie = categorie;
+		this.prixVente = prixVente;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
-		
+		setEtatVente(Date.valueOf(LocalDate.now()),dateDebutEncheres, dateFinEncheres);
 	}
 
 	// getters and setters
@@ -72,8 +74,14 @@ public class Article {
 		return etatVente;
 	}
 
-	public void setEtatVente(String etatVente) {
-		this.etatVente = etatVente;
+	public void setEtatVente(Date now, Date debut, Date fin) {
+		if (now.compareTo(debut)>0) {
+			this.etatVente = "Créée";
+		} else if (debut.compareTo(fin)>0) {
+			this.etatVente = "En cours";
+		} else if (debut.compareTo(fin)<0) {
+			this.etatVente = "Terminé";
+		}
 	}
 
 	public Date getDateDebutEncheres() {
@@ -100,13 +108,14 @@ public class Article {
 		this.numero_utilisateur = numero_utilisateur;
 	}
 
-	public int getCategorie() {
-		return categorie;
+	public List<Enchere> getListeEnchere() {
+		return listeEnchere;
 	}
 
-	public void setCategorie(int categorie) {
-		this.categorie = categorie;
+	public void setListeEnchere(List<Enchere> listeEnchere) {
+		this.listeEnchere = listeEnchere;
 	}
+
 	
 	
 	
