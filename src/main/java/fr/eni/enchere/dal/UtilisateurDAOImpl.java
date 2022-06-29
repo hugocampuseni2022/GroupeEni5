@@ -20,7 +20,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	private static final String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ? ";
 	private static final String UPDATE = "UPDATE UTILISATEURS SET pseudo = ? , nom = ? , prenom = ?, "
 											+ "email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?)";
-	private static final String SELECT_BY_PSEUDO = "select * from UTILISATEURS where pseudo = ?";
+	private static final String SELECT_BY_PSEUDO = "select pseudo, nom, prenom, email, telephone, rue, code_postal, ville from UTILISATEURS where pseudo = ?";
 											
 	
 	@Override
@@ -118,10 +118,10 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 
 
 	@Override
-	public Utilisateur selectByPseudo(String login) throws DALException {
+	public Utilisateur selectByPseudo(String pseudo) throws DALException {
 		try (Connection conn = ConnectionProvider.getConnection();){
 			PreparedStatement req = conn.prepareStatement(SELECT_BY_PSEUDO);
-			req.setString(1, login);
+			req.setString(1, pseudo);
 			ResultSet rs = req.executeQuery();
 			if (rs.next()) {
 				return new Utilisateur(rs.getInt("no_utilisateur"),rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
