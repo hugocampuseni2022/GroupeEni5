@@ -16,40 +16,44 @@
 	</header>
 	<main>
 		<div>
-			<table>
+		<c:forEach var="utilisateur" items="${catalogue}">
+			<c:if test="${pseudo.equals(utilisateur.getPseudo())}">
+				<table>
 				<tr>
 					<td>Pseudo :</td>
-					<td><!-- ${getPseudo} --></td>
+					<td>${utilisateur.getPseudo()}</td>
 				</tr>
 				<tr>
 					<td>Nom :</td>
-					<td><!-- ${getNom} --></td>
+					<td>${utilisateur.getNom()}</td>
 				</tr>
 				<tr>
 					<td>Prénom :</td>
-					<td><!-- ${getPrenom} --></td>
+					<td>${utilisateur.getPrenom()}</td>
 				</tr>
 				<tr>
 					<td>Email :</td>
-					<td><!-- ${getEmail} --></td>
+					<td>${utilisateur.getEmail()}</td>
 				</tr>
 				<tr>
 					<td>Téléphone :</td>
-					<td><!-- ${getTel} --></td>
+					<td>${utilisateur.getTelephone()}</td>
 				</tr>
 				<tr>
 					<td>Rue :</td>
-					<td><!-- ${getRue} --></td>
+					<td>${utilisateur.getRue()}</td>
 				</tr>
 				<tr>
 					<td>Code postal :</td>
-					<td><!-- ${getCP} --></td>
+					<td>${utilisateur.getCodePostale()}</td>
 				</tr>
 				<tr>
 					<td>Ville :</td>
-					<td><!-- ${getVille} --></td>
+					<td>${utilisateur.getVille()}</td>
 				</tr>
 			</table>
+			</c:if>
+		</c:forEach>
 		</div>
 		<div>
 			<c:if test="${pseudo.equals(username)}">
