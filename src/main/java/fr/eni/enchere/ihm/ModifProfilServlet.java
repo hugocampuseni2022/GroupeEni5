@@ -53,12 +53,12 @@ public class ModifProfilServlet extends HttpServlet {
 		
 		if(("enregister").equals(request.getParameter("btn"))) {
 			
-			UG.modifierUtilisateurByid(new Utilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe")),Integer.parseInt((String) session.getAttribute("id")));
+			UG.modifierUtilisateurByid(new Utilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe")),Integer.parseInt( request.getParameter("idutilisateur")));
 			request.getRequestDispatcher("/WEB-INF/pages/ListeEncheres.jsp").forward(request, response);
 		} 
 		else {
 			
-			UG.supprimerUtilisateur(Integer.parseInt((String) session.getAttribute("id")));
+			UG.supprimerUtilisateur(Integer.parseInt(request.getParameter("idutilisateur")));
 			request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
 			
 			
