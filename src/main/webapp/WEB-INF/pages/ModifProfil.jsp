@@ -85,9 +85,6 @@
 					<div>
 						<!-- Case vide -->
 					</div>
-					<div>
-						<!-- Case vide -->
-					</div>
 				</div>
 				<div>
 					<div>
@@ -103,18 +100,15 @@
 						<input type="text" name="confirmNewMdp" size="30"></input>
 					</div>
 				</div>
-				
-				
-
-					
-					
+				<div>
 					<!--   Ligne vide entre 'MDP' et 'Crédit'  	 -->
-					</tr>
-					<tr>
-						<td>Crédit				<!-- TODO ${user.getCredit) --></td>
-					</tr>
-					
-				</table>
+				</div>
+				<div>
+					Crédit				<!-- TODO ${user.getCredit) -->
+				</div>
+				<div>
+					<!--   Ligne vide entre 'Crédit' et les boutons 	 -->
+				</div>
 				<button name="btn" value="enregistrer">Enregistrer</button>
 				<button name="btn" value="supprimer">Supprimer mon compte</button>
 			</form>
