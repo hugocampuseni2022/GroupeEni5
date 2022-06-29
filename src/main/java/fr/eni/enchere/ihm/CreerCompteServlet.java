@@ -59,7 +59,7 @@ public class CreerCompteServlet extends HttpServlet {
 			try {
 				
 				UG.CreerCompteUtilisateur(new Utilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe")));
-				request.getRequestDispatcher("/WEB-INF/pages/ListeEncheres.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
 			
 			} catch (BLLException e) {
 				

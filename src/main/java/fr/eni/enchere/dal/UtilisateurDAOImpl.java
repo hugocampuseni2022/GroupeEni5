@@ -60,9 +60,10 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			}else {
 				pStmt.setString(5, utilisateur.getTelephone());
 			}
-			pStmt.setString(6, utilisateur.getCodePostale());
-			pStmt.setString(7, utilisateur.getVille());
-			pStmt.setString(8, utilisateur.getMotDePasse());
+			pStmt.setString(6, utilisateur.getRue());
+			pStmt.setString(7, utilisateur.getCodePostale());
+			pStmt.setString(8, utilisateur.getVille());
+			pStmt.setString(9, utilisateur.getMotDePasse());
 			
 			
 			
