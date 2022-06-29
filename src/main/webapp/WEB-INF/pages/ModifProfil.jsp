@@ -22,7 +22,7 @@
 			<form action="" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
 				<input type = "hidden" name ="idutilisateur" value="${!empty utilisateur?'' : utilisateur.noUtilisateur}"/></input> 
 				<div>
-					<div>
+					<div id="line">
 						<label>Pseudo :</label>
 					</div>
 					<div>
@@ -106,7 +106,7 @@
 					<!--   Ligne vide entre 'MDP' et 'Crédit'  	 -->
 				</div>
 				<div>
-					Crédit				<!-- TODO ${user.getCredit) -->
+					<label>Crédit :</label>			<!-- TODO ${user.getCredit} -->
 				</div>
 				<div>
 					<!--   Ligne vide entre 'Crédit' et les boutons 	 -->
