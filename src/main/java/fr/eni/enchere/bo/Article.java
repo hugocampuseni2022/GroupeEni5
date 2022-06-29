@@ -8,14 +8,15 @@ import java.util.List;
 public class Article {
 
 	// attributes
-	private int noArticle, miseAPrix, prixVente, numero_utilisateur;
+	private int noArticle, miseAPrix, prixVente, noCategorie;
 	private String nomArticle, description, etatVente;
 	private Date dateDebutEncheres, dateFinEncheres;
 	private List<Enchere> listeEnchere = new ArrayList<Enchere>();
+	private Retrait lieuRetrait;
 	
 	// construct
 	public Article(int noArticle, String nomArticle, String description, Date dateDebutEncheres,Date dateFinEncheres, int miseAPrix,
-					int prixVente) 
+					int prixVente, int noCategorie) 
 	
 	{
 		super();
@@ -26,6 +27,7 @@ public class Article {
 		this.prixVente = prixVente;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
+		this.noCategorie = noCategorie;
 		setEtatVente(Date.valueOf(LocalDate.now()),dateDebutEncheres, dateFinEncheres);
 	}
 
@@ -100,20 +102,28 @@ public class Article {
 		this.dateFinEncheres = dateFinEncheres;
 	}
 
-	public int getNumero_utilisateur() {
-		return numero_utilisateur;
-	}
-
-	public void setNumero_utilisateur(int numero_utilisateur) {
-		this.numero_utilisateur = numero_utilisateur;
-	}
-
 	public List<Enchere> getListeEnchere() {
 		return listeEnchere;
 	}
 
 	public void setListeEnchere(List<Enchere> listeEnchere) {
 		this.listeEnchere = listeEnchere;
+	}
+
+	public Retrait getLieuRetrait() {
+		return lieuRetrait;
+	}
+
+	public void setLieuRetrait(Retrait lieuRetrait) {
+		this.lieuRetrait = lieuRetrait;
+	}
+
+	public int getNoCategorie() {
+		return noCategorie;
+	}
+
+	public void setNoCategorie(int noCategorie) {
+		this.noCategorie = noCategorie;
 	}
 
 	
