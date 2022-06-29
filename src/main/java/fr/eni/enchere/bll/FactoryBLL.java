@@ -6,4 +6,7 @@ public class FactoryBLL {
 		return new UtilisateurImpl();
 	}
 
+	public static ArticleManager getManagerArticle() {
+		return ArticleImpl.getInstance();
+	}
 }

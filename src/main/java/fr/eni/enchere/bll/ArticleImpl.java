@@ -14,9 +14,9 @@ import fr.eni.enchere.dal.DAOFactory;
 
 public class ArticleImpl implements ArticleManager {
 	
-private ArticleDAO daoArticle;	
-
-private static ArticleManager instance;
+	private ArticleDAO daoArticle;	
+	
+	private static ArticleManager instance;
 	
 	public static ArticleManager getInstance() {
 		if(instance==null) {
@@ -25,7 +25,7 @@ private static ArticleManager instance;
 		return instance;
 	}
 	
-	private  ArticleImpl() {
+	private ArticleImpl() {
 		this.daoArticle = DAOFactory.getDaoArticle();
 	}
 
