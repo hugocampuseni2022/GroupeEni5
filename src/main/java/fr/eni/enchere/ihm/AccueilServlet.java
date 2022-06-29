@@ -35,11 +35,6 @@ public class AccueilServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			catalogue = manager.getAll();
-		} catch (BLLException e) {
-			e.printStackTrace();
-		}
 		session = request.getSession();
 		String action = request.getParameter("action");
 		
@@ -48,15 +43,17 @@ public class AccueilServlet extends HttpServlet {
 			session.removeAttribute("connected");
 		}
 		
+		try {
+			catalogue = manager.getAll();
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
 		
 		if (!("true".equals( session.getAttribute("connected")))) {
 			session.setAttribute("connected", "false");
 		}
-		for (Utilisateur utilisateur : catalogue) {
-			System.out.println(utilisateur.getPseudo());
-		}
-		System.out.println( catalogue.get(0).getListeArticle().get(0).getNomArticle());
-		request.setAttribute("catalogue", catalogue);
+
+		session.setAttribute("catalogue", catalogue);
 		request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
 		
 	}
@@ -65,7 +62,6 @@ public class AccueilServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
