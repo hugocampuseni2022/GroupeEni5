@@ -2,6 +2,8 @@ package fr.eni.enchere.bo;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Article {
 
@@ -9,6 +11,7 @@ public class Article {
 	private int noArticle, miseAPrix, prixVente, numero_utilisateur;
 	private String nomArticle, description, etatVente;
 	private Date dateDebutEncheres, dateFinEncheres;
+	private List<Enchere> listeEnchere = new ArrayList<Enchere>();
 	
 	// construct
 	public Article(int noArticle, String nomArticle, String description, Date dateDebutEncheres,Date dateFinEncheres, int miseAPrix,
