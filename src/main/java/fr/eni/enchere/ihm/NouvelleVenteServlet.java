@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.BLLException;
@@ -23,6 +24,8 @@ import fr.eni.enchere.bo.Retrait;
 public class NouvelleVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArticleManager manager;
+	private HttpSession session;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -39,21 +42,24 @@ public class NouvelleVenteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	request.getRequestDispatcher("/WEB-INF/pages/NouvelleVente.jsp").forward(request, response);
+		session = request.getSession();
+		request.getRequestDispatcher("/WEB-INF/pages/NouvelleVente.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+			
 		
 	
 			if("enregistrer".equals(request.getParameterValues("btn")[0])) {
-
+					
+				
+				
 				try {
-					System.out.println(request.getParameterValues("categorie")[0]);
-					manager.enregistrerArticle(new Article(request.getParameter("article"), request.getParameter("description"),Integer.parseInt(request.getParameterValues("categorie")[0]), Integer.parseInt(request.getParameter("prix")), Date.valueOf(request.getParameter("dateDebut")), Date.valueOf(request.getParameter("dateFin")), new Retrait(request.getParameter("rue"), request.getParameter("codePostal"), request.getParameter("ville"))),Integer.parseInt(request.getParameter("pseudo")));
+					System.out.println( Integer.parseInt(request.getParameterValues("id")[0]));
+					manager.enregistrerArticle(new Article(request.getParameter("article"), request.getParameter("description"),Integer.parseInt(request.getParameterValues("categorie")[0]), Integer.parseInt(request.getParameter("prix")), Date.valueOf(request.getParameter("dateDebut")), Date.valueOf(request.getParameter("dateFin")), new Retrait(request.getParameter("rue"), request.getParameter("codePostal"), request.getParameter("ville"))),Integer.parseInt(request.getParameterValues("id")[0]));
 					request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);	
 				
 				} catch (NumberFormatException e) {

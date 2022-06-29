@@ -11,7 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-<input type = "hidden" name ="pseudo" value="${!empty utilisateur?'' : utilisateur.pseudo}"/></input> 
+
 <header class="container-fluid ">
 			<div class="col-sm-12 col-md-4 logo">
 				<span>ENI-Enchères</span>
@@ -21,7 +21,7 @@
 <main class="container">
 
 <form action="NouvelleVenteServlet" method = "post">
-
+	<input type = "hidden" name ="id" value="${id}"/>
 		<div>
 			<div>
 				<label> Article :</label>
