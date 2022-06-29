@@ -19,7 +19,7 @@
 		</div>
 		<div>
 			<form action="" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
-				<input type = "hidden" name ="idutilisateur" value="${!empty utilisateur?'' : utilisateur.noUtilisateur}"/> 
+				<input type = "hidden" name ="idutilisateur" value="${!empty utilisateur?'' : utilisateur.noUtilisateur}"/></input> 
 				<div>
 					<div>
 						<label>Pseudo :</label>
