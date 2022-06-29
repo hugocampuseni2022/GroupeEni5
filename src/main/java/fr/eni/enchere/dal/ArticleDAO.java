@@ -16,17 +16,19 @@ public interface ArticleDAO {
 	
 		void delete (int noArticle) throws DALException;
 		
-		void update(Article article) throws DALException;
+		void update(Article article, int idUser) throws DALException;
 		
 		Article selectById (int noArticle) throws DALException;
 
 		List<Utilisateur> selectAllArticle() throws DALException;
 		
-		List<Article> selectByNoUtilisateur() throws DALException;
+		List<Article> selectByNoUtilisateur(int idUser) throws DALException ;
 		
 		List<Enchere> selectEnchereByArticle(int idArticle) throws DALException;
 		
 		Retrait selectRetraitByArticle(int idArticle) throws DALException;
+		
+		List<Enchere> selectEnchereByUser(int idUser) throws DALException;
 	}
 
 

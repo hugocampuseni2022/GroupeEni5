@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.dal.ArticleDAO;
 import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
@@ -81,6 +82,15 @@ private static ArticleManager instance;
 			throw new BLLException("Erreur Update Article");
 		}
 		
+	}
+
+	@Override
+	public List<Utilisateur> getAll() throws BLLException {
+		try {
+			return daoArticle.selectAllArticle();
+		} catch (DALException e) {
+			throw new BLLException(e.getMessage(), e);
+		}
 	}
 
 /*

@@ -3,6 +3,7 @@ package fr.eni.enchere.bll;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Utilisateur;
 
 
 public interface ArticleManager {
@@ -18,7 +19,7 @@ public interface ArticleManager {
 	
 	void updateArticle(Article article) throws BLLException;
 	
-
+	List<Utilisateur> getAll() throws BLLException;
 	
 	
 	/*

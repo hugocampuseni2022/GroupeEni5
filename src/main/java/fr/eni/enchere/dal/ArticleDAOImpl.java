@@ -14,8 +14,6 @@ import fr.eni.enchere.bo.Utilisateur;
 	
 public class ArticleDAOImpl implements ArticleDAO{
 
-	
-	
 	private static final String INSERT = "insert Into ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente ,no_utilisateur ,no_categorie )"
 											+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
 	
@@ -90,7 +88,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 			List<Article> listeArticle = new ArrayList<Article>();
 	
 			while (rs.next()) {
-				listeArticle.add(new Article(rs.getInt("no_article"), rs.getString("nom_article"), rs.getString("description"), rs.getDate("date_debut_encheres"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("no_categorie")));
+				listeArticle.add(new Article(rs.getInt("no_article"), rs.getString("nom_article"), rs.getString("description"), rs.getDate("date_debut_encheres"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("prix_vente") ,rs.getInt("no_categorie")));
 			}
 			return listeArticle;
 				
@@ -184,7 +182,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 			
 			if(rs.next()) {
 				
-			return new Article(rs.getInt("no_article"), rs.getString("nom_article"), rs.getString("description"), rs.getDate("date_debut_encheres"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("no_categorie"));
+			return new Article(rs.getInt("no_article"), rs.getString("nom_article"), rs.getString("description"), rs.getDate("date_debut_encheres"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("prix_vente"), rs.getInt("no_categorie"));
 			
 			}else {
 				throw new DALException ("Mauvaise Id ");
@@ -204,10 +202,12 @@ public class ArticleDAOImpl implements ArticleDAO{
 			rs = stmt.executeQuery(SELECT_USER_CATALOGUE);
 			
 			while (rs.next()) {
-				Utilisateur newUser = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getInt(""), rs.getBoolean(""));
+				Utilisateur newUser = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),rs.getString("mot_de_passe") ,rs.getInt("credit"), rs.getBoolean("administrateur"));
+				newUser.setListeArticle(selectByNoUtilisateur(rs.getInt("no_utilisateur")));
+				newUser.setListeEnchere(selectEnchereByUser(rs.getInt("no_utilisateur")));
 				listeUser.add(newUser);
 			}
-			
+			return listeUser;
 		} catch (SQLException e){
 			throw new DALException("erreur selection Catalogue", e);
 		}
