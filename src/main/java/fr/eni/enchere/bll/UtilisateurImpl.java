@@ -68,9 +68,9 @@ public class UtilisateurImpl implements UtilisateurManager{
 
 
 	@Override
-	public Utilisateur afficherUtilisateurByPseudo(String login) throws BLLException {
+	public Utilisateur afficherUtilisateurByPseudo(String pseudo) throws BLLException {
 		try {
-			return utilisateurDao.selectByPseudo(login);
+			return utilisateurDao.selectByPseudo(pseudo);
 		} catch (DALException e) {
 			throw new BLLException(e.getMessage(), e);
 		}

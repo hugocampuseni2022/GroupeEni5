@@ -8,8 +8,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Profil</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	
 </head>
 <body>
+<input type = "hidden" name ="pseudo" value="${!empty utilisateur?'' : utilisateur.pseudo}"/></input> 
 	<header>
 		<h2>ENI-Encheres</h2>
 	</header>
@@ -51,9 +53,12 @@
 			</table>
 		</div>
 		<div>
-			<form action="" method="post"> 				<!-- TODO lien vers la page de modif profil -->
-				<button>Modifier</button> 				<!-- TODO affichage button (c:if user=userEnCours) -->
-			</form>
+			<c:if test="pseudo.equals} ">
+				<form action="ModifProfilServlet" method="get"> 				<!-- TODO lien vers la page de modif profil -->
+					<button>Modifier</button> 				<!-- TODO affichage button (c:if user=userEnCours) -->
+				</form>
+			</c:if>
+			
 		</div>
 	
 	</main>
