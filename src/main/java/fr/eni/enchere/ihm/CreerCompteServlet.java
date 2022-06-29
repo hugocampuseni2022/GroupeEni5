@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.FactoryBLL;
@@ -25,7 +26,7 @@ public class CreerCompteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private UtilisateurManager UG;
-	
+	private HttpSession session;
 	
 	@Override
 	public void init() throws ServletException {
@@ -54,11 +55,12 @@ public class CreerCompteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+			session = request.getSession();
 			if (request.getParameter("mot de passe").equals(request.getParameter("Confirmation"))){
 			try {
 				
 				UG.CreerCompteUtilisateur(new Utilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe")));
+				session.setAttribute("connected", "true");
 				request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
 			
 			} catch (BLLException e) {
