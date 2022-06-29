@@ -61,8 +61,8 @@ public class CreerCompteServlet extends HttpServlet {
 				
 				UG.creerCompteUtilisateur(new Utilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe")));
 				session.setAttribute("connected", "true");
-				request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
-			
+				session.setAttribute("username", request.getParameter("pseudo"));
+				response.sendRedirect(request.getContextPath()+"/Accueil");
 			} catch (BLLException e) {
 				
 				e.printStackTrace();

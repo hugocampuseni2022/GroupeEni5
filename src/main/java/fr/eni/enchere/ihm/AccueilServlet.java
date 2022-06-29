@@ -41,6 +41,7 @@ public class AccueilServlet extends HttpServlet {
 		if ("deconnexion".equals(action)) {
 			session.removeAttribute("id");
 			session.removeAttribute("connected");
+			session.removeAttribute("username");
 		}
 		
 		try {
@@ -52,8 +53,7 @@ public class AccueilServlet extends HttpServlet {
 		if (!("true".equals( session.getAttribute("connected")))) {
 			session.setAttribute("connected", "false");
 		}
-
-		session.setAttribute("catalogue", catalogue);
+		request.setAttribute("catalogue", catalogue);
 		request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
 		
 	}

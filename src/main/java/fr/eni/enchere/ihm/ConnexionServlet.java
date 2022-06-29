@@ -48,8 +48,9 @@ public class ConnexionServlet extends HttpServlet {
     	try {
     		Utilisateur user = UG.connectionUtilisateur(request.getParameter("identifiant"), request.getParameter("mot de passe"));
 			session.setAttribute("id", user.getNoUtilisateur());
+			session.setAttribute("username", user.getPseudo());
 			session.setAttribute("connected", "true");
-			request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/Accueil");
 			
 		} catch (BLLException e) {
 			request.setAttribute("error", "Erreur Mot de Passe ou Identifiant");
