@@ -41,7 +41,7 @@ public class ModifProfilServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session= request.getSession();
-		request.getRequestDispatcher("/WEB-INF/pages/ModifProfilServlet.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/ModifProfil.jsp").forward(request, response);
 	}
 
 	/**

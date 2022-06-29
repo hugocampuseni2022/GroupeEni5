@@ -12,4 +12,6 @@ public interface UtilisateurDAO {
 	
 	void updateById (Utilisateur utilisateur,int noUtilisateur) throws DALException;
 	
+	Utilisateur selectByPseudo (String login) throws DALException;
+	
 }

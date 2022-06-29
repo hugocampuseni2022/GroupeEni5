@@ -18,12 +18,13 @@ public interface UtilisateurManager {
 	
 	Utilisateur connectionUtilisateur (String pseudo, String motDePasse) throws BLLException;
 
-	void CreerCompteUtilisateur(Utilisateur utilsateur) throws BLLException;
+	void creerCompteUtilisateur(Utilisateur utilsateur) throws BLLException;
 	
 	void supprimerUtilisateur (int noUtilisateur) throws BLLException;
 	
-	void modifierUtilisateurByid (Utilisateur utilsateur,int noUtilisateur)throws BLLException;
+	void modifierUtilisateurById (Utilisateur utilsateur,int noUtilisateur)throws BLLException;
 	
+	Utilisateur afficherUtilisateurByPseudo (String pseudo) throws BLLException;	
 	
 	
 	
