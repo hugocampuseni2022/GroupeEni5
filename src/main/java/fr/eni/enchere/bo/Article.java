@@ -108,6 +108,14 @@ public class Article {
 		this.numero_utilisateur = numero_utilisateur;
 	}
 
+	public List<Enchere> getListeEnchere() {
+		return listeEnchere;
+	}
+
+	public void setListeEnchere(List<Enchere> listeEnchere) {
+		this.listeEnchere = listeEnchere;
+	}
+
 	
 	
 	
