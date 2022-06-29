@@ -53,6 +53,13 @@ public class AccueilServlet extends HttpServlet {
 		if (!("true".equals( session.getAttribute("connected")))) {
 			session.setAttribute("connected", "false");
 		}
+		
+		for (Utilisateur utilisateur : catalogue) {
+			if (utilisateur.getPseudo().equals(session.getAttribute("username"))) {
+				session.setAttribute("id", utilisateur.getNoUtilisateur());
+			}
+		}
+		
 		request.setAttribute("catalogue", catalogue);
 		request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
 		
