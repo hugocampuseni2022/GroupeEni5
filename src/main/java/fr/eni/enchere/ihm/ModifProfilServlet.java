@@ -81,6 +81,7 @@ public class ModifProfilServlet extends HttpServlet {
 					try {
 						UG.validerUtilisateur(new Utilisateur(request.getParameter("newPseudo"), request.getParameter("newNom"), request.getParameter("newPrenom"), request.getParameter("newEmail"), request.getParameter("newTelephone"), request.getParameter("newRue"), request.getParameter("newCodePostal"), request.getParameter("newVille"), request.getParameter("mdpActuel")));	
 						UG.modifierUtilisateurById(new Utilisateur(request.getParameter("newPseudo"), request.getParameter("newNom"), request.getParameter("newPrenom"), request.getParameter("newEmail"), request.getParameter("newTelephone"), request.getParameter("newRue"), request.getParameter("newCodePostal"), request.getParameter("newVille"), request.getParameter("mdpActuel")),Integer.parseInt(request.getParameterValues("idUtilisateur")[0]));
+						session.setAttribute("username", request.getParameter("newPseudo"));
 						response.sendRedirect(request.getContextPath()+"/Accueil");
 					} catch (BLLException e) {
 						request.setAttribute("error", e.getMessage());
