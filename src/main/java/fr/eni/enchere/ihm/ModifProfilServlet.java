@@ -94,6 +94,8 @@ public class ModifProfilServlet extends HttpServlet {
 		else {
 			if(!(request.getParameter("mdpActuel").equals(mdpCourant))){
 				request.setAttribute("erreur", "Mot de passe faux");
+				request.setAttribute("catalogue", catalogue);
+				request.getRequestDispatcher("/WEB-INF/pages/ModifProfil.jsp").forward(request, response);
 			}
 			else {
 			try {
