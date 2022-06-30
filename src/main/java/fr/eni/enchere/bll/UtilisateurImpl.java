@@ -55,9 +55,9 @@ public class UtilisateurImpl implements UtilisateurManager{
 
 
 	@Override
-	public void modifierUtilisateurById(Utilisateur utilsateur, int noUtilisateur) throws BLLException {
+	public void modifierUtilisateurById(Utilisateur utilisateur, int noUtilisateur) throws BLLException {
 		try {
-			utilisateurDao.updateById(utilsateur, noUtilisateur);
+			utilisateurDao.updateById(utilisateur, noUtilisateur);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			throw new BLLException(e.getMessage(),e);
