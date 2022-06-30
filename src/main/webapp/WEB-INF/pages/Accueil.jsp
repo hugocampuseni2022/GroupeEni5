@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Acceuil</title>
 <link rel="stylesheet" href="style/Accueil.css">
+<script src="script/Accueil.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
@@ -61,11 +62,32 @@
 			<label for="categorie">Catégorie :</label>
 			<select name="categorie">
 			    <option value="">Toutes</option>
-			    <option value="Informatique">Informatique</option>
-			    <option value="Ameublement">Ameublement</option>
-			    <option value="Vetement">Vêtement</option>
-			    <option value="Sport">Sport&Loisirs</option>
+			    <option value="1">Informatique</option>
+			    <option value="2">Ameublement</option>
+			    <option value="3">Vêtement</option>
+			    <option value="4">Sport&Loisirs</option>
 			</select>
+			<div>
+                <input type="radio" id="radioAchats" name="radio" value="achat">
+                <label for="achats">Achats</label>
+                <input type="radio" id="radioVentes" name="radio" value="vente">
+                <label for="ventes">Mes ventes</label>
+            </div>
+            <div>
+                <input type="checkbox" id="enchereOuverte" name="checkboxAchats" >           <!-- accessible seulement si 'radioAchats' est selectionné -->
+                <label for="enchereOuverte">enchères ouvertes</label>
+                <input type="checkbox" id="mesEncheres" name="checkboxAchats" >              <!-- accessible seulement si 'radioAchats' est selectionné -->
+                <label for="mesEncheres">mes enchères</label>
+                <input type="checkbox" id="mesEnchereRemportees" name="checkboxAchats" >     <!-- accessible seulement si 'radioAchats' est selectionné -->
+                <label for="mesEnchereRemportees">mes enchères remportées</label>
+                
+                <input type="checkbox" id="mesVentesEnCours" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+                <label for="mesVentesEnCours">mes ventes en cours</label>
+                <input type="checkbox" id="ventesNonDebutees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+                <label for="ventesNonDebutees">ventes non débutées</label>
+                <input type="checkbox" id="ventesTerminees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+                <label for="ventesTerminees">ventes terminées</label>
+            </div>
 			<button>Rechercher</button>
 		</form>
 		<!-- Liste des articles dans la bdd -->
