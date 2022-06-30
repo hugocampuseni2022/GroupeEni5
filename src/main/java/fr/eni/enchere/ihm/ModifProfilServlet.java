@@ -55,15 +55,20 @@ public class ModifProfilServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		try {
 		
-		if(("enregister").equals(request.getParameter("btn"))) {
-			
-			UG.modifierUtilisateurById(new Utilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe")),Integer.parseInt( request.getParameter("idutilisateur")));
+		System.out.println("enregistrer".equals(request.getParameterValues("btn")[0]));
+		
+		try {
+	
+		if("enregistrer".equals(request.getParameterValues("btn")[0])) {
+			System.out.println("Nique ta mere");
+			UG.modifierUtilisateurById(new Utilisateur(request.getParameter("newPseudo"), request.getParameter("newNom"), request.getParameter("newPrenom"), request.getParameter("newEmail"), request.getParameter("newTelephone"), request.getParameter("newRue"), request.getParameter("newCodePostal"), request.getParameter("newVille"), request.getParameter("mdpActuel")),Integer.parseInt(request.getParameterValues("idUtilisateur")[0]));
 			request.getRequestDispatcher("/WEB-INF/pages/ListeEncheres.jsp").forward(request, response);
+			
+			
 		} 
 		else {
+			System.out.println("Nique ton pere");
 			
 			UG.supprimerUtilisateur(Integer.parseInt(request.getParameter("idutilisateur")));
 			request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
