@@ -81,10 +81,10 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	
 		try (Connection connection= ConnectionProvider.getConnection()){
 			
-					pStmt = connection.prepareStatement(DELETE);
+				pStmt = connection.prepareStatement(DELETE);
 				pStmt.setInt(1,noUtilisateur);
 				 
-	
+				pStmt.executeUpdate();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					throw new DALException ("erreur sur la suppression d'un utilisateur");
@@ -111,9 +111,11 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			pStmt.setString(9,utilisateur.getMotDePasse());
 			pStmt.setInt(10,noUtilisateur);
 		
+			pStmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			throw new DALException ("erreur sur la update by ID d'un utilisateur");
+			throw new DALException ("erreur sur la update by ID d'un utilisateur", e);
 		}
 	}
 
