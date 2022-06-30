@@ -62,6 +62,17 @@ public class UtilisateurImpl implements UtilisateurManager{
 		
 	}
 
+	@Override
+	public void supprimerArticle(int noUtilisateur) throws BLLException {
+		try {
+			utilisateurDao.deleteArticle(noUtilisateur);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			throw new BLLException(e.getMessage(),e);
+		}
+		
+	}
+	
 
 
 	@Override
@@ -131,6 +142,8 @@ public class UtilisateurImpl implements UtilisateurManager{
 	
 		
 	}
+
+
 	
 
 }
