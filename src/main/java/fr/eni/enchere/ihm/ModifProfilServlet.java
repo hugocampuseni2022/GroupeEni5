@@ -57,24 +57,55 @@ public class ModifProfilServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		session= request.getSession();
-		try {
-		if("enregistrer".equals(request.getParameterValues("btn")[0])) {
+		String mdpCourant="";
+		for (Utilisateur u : catalogue) {
+			if (Integer.parseInt(request.getParameter("idUtilisateur"))==u.getNoUtilisateur()) {
+				mdpCourant = u.getMotDePasse();
+			}
+		}
 		
-			UG.modifierUtilisateurById(new Utilisateur(request.getParameter("newPseudo"), request.getParameter("newNom"), request.getParameter("newPrenom"), request.getParameter("newEmail"), request.getParameter("newTelephone"), request.getParameter("newRue"), request.getParameter("newCodePostal"), request.getParameter("newVille"), request.getParameter("mdpActuel")),Integer.parseInt(request.getParameterValues("idUtilisateur")[0]));
-			response.sendRedirect(request.getContextPath()+"/Accueil");
 			
+		if("enregistrer".equals(request.getParameterValues("btn")[0])) {
+				if(!(request.getParameter("mdpActuel").equals(mdpCourant))){
+					request.setAttribute("erreur", "Mots de Passe faux");
+					request.setAttribute("catalogue", catalogue);
+					request.getRequestDispatcher("/WEB-INF/pages/ModifProfil.jsp").forward(request, response);
+				}
+				
+				else if(!(request.getParameter("newMdp").equals(request.getParameter("confirmNewMdp")))) {
+					request.setAttribute("erreur", "Nouveau mot de passe different de la Confirmation");
+					request.setAttribute("catalogue", catalogue);
+					request.getRequestDispatcher("/WEB-INF/pages/ModifProfil.jsp").forward(request, response);
+					
+				} else {
+					try {
+						UG.validerUtilisateur(new Utilisateur(request.getParameter("newPseudo"), request.getParameter("newNom"), request.getParameter("newPrenom"), request.getParameter("newEmail"), request.getParameter("newTelephone"), request.getParameter("newRue"), request.getParameter("newCodePostal"), request.getParameter("newVille"), request.getParameter("mdpActuel")));	
+						UG.modifierUtilisateurById(new Utilisateur(request.getParameter("newPseudo"), request.getParameter("newNom"), request.getParameter("newPrenom"), request.getParameter("newEmail"), request.getParameter("newTelephone"), request.getParameter("newRue"), request.getParameter("newCodePostal"), request.getParameter("newVille"), request.getParameter("mdpActuel")),Integer.parseInt(request.getParameterValues("idUtilisateur")[0]));
+						response.sendRedirect(request.getContextPath()+"/Accueil");
+					} catch (BLLException e) {
+						request.setAttribute("error", e.getMessage());
+						request.setAttribute("catalogue", catalogue);
+						request.getRequestDispatcher("/WEB-INF/pages/ModifProfil.jsp").forward(request, response);
+						e.printStackTrace();
+					}
+				}	
 			
 		} 
 		else {
-			UG.supprimerUtilisateur(Integer.parseInt(request.getParameter("idutilisateur")));
+			try {
+				UG.supprimerUtilisateur(Integer.parseInt(request.getParameter("idutilisateur")));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (BLLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			response.sendRedirect(request.getContextPath()+"/Accueil");
 			
 			
 		}
-		} catch (BLLException e) {
-			
-			e.printStackTrace();
-		}
+		
 
 	}
 }

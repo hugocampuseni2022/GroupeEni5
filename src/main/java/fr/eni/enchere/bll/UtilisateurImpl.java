@@ -120,12 +120,12 @@ public class UtilisateurImpl implements UtilisateurManager{
 			error = true;
 		}
 		
-		if (!utilisateur.getMotDePasse().isBlank()||"".equals(utilisateur.getMotDePasse())) {
+		if (utilisateur.getMotDePasse().isBlank()||"".equals(utilisateur.getMotDePasse())) {
 			res.append(" -Le mot de passe ");
 			error = true;
 		}
 		
-		if (error = true) {
+		if (error) {
 			throw new BLLException (res.toString());
 		}
 	

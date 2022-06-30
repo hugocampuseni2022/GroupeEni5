@@ -16,6 +16,7 @@ public interface UtilisateurManager {
 	
 	Utilisateur afficherUtilisateurByPseudo (String pseudo) throws BLLException;	
 	
+	void validerUtilisateur (Utilisateur utilisateur) throws BLLException;
 	
 	
 }

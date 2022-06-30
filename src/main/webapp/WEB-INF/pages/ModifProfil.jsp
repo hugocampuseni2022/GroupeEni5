@@ -19,6 +19,8 @@
 			<h3>Mon Profil</h3>
 		</div>
 		<div>
+			<p>	${error}	</p>					
+			<p>	${erreur}	</p>
 			<c:forEach var="utilisateur" items="${catalogue}">
 				<c:if test="${id== utilisateur.getNoUtilisateur()}">
 					<form action="ModifProfilServlet" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
@@ -105,7 +107,8 @@
 							</div>
 						</div>
 						<div>
-							<!--   Ligne vide entre 'MDP' et 'Crédit'  	 -->
+							
+							
 						</div>
 						<div>
 							<p> Credit : ${utilisateur.getCredit()}</p>	<!-- TODO ${user.getCredit} -->
