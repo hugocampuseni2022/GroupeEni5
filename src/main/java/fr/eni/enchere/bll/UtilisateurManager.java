@@ -12,7 +12,7 @@ public interface UtilisateurManager {
 	
 	void supprimerUtilisateur (int noUtilisateur) throws BLLException;
 	
-	void modifierUtilisateurById (Utilisateur utilsateur,int noUtilisateur)throws BLLException;
+	void modifierUtilisateurById (Utilisateur utilisateur,int noUtilisateur)throws BLLException;
 	
 	Utilisateur afficherUtilisateurByPseudo (String pseudo) throws BLLException;	
 	
