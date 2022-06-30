@@ -19,9 +19,7 @@
 			<h3>Mon Profil</h3>
 		</div>
 		<div>
-		<p>${catalogue}</p>
 			<c:forEach var="utilisateur" items="${catalogue}">
-			<p>${utilisateur.getPseudo()}</p>
 				<c:if test="${id== utilisateur.getNoUtilisateur()}">
 					<form action="" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
 						<input type = "hidden" name ="idutilisateur" value="${!empty utilisateur?'' : utilisateur.noUtilisateur}"/></input> 
