@@ -93,7 +93,7 @@ public class ModifProfilServlet extends HttpServlet {
 		} 
 		else {
 			try {
-				UG.supprimerUtilisateur(Integer.parseInt(request.getParameterValues("idutilisateur")[0]));
+				UG.supprimerUtilisateur(Integer.parseInt(request.getParameterValues("idUtilisateur")[0]));
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

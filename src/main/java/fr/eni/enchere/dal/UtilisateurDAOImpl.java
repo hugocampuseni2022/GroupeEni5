@@ -87,7 +87,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 				pStmt.executeUpdate();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					throw new DALException ("erreur sur la suppression d'un utilisateur");
+					throw new DALException ("erreur sur la suppression d'un utilisateur", e);
 		}
 		
 	}
