@@ -67,7 +67,7 @@ public class ModifProfilServlet extends HttpServlet {
 			
 		if("enregistrer".equals(request.getParameterValues("btn")[0])) {
 				if(!(request.getParameter("mdpActuel").equals(mdpCourant))){
-					request.setAttribute("erreur", "Mots de Passe faux");
+					request.setAttribute("erreur", "Mot de passe faux");
 					request.setAttribute("catalogue", catalogue);
 					request.getRequestDispatcher("/WEB-INF/pages/ModifProfil.jsp").forward(request, response);
 				}
@@ -93,7 +93,7 @@ public class ModifProfilServlet extends HttpServlet {
 		} 
 		else {
 			try {
-				UG.supprimerUtilisateur(Integer.parseInt(request.getParameter("idutilisateur")));
+				UG.supprimerUtilisateur(Integer.parseInt(request.getParameterValues("idutilisateur")[0]));
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
