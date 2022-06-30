@@ -86,7 +86,7 @@
 								<label>Mot de passe actuel :</label>
 							</div>
 							<div>
-								<input type="text" name="mdpActuel" size="30"></input>
+								<input type="password" name="mdpActuel" size="30"></input>
 							</div>
 							<div>
 								<!-- Case vide -->
@@ -97,20 +97,20 @@
 								<label>Nouveau mot de passe :</label>
 							</div>
 							<div>
-								<input type="text" name="newMdp" size="30"></input>
+								<input type="password" name="newMdp" size="30"></input>
 							</div>
 							<div>
 								<label>Confirmation :</label>
 							</div>
 							<div>
-								<input type="text" name="confirmNewMdp" size="30"></input>
+								<input type="password" name="confirmNewMdp" size="30"></input>
 							</div>
 						</div>
 						<div>
 							<!--   Ligne vide entre 'MDP' et 'Crédit'  	 -->
 						</div>
 						<div>
-							<label>Crédit :</label>			<!-- TODO ${user.getCredit} -->
+							<p> Credit : ${utilisateur.getCredit()}</p>	<!-- TODO ${user.getCredit} -->
 						</div>
 						<div>
 							<!--   Ligne vide entre 'Crédit' et les boutons 	 -->
