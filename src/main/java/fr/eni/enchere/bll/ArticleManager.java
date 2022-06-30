@@ -26,15 +26,7 @@ public interface ArticleManager {
 	
 	List<Categorie> getCategories() throws BLLException;
 	
-	/*
-
-	Article nouvelArticle (int miseAPrix, String nomArticle, String description, LocalDate dateDebutEncheres);
-	
-	void supprimerArticle (Article article);
-
-	Article nouvelleVente(int miseAPrix, String nomArticle, String description, LocalDate dateDebutEncheres);
-
-	*/
+	int encherir(int noArticle, int meilleureOffre) throws BLLException;
 	
 	
 	

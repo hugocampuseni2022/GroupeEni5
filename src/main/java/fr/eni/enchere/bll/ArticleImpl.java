@@ -134,24 +134,15 @@ public class ArticleImpl implements ArticleManager {
 		}
 	}
 
-/*
 	@Override
-	public Article nouvelleVente(int miseAPrix, String nomArticle, String description, LocalDate dateDebutEncheres) {
+	public int encherir(int noArticle, int meilleureOffre) throws BLLException {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
-	@Override
-	public Article nouvelArticle(int miseAPrix, String nomArticle, String description, LocalDate dateDebutEncheres) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
-	@Override
-	public void supprimerArticle(Article article) {
-		// TODO Auto-generated method stub
-		
-	}
-*/
+	
+	
  
 }
