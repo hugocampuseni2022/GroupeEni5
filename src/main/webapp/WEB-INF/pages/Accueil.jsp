@@ -105,9 +105,29 @@
 			<!-- TODO Card article -->
 			<c:forEach var="article" items="${utilisateur.getListeArticle()}">
 			<!-- TODO Card article -->
-				<p>${article.getNomArticle()}
-				<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}">${utilisateur.getPseudo()}</a>
-				<br>
+				<div class="card mb-3" style="max-width: 540px;">
+					<div class="row no-gutters">
+						<div class="col-md-4">
+							<img src="..." class="card-img" alt="...">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<a href="#" class="card-title">${article.getNomArticle()}</a>
+								<c:choose>
+									<c:when test="${article.getPrixVente()<article.getMiseAPrix()}">
+										<p class="card-text">Prix : ${article.getMiseAPrix()} points</p>
+									</c:when>
+									<c:otherwise>
+										<p class="card-text">Prix : ${article.getPrixVente()} points</p>
+									</c:otherwise>
+								</c:choose>
+								<p class="card-text">Fin de l'enchère : ${article.getDateFinEncheres()}</p>
+								<span class="card-text">Vendeur : </span>
+								<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</c:forEach>
 		</c:forEach>
 	</main>
