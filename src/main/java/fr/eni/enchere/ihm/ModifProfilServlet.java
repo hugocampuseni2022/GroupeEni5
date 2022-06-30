@@ -33,14 +33,6 @@ public class ModifProfilServlet extends HttpServlet {
 		UG = FactoryBLL.getManagerUtilisateur();
 		manager = FactoryBLL.getManagerArticle();
 	}
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ModifProfilServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -55,8 +47,7 @@ public class ModifProfilServlet extends HttpServlet {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		
-		request.setAttribute("cataogue", catalogue);
+		request.setAttribute("catalogue", catalogue);
 		request.getRequestDispatcher("/WEB-INF/pages/ModifProfil.jsp").forward(request, response);
 	}
 

@@ -19,8 +19,10 @@
 			<h3>Mon Profil</h3>
 		</div>
 		<div>
+		<p>${catalogue}</p>
 			<c:forEach var="utilisateur" items="${catalogue}">
-				<c:if test="${id.equals(utilisateur.getnoUtilisateur())}">
+			<p>${utilisateur.getPseudo()}</p>
+				<c:if test="${id== utilisateur.getNoUtilisateur()}">
 					<form action="" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
 						<input type = "hidden" name ="idutilisateur" value="${!empty utilisateur?'' : utilisateur.noUtilisateur}"/></input> 
 						<div class="hstack gap-3">
@@ -28,13 +30,13 @@
 								<label>Pseudo :</label>
 							</div>
 							<div>
-								<input type="text" name="newPseudo" size="30">${utilisateur.getPseudo()}
+								<input type="text" name="newPseudo" size="30" value = "${utilisateur.getPseudo()}" >
 							</div>
 							<div>
 								<label>Nom :</label>
 							</div>
 							<div>
-								<input type="text" name="newNom" size="30">${utilisateur.getNom()}
+								<input type="text" name="newNom" size="30" value = "${utilisateur.getNom()}">
 							</div>
 						</div>
 						<div  class="hstack gap-3">
@@ -42,13 +44,13 @@
 								<label>Prénom :</label>
 							</div>
 							<div>
-								<input type="text" name="newPrenom" size="30">${utilisateur.getPrenom()}
+								<input type="text" name="newPrenom" size="30" value = "${utilisateur.getPrenom()}">
 							</div>
 							<div>
 								<label>Email :</label>
 							</div>
 							<div>
-								<input type="text" name="newEmail" size="30">${utilisateur.getEmail()}
+								<input type="text" name="newEmail" size="30" value = "${utilisateur.getEmail()}">
 							</div>
 						</div>
 						<div  class="hstack gap-3">
@@ -56,13 +58,13 @@
 								<label>Téléphone :</label>
 							</div>
 							<div>
-								<input type="text" name="newTelephone" size="30">${utilisateur.getTelephone()}
+								<input type="text" name="newTelephone" size="30" value = "${utilisateur.getTelephone()}">
 							</div>
 							<div>
 								<label>Rue :</label>
 							</div>
 							<div>
-								<input type="text" name="newRue" size="30">${utilisateur.getRue()}
+								<input type="text" name="newRue" size="30" value = "${utilisateur.getRue()}">
 							</div>
 						</div>
 						<div  class="hstack gap-3">
@@ -70,13 +72,13 @@
 								<label>Code postal :</label>
 							</div>
 							<div>
-								<input type="text" name="newCodePostal" size="30">${utilisateur.getCodePostale()}
+								<input type="text" name="newCodePostal" size="30" value ="${utilisateur.getCodePostale()}">
 							</div>
 							<div>
 								<label>Ville :</label>
 							</div>
 							<div>
-								<input type="text" name="newVille" size="30">${utilisateur.getVille()}
+								<input type="text" name="newVille" size="30" value = "${utilisateur.getVille()}">
 							</div>
 						</div>
 						<div  class="hstack gap-3">
