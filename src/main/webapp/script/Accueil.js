@@ -2,6 +2,11 @@
  * 
  */
 
+$('#radioAchats').change(function(){
+    $('#enchereOuverte').prop("disabled", !this.checked);
+}).change()
+
+
 // assign onclick handler to hazard checkbox
 document.getElementById('radioAchats').onclick = function() {
 
