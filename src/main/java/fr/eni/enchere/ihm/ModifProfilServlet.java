@@ -56,6 +56,7 @@ public class ModifProfilServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		session= request.getSession();
 		try {
 		if("enregistrer".equals(request.getParameterValues("btn")[0])) {
 		
