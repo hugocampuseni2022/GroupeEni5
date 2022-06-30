@@ -18,5 +18,7 @@ public interface UtilisateurManager {
 	
 	void validerUtilisateur (Utilisateur utilisateur) throws BLLException;
 	
+	void supprimerArticle(int noUtilisateur) throws BLLException;
+	
 	
 }

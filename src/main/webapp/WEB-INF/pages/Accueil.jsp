@@ -59,62 +59,67 @@
 				<h4>Filtres :</h4>
 			</div>
 			<form action="" method="get" class="col-12">
-				<input type="text" placeholder="Le nom de l'article contient">
-				<label for="categorie">Catégorie :</label>
-				<select name="categorie">
-				    <option value="">Toutes</option>
-				    <c:forEach var="categorie" items="${categories}">
-		    		    <option value="${categorie.noCategorie}">${categorie.libelle}</option>
-				    </c:forEach>
-				</select>
-				<script src="script/Accueil.js"></script>
-				<div>
-					<br>
-	                <input type="radio" id="radioAchats" name="radio" value="achat">
-	                <label for="radioAchats">Achats</label>
-	            </div>
-	            <div>
-		            <c:choose>
-		            	<c:when test="radioAchats">
-		            		<input type="checkbox" id="enchereOuverte" name="checkboxAchats" >           <!-- accessible seulement si 'radioAchats' est selectionné -->
-			                <label for="enchereOuverte">enchères ouvertes</label>
-			                <br>
-			                <input type="checkbox" id="mesEncheres" name="checkboxAchats" >              <!-- accessible seulement si 'radioAchats' est selectionné -->
-			                <label for="mesEncheres">mes enchères</label>
-			                <br>
-			                <input type="checkbox" id="mesEnchereRemportees" name="checkboxAchats" >     <!-- accessible seulement si 'radioAchats' est selectionné -->
-			                <label for="mesEnchereRemportees">mes enchères remportées</label>
-		            	</c:when>
-		            	<c:otherwise>
-			            	<input type="checkbox" id="enchereOuverte" name="checkboxAchats" disabled="disabled">      
-			                <label for="enchereOuverte">enchères ouvertes</label>
-			                <br>
-			                <input type="checkbox" id="mesEncheres" name="checkboxAchats" disabled="disabled">        
-			                <label for="mesEncheres">mes enchères</label>
-			                <br>
-			                <input type="checkbox" id="mesEnchereRemportees" name="checkboxAchats" disabled="disabled">
-			                <label for="mesEnchereRemportees">mes enchères remportées</label>
-		            	</c:otherwise>
-		            </c:choose>
-	                
-	           	</div>
-	           	<div>
-	           		<br>
-	           		<input type="radio" id="radioVentes" name="radio" value="vente">
-	                <label for="radioVentes">Mes ventes</label>
-	           	</div>
-	           	<div>
-	                <input type="checkbox" id="mesVentesEnCours" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-	                <label for="mesVentesEnCours">mes ventes en cours</label>
-	                <br>
-	                <input type="checkbox" id="ventesNonDebutees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-	                <label for="ventesNonDebutees">ventes non débutées</label>
-	                <br>
-	                <input type="checkbox" id="ventesTerminees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-	                <label for="ventesTerminees">ventes terminées</label>
-	            </div>
-	            <br>
-				<button>Rechercher</button>
+				<div class="">
+					<div>
+						<input type="text" placeholder="Le nom de l'article contient">
+					</div>
+					
+					<label for="categorie">Catégorie :</label>
+					<select name="categorie">
+					    <option value="">Toutes</option>
+					    <c:forEach var="categorie" items="${categories}">
+			    		    <option value="${categorie.noCategorie}">${categorie.libelle}</option>
+					    </c:forEach>
+					</select>
+					<script src="script/Accueil.js"></script>
+					<div>
+						<br>
+		                <input type="radio" id="radioAchats" name="radio" value="achat">
+		                <label for="radioAchats">Achats</label>
+		            </div>
+		            <div>
+			            <c:choose>
+			            	<c:when test="radioAchats">
+			            		<input type="checkbox" id="enchereOuverte" name="checkboxAchats" >           <!-- accessible seulement si 'radioAchats' est selectionné -->
+				                <label for="enchereOuverte">enchères ouvertes</label>
+				                <br>
+				                <input type="checkbox" id="mesEncheres" name="checkboxAchats" >              <!-- accessible seulement si 'radioAchats' est selectionné -->
+				                <label for="mesEncheres">mes enchères</label>
+				                <br>
+				                <input type="checkbox" id="mesEnchereRemportees" name="checkboxAchats" >     <!-- accessible seulement si 'radioAchats' est selectionné -->
+				                <label for="mesEnchereRemportees">mes enchères remportées</label>
+			            	</c:when>
+			            	<c:otherwise>
+				            	<input type="checkbox" id="enchereOuverte" name="checkboxAchats" disabled="disabled">      
+				                <label for="enchereOuverte">enchères ouvertes</label>
+				                <br>
+				                <input type="checkbox" id="mesEncheres" name="checkboxAchats" disabled="disabled">        
+				                <label for="mesEncheres">mes enchères</label>
+				                <br>
+				                <input type="checkbox" id="mesEnchereRemportees" name="checkboxAchats" disabled="disabled">
+				                <label for="mesEnchereRemportees">mes enchères remportées</label>
+			            	</c:otherwise>
+			            </c:choose>
+		                
+		           	</div>
+		           	<div>
+		           		<br>
+		           		<input type="radio" id="radioVentes" name="radio" value="vente">
+		                <label for="radioVentes">Mes ventes</label>
+		           	</div>
+		           	<div>
+		                <input type="checkbox" id="mesVentesEnCours" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+		                <label for="mesVentesEnCours">mes ventes en cours</label>
+		                <br>
+		                <input type="checkbox" id="ventesNonDebutees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+		                <label for="ventesNonDebutees">ventes non débutées</label>
+		                <br>
+		                <input type="checkbox" id="ventesTerminees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+		                <label for="ventesTerminees">ventes terminées</label>
+		            </div>
+		            <br>
+					<button>Rechercher</button>
+				</div>
 			</form>
 			<div>
 				<!-- Liste des articles dans la bdd -->
