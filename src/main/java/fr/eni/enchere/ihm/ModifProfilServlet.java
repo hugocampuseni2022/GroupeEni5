@@ -67,7 +67,7 @@ public class ModifProfilServlet extends HttpServlet {
 			
 		if("enregistrer".equals(request.getParameterValues("btn")[0])) {
 				if(!(request.getParameter("mdpActuel").equals(mdpCourant))){
-					request.setAttribute("erreur", "Mots de Passe faux");
+					request.setAttribute("erreur", "Mot de passe faux");
 					request.setAttribute("catalogue", catalogue);
 					request.getRequestDispatcher("/WEB-INF/pages/ModifProfil.jsp").forward(request, response);
 				}
@@ -81,6 +81,7 @@ public class ModifProfilServlet extends HttpServlet {
 					try {
 						UG.validerUtilisateur(new Utilisateur(request.getParameter("newPseudo"), request.getParameter("newNom"), request.getParameter("newPrenom"), request.getParameter("newEmail"), request.getParameter("newTelephone"), request.getParameter("newRue"), request.getParameter("newCodePostal"), request.getParameter("newVille"), request.getParameter("mdpActuel")));	
 						UG.modifierUtilisateurById(new Utilisateur(request.getParameter("newPseudo"), request.getParameter("newNom"), request.getParameter("newPrenom"), request.getParameter("newEmail"), request.getParameter("newTelephone"), request.getParameter("newRue"), request.getParameter("newCodePostal"), request.getParameter("newVille"), request.getParameter("mdpActuel")),Integer.parseInt(request.getParameterValues("idUtilisateur")[0]));
+						session.setAttribute("username", request.getParameter("newPseudo"));
 						response.sendRedirect(request.getContextPath()+"/Accueil");
 					} catch (BLLException e) {
 						request.setAttribute("error", e.getMessage());
@@ -92,7 +93,7 @@ public class ModifProfilServlet extends HttpServlet {
 		} 
 		else {
 			try {
-				UG.supprimerUtilisateur(Integer.parseInt(request.getParameter("idutilisateur")));
+				UG.supprimerUtilisateur(Integer.parseInt(request.getParameterValues("idutilisateur")[0]));
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
