@@ -54,25 +54,23 @@ public class NouvelleVenteServlet extends HttpServlet {
 		
 	
 			if("enregistrer".equals(request.getParameterValues("btn")[0])) {
-					
-				
 				
 				try {
+					manager.validerArticle(new Article(request.getParameter("article"), request.getParameter("description"),Integer.parseInt(request.getParameterValues("categorie")[0]), Integer.parseInt(request.getParameter("prix")), Date.valueOf(request.getParameter("dateDebut")), Date.valueOf(request.getParameter("dateFin")), new Retrait(request.getParameter("rue"), request.getParameter("codePostal"), request.getParameter("ville"))));
+					
 					manager.enregistrerArticle(new Article(request.getParameter("article"), request.getParameter("description"),Integer.parseInt(request.getParameterValues("categorie")[0]), Integer.parseInt(request.getParameter("prix")), Date.valueOf(request.getParameter("dateDebut")), Date.valueOf(request.getParameter("dateFin")), new Retrait(request.getParameter("rue"), request.getParameter("codePostal"), request.getParameter("ville"))),Integer.parseInt(request.getParameterValues("id")[0]));
 					response.sendRedirect(request.getContextPath()+"/Accueil");
 				
 				} catch (NumberFormatException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (BLLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				
 				}
 				
 			}			
 			else {
-				request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);	
+				response.sendRedirect(request.getContextPath()+"/Accueil");	
 			}
 		}
 	

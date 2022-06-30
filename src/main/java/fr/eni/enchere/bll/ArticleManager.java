@@ -21,6 +21,7 @@ public interface ArticleManager {
 	
 	List<Utilisateur> getAll() throws BLLException;
 	
+	void validerArticle(Article a) throws BLLException;
 	
 	/*
 

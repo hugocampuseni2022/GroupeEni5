@@ -1,5 +1,6 @@
 package fr.eni.enchere.bll;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -90,6 +91,33 @@ public class ArticleImpl implements ArticleManager {
 			return daoArticle.selectAllArticle();
 		} catch (DALException e) {
 			throw new BLLException(e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public void validerArticle(Article a) throws BLLException {
+		StringBuilder res = new StringBuilder();
+		res.append("Les champs suivant ne sont pas correctement renseignés :\n");
+		boolean error = false;
+		
+		if (a.getNomArticle().isBlank() || "".equals(a.getNomArticle())) {
+			res.append(" - Le nom de l'article\n");
+		}
+		
+		if (a.getDescription().isBlank() || "".equals(a.getDescription())) {
+			res.append(" - La description\n");
+		}
+		
+		if (Date.valueOf(LocalDate.now()).compareTo(a.getDateDebutEncheres())>0) {
+			res.append(" - La date de début\n");
+		}
+		
+		if (a.getDateDebutEncheres().compareTo(a.getDateFinEncheres())>=0) {
+			res.append(" - La date de fin\n");
+		}
+		
+		if (error) {
+			throw new BLLException(res.toString());
 		}
 	}
 

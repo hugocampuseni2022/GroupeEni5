@@ -19,7 +19,7 @@
 			<div>Nouvelle Vente</div>
 </header>
 <main class="container">
-
+${error}
 <form action="NouvelleVenteServlet" method = "post">
 	<input type = "hidden" name ="id" value="${id}"/>
 		<div>
@@ -69,7 +69,7 @@
 				<label> Mise à prix :</label>
 			</div>
 			<div>
-				<input type="number" name="prix" size="30"></input>
+				<input type="number" name="prix" size="30" min="0" value="100"></input>
 			</div>
 		</div>
 		
