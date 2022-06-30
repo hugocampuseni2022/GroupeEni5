@@ -19,101 +19,107 @@
 			<h3>Mon Profil</h3>
 		</div>
 		<div>
-			<form action="" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
-				<input type = "hidden" name ="idutilisateur" value="${!empty utilisateur?'' : utilisateur.noUtilisateur}"/></input> 
-				<div class="hstack gap-3">
-					<div>
-						<label>Pseudo :</label>
-					</div>
-					<div>
-						<input type="text" name="newPseudo" size="30"></input>
-					</div>
-					<div>
-						<label>Nom :</label>
-					</div>
-					<div>
-						<input type="text" name="newNom" size="30"></input>
-					</div>
-				</div>
-				<div  class="hstack gap-3">
-					<div>
-						<label>Prénom :</label>
-					</div>
-					<div>
-						<input type="text" name="newPrenom" size="30"></input>
-					</div>
-					<div>
-						<label>Email :</label>
-					</div>
-					<div>
-						<input type="text" name="newEmail" size="30"></input>
-					</div>
-				</div>
-				<div  class="hstack gap-3">
-					<div>
-						<label>Téléphone :</label>
-					</div>
-					<div>
-						<input type="text" name="newTelephone" size="30"></input>
-					</div>
-					<div>
-						<label>Rue :</label>
-					</div>
-					<div>
-						<input type="text" name="newRue" size="30"></input>
-					</div>
-				</div>
-				<div  class="hstack gap-3">
-					<div>
-						<label>Code postal :</label>
-					</div>
-					<div>
-						<input type="text" name="newCodePostal" size="30"></input>
-					</div>
-					<div>
-						<label>Ville :</label>
-					</div>
-					<div>
-						<input type="text" name="newVille" size="30"></input>
-					</div>
-				</div>
-				<div  class="hstack gap-3">
-					<div>
-						<label>Mot de passe actuel :</label>
-					</div>
-					<div>
-						<input type="text" name="mdpActuel" size="30"></input>
-					</div>
-					<div>
-						<!-- Case vide -->
-					</div>
-				</div>
-				<div  class="hstack gap-3">
-					<div>
-						<label>Nouveau mot de passe :</label>
-					</div>
-					<div>
-						<input type="text" name="newMdp" size="30"></input>
-					</div>
-					<div>
-						<label>Confirmation :</label>
-					</div>
-					<div>
-						<input type="text" name="confirmNewMdp" size="30"></input>
-					</div>
-				</div>
-				<div>
-					<!--   Ligne vide entre 'MDP' et 'Crédit'  	 -->
-				</div>
-				<div>
-					<label>Crédit :</label>			<!-- TODO ${user.getCredit} -->
-				</div>
-				<div>
-					<!--   Ligne vide entre 'Crédit' et les boutons 	 -->
-				</div>
-				<button name="btn" value="enregistrer">Enregistrer</button>
-				<button name="btn" value="supprimer">Supprimer mon compte</button>
-			</form>
+		<p>${catalogue}</p>
+			<c:forEach var="utilisateur" items="${catalogue}">
+			<p>${utilisateur.getPseudo()}</p>
+				<c:if test="${id== utilisateur.getNoUtilisateur()}">
+					<form action="" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
+						<input type = "hidden" name ="idutilisateur" value="${!empty utilisateur?'' : utilisateur.noUtilisateur}"/></input> 
+						<div class="hstack gap-3">
+							<div>
+								<label>Pseudo :</label>
+							</div>
+							<div>
+								<input type="text" name="newPseudo" size="30" value = "${utilisateur.getPseudo()}" >
+							</div>
+							<div>
+								<label>Nom :</label>
+							</div>
+							<div>
+								<input type="text" name="newNom" size="30" value = "${utilisateur.getNom()}">
+							</div>
+						</div>
+						<div  class="hstack gap-3">
+							<div>
+								<label>Prénom :</label>
+							</div>
+							<div>
+								<input type="text" name="newPrenom" size="30" value = "${utilisateur.getPrenom()}">
+							</div>
+							<div>
+								<label>Email :</label>
+							</div>
+							<div>
+								<input type="text" name="newEmail" size="30" value = "${utilisateur.getEmail()}">
+							</div>
+						</div>
+						<div  class="hstack gap-3">
+							<div>
+								<label>Téléphone :</label>
+							</div>
+							<div>
+								<input type="text" name="newTelephone" size="30" value = "${utilisateur.getTelephone()}">
+							</div>
+							<div>
+								<label>Rue :</label>
+							</div>
+							<div>
+								<input type="text" name="newRue" size="30" value = "${utilisateur.getRue()}">
+							</div>
+						</div>
+						<div  class="hstack gap-3">
+							<div>
+								<label>Code postal :</label>
+							</div>
+							<div>
+								<input type="text" name="newCodePostal" size="30" value ="${utilisateur.getCodePostale()}">
+							</div>
+							<div>
+								<label>Ville :</label>
+							</div>
+							<div>
+								<input type="text" name="newVille" size="30" value = "${utilisateur.getVille()}">
+							</div>
+						</div>
+						<div  class="hstack gap-3">
+							<div>
+								<label>Mot de passe actuel :</label>
+							</div>
+							<div>
+								<input type="password" name="mdpActuel" size="30"></input>
+							</div>
+							<div>
+								<!-- Case vide -->
+							</div>
+						</div>
+						<div  class="hstack gap-3">
+							<div>
+								<label>Nouveau mot de passe :</label>
+							</div>
+							<div>
+								<input type="password" name="newMdp" size="30"></input>
+							</div>
+							<div>
+								<label>Confirmation :</label>
+							</div>
+							<div>
+								<input type="password" name="confirmNewMdp" size="30"></input>
+							</div>
+						</div>
+						<div>
+							<!--   Ligne vide entre 'MDP' et 'Crédit'  	 -->
+						</div>
+						<div>
+							<p> Credit : ${utilisateur.getCredit()}</p>	<!-- TODO ${user.getCredit} -->
+						</div>
+						<div>
+							<!--   Ligne vide entre 'Crédit' et les boutons 	 -->
+						</div>
+						<button name="btn" value="enregistrer">Enregistrer</button>
+						<button name="btn" value="supprimer">Supprimer mon compte</button>
+						</form>
+					</c:if>		
+				</c:forEach>
 		</div>
 	</main>
 	
