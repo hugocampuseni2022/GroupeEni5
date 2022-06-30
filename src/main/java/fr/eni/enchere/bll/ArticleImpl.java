@@ -102,18 +102,22 @@ public class ArticleImpl implements ArticleManager {
 		
 		if (a.getNomArticle().isBlank() || "".equals(a.getNomArticle())) {
 			res.append(" - Le nom de l'article\n");
+			error=true;
 		}
 		
 		if (a.getDescription().isBlank() || "".equals(a.getDescription())) {
 			res.append(" - La description\n");
+			error=true;
 		}
 		
 		if (Date.valueOf(LocalDate.now()).compareTo(a.getDateDebutEncheres())>0) {
 			res.append(" - La date de début\n");
+			error=true;
 		}
 		
 		if (a.getDateDebutEncheres().compareTo(a.getDateFinEncheres())>=0) {
 			res.append(" - La date de fin\n");
+			error=true;
 		}
 		
 		if (error) {

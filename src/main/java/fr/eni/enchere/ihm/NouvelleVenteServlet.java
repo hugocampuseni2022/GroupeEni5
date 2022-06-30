@@ -63,6 +63,8 @@ public class NouvelleVenteServlet extends HttpServlet {
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				} catch (BLLException e) {
+					request.setAttribute("error", e.getMessage());
+					request.getRequestDispatcher("/WEB-INF/pages/NouvelleVente.jsp").forward(request, response);
 					e.printStackTrace();
 				
 				}
