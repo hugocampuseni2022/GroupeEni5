@@ -17,6 +17,7 @@
 				<span>ENI-Enchères</span>
 			</div>
 			<div class="col-sm-12 col-md-8 nav-menu">
+				<div></div>
 				<c:choose>
 					<c:when test="${connected.equals(\"false\")}">
 						<div class="liste">
