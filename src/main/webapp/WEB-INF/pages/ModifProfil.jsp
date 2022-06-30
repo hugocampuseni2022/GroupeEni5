@@ -21,8 +21,8 @@
 		<div>
 			<c:forEach var="utilisateur" items="${catalogue}">
 				<c:if test="${id== utilisateur.getNoUtilisateur()}">
-					<form action="" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
-						<input type = "hidden" name ="idutilisateur" value="${!empty utilisateur?'' : utilisateur.noUtilisateur}"/></input> 
+					<form action="ModifProfilServlet" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
+						<input type = "hidden" name ="idUtilisateur" value="${utilisateur.getNoUtilisateur()}"/></input> 
 						<div class="hstack gap-3">
 							<div>
 								<label>Pseudo :</label>

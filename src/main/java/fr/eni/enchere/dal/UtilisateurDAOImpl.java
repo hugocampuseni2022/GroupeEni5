@@ -97,22 +97,22 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 		
 		try (Connection connection= ConnectionProvider.getConnection()){
 			
-			pStmt = connection.prepareStatement(DELETE);
+			pStmt = connection.prepareStatement(UPDATE);
 			
-		pStmt.setInt(1,noUtilisateur);
-		pStmt.setString(2,utilisateur.getPseudo());
-		pStmt.setString(3,utilisateur.getNom());
-		pStmt.setString(4,utilisateur.getPrenom());
-		pStmt.setString(5,utilisateur.getEmail());
-		pStmt.setString(6,utilisateur.getTelephone());
-		pStmt.setString(7,utilisateur.getRue());
-		pStmt.setString(8,utilisateur.getCodePostale());
-		pStmt.setString(9,utilisateur.getVille());
-		pStmt.setString(10,utilisateur.getMotDePasse());
+			pStmt.setInt(1,noUtilisateur);
+			pStmt.setString(2,utilisateur.getPseudo());
+			pStmt.setString(3,utilisateur.getNom());
+			pStmt.setString(4,utilisateur.getPrenom());
+			pStmt.setString(5,utilisateur.getEmail());
+			pStmt.setString(6,utilisateur.getTelephone());
+			pStmt.setString(7,utilisateur.getRue());
+			pStmt.setString(8,utilisateur.getCodePostale());
+			pStmt.setString(9,utilisateur.getVille());
+			pStmt.setString(10,utilisateur.getMotDePasse());
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			throw new DALException ("erreur sur la suppression d'un utilisateur");
+			throw new DALException ("erreur sur la update by ID d'un utilisateur");
 		}
 	}
 
