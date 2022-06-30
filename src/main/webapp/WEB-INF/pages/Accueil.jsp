@@ -51,85 +51,102 @@
 		</div>
 	</header>
 	<main class="container">
-		<div>
-			
-		</div>
-		<h3>Liste des enchères</h3>
-		<h4>Filtres :</h4>
-		<form action="" method="get">
-			<input type="text" placeholder="Le nom de l'article contient">
-			<label for="categorie">Catégorie :</label>
-			<select name="categorie">
-			    <option value="">Toutes</option>
-			    <option value="1">Informatique</option>
-			    <option value="2">Ameublement</option>
-			    <option value="3">Vêtement</option>
-			    <option value="4">Sport&Loisirs</option>
-			</select>
-			<script src="script/Accueil.js"></script>
+		<div class="row">
+			<div class="col-12 text-center">
+				<h3>Liste des enchères</h3>
+			</div>
+			<div class="col-12 text-start">
+				<h4>Filtres :</h4>
+			</div>
+			<form action="" method="get" class="col-12">
+				<input type="text" placeholder="Le nom de l'article contient">
+				<label for="categorie">Catégorie :</label>
+				<select name="categorie">
+				    <option value="">Toutes</option>
+				    <c:forEach var="categorie" items="${categories}">
+		    		    <option value="${categorie.noCategorie}">${categorie.libelle}</option>
+				    </c:forEach>
+				</select>
+				<script src="script/Accueil.js"></script>
+				<div>
+					<br>
+	                <input type="radio" id="radioAchats" name="radio" value="achat">
+	                <label for="radioAchats">Achats</label>
+	            </div>
+	            <div>
+		            <c:choose>
+		            	<c:when test="radioAchats">
+		            		<input type="checkbox" id="enchereOuverte" name="checkboxAchats" >           <!-- accessible seulement si 'radioAchats' est selectionné -->
+			                <label for="enchereOuverte">enchères ouvertes</label>
+			                <br>
+			                <input type="checkbox" id="mesEncheres" name="checkboxAchats" >              <!-- accessible seulement si 'radioAchats' est selectionné -->
+			                <label for="mesEncheres">mes enchères</label>
+			                <br>
+			                <input type="checkbox" id="mesEnchereRemportees" name="checkboxAchats" >     <!-- accessible seulement si 'radioAchats' est selectionné -->
+			                <label for="mesEnchereRemportees">mes enchères remportées</label>
+		            	</c:when>
+		            	<c:otherwise>
+			            	<input type="checkbox" id="enchereOuverte" name="checkboxAchats" disabled="disabled">      
+			                <label for="enchereOuverte">enchères ouvertes</label>
+			                <br>
+			                <input type="checkbox" id="mesEncheres" name="checkboxAchats" disabled="disabled">        
+			                <label for="mesEncheres">mes enchères</label>
+			                <br>
+			                <input type="checkbox" id="mesEnchereRemportees" name="checkboxAchats" disabled="disabled">
+			                <label for="mesEnchereRemportees">mes enchères remportées</label>
+		            	</c:otherwise>
+		            </c:choose>
+	                
+	           	</div>
+	           	<div>
+	           		<br>
+	           		<input type="radio" id="radioVentes" name="radio" value="vente">
+	                <label for="radioVentes">Mes ventes</label>
+	           	</div>
+	           	<div>
+	                <input type="checkbox" id="mesVentesEnCours" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+	                <label for="mesVentesEnCours">mes ventes en cours</label>
+	                <br>
+	                <input type="checkbox" id="ventesNonDebutees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+	                <label for="ventesNonDebutees">ventes non débutées</label>
+	                <br>
+	                <input type="checkbox" id="ventesTerminees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+	                <label for="ventesTerminees">ventes terminées</label>
+	            </div>
+	            <br>
+				<button>Rechercher</button>
+			</form>
 			<div>
-				<br>
-                <input type="radio" id="radioAchats" name="radio" value="achat">
-                <label for="radioAchats">Achats</label>
-            </div>
-            <div>
-                <input type="checkbox" id="enchereOuverte" name="checkboxAchats" >           <!-- accessible seulement si 'radioAchats' est selectionné -->
-                <label for="enchereOuverte">enchères ouvertes</label>
-                <br>
-                <input type="checkbox" id="mesEncheres" name="checkboxAchats" >              <!-- accessible seulement si 'radioAchats' est selectionné -->
-                <label for="mesEncheres">mes enchères</label>
-                <br>
-                <input type="checkbox" id="mesEnchereRemportees" name="checkboxAchats" >     <!-- accessible seulement si 'radioAchats' est selectionné -->
-                <label for="mesEnchereRemportees">mes enchères remportées</label>
-           	</div>
-           	<div>
-           		<br>
-           		<input type="radio" id="radioVentes" name="radio" value="vente">
-                <label for="radioVentes">Mes ventes</label>
-           	</div>
-           	<div>
-                <input type="checkbox" id="mesVentesEnCours" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-                <label for="mesVentesEnCours">mes ventes en cours</label>
-                <br>
-                <input type="checkbox" id="ventesNonDebutees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-                <label for="ventesNonDebutees">ventes non débutées</label>
-                <br>
-                <input type="checkbox" id="ventesTerminees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-                <label for="ventesTerminees">ventes terminées</label>
-            </div>
-            <br>
-			<button>Rechercher</button>
-		</form>
-		<!-- Liste des articles dans la bdd -->
-		<c:forEach var="utilisateur" items="${catalogue}">
-			<!-- TODO Card article -->
-			<c:forEach var="article" items="${utilisateur.getListeArticle()}">
-			<!-- TODO Card article -->
-				<div class="card mb-3" style="max-width: 540px;">
-					<div class="row no-gutters">
-						<div class="col-md-4">
-							<img src="..." class="card-img" alt="...">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body">
-								<a href="#" class="card-title">${article.getNomArticle()}</a>
-								<c:choose>
-									<c:when test="${article.getPrixVente()<article.getMiseAPrix()}">
-										<p class="card-text">Prix : ${article.getMiseAPrix()} points</p>
-									</c:when>
-									<c:otherwise>
-										<p class="card-text">Prix : ${article.getPrixVente()} points</p>
-									</c:otherwise>
-								</c:choose>
-								<p class="card-text">Fin de l'enchère : ${article.getDateFinEncheres()}</p>
-								<span class="card-text">Vendeur : </span>
-								<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
+				<!-- Liste des articles dans la bdd -->
+				<c:forEach var="utilisateur" items="${catalogue}">
+					<c:forEach var="article" items="${utilisateur.getListeArticle()}">	
+						<div class="card mb-3" style="max-width: 540px;">
+							<div class="row no-gutters">
+								<div class="col-md-4">
+									<img src="..." class="card-img" alt="...">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+										<a href="#" class="card-title">${article.getNomArticle()}</a>
+										<c:choose>
+											<c:when test="${article.getPrixVente()<article.getMiseAPrix()}">
+												<p class="card-text">Prix : ${article.getMiseAPrix()} points</p>
+											</c:when>
+											<c:otherwise>
+												<p class="card-text">Prix : ${article.getPrixVente()} points</p>
+											</c:otherwise>
+										</c:choose>
+										<p class="card-text">Fin de l'enchère : ${article.getDateFinEncheres()}</p>
+										<span class="card-text">Vendeur : </span>
+										<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</c:forEach>
-		</c:forEach>
+					</c:forEach>
+				</c:forEach>
+			</div>
+		</div>
 	</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>

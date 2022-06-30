@@ -41,8 +41,7 @@ public class ProfilServlet extends HttpServlet {
 			catalogue = manager.getAll();
 		} catch (BLLException e) {
 			e.printStackTrace();
-		}
-		
+		}		
 		String pseudo = request.getParameter("pseudo");
 		request.setAttribute("pseudo", pseudo);
 		request.setAttribute("catalogue", catalogue);

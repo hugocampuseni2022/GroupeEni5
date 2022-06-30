@@ -3,6 +3,7 @@ package fr.eni.enchere.dal;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Categorie;
 import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.bo.Retrait;
 import fr.eni.enchere.bo.Utilisateur;
@@ -29,6 +30,8 @@ public interface ArticleDAO {
 		Retrait selectRetraitByArticle(int idArticle) throws DALException;
 		
 		List<Enchere> selectEnchereByUser(int idUser) throws DALException;
+		
+		List<Categorie> selectCategorie() throws DALException;
 	}
 
 

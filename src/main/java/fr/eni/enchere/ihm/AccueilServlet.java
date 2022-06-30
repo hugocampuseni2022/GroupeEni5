@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.FactoryBLL;
+import fr.eni.enchere.bo.Categorie;
 import fr.eni.enchere.bo.Utilisateur;
 
 /**
@@ -25,6 +26,7 @@ public class AccueilServlet extends HttpServlet {
 	private List<Utilisateur> catalogue;
 	private ArticleManager manager;
 	private HttpSession session;
+	private List<Categorie> categories;
 
 	@Override
 	public void init() throws ServletException {
@@ -46,6 +48,7 @@ public class AccueilServlet extends HttpServlet {
 		
 		try {
 			catalogue = manager.getAll();
+			categories = manager.getCategories();
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
@@ -60,6 +63,7 @@ public class AccueilServlet extends HttpServlet {
 			}
 		}
 		
+		session.setAttribute("categories", categories);
 		request.setAttribute("catalogue", catalogue);
 		request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
 		

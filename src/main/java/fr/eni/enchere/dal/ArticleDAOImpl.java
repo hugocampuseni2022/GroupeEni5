@@ -8,6 +8,7 @@ package fr.eni.enchere.dal;
 	import java.util.ArrayList;
 	import java.util.List;
 	import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Categorie;
 import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.bo.Retrait;
 import fr.eni.enchere.bo.Utilisateur;
@@ -34,6 +35,8 @@ public class ArticleDAOImpl implements ArticleDAO{
 	private static final String SELECT_ENCHERE_BY_USER = "SELECT * FROM ENCHERES WHERE no_utilisateur = ?";
 	
 	private static final String SELECT_RETRAIT_BY_ARTICLE = "SELECT * FROM RETRAITS WHERE no_article = ?";
+	
+	private static final String SELECT_CATEGORIE = "SELECT * FROM CATEGORIES";
 	
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;									
@@ -286,6 +289,21 @@ public class ArticleDAOImpl implements ArticleDAO{
 		} catch (SQLException e){
 			throw new DALException("erreur selection Catalogue", e);
 		}
+	}
+	
+	public List<Categorie> selectCategorie() throws DALException {
+		try (Connection conn = ConnectionProvider.getConnection()) {
+			List<Categorie> listeCategorie = new ArrayList<Categorie>();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(SELECT_CATEGORIE);
+			while (rs.next()) {
+				listeCategorie.add(new Categorie(rs.getInt("no_categorie"), rs.getString("libelle"))) ;
+			}
+			return listeCategorie;
+		} catch (SQLException e) {
+			throw new DALException("Erreur select categorie", e);
+		}
+		
 	}
 }
 
