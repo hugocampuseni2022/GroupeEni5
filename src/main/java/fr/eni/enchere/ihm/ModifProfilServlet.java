@@ -89,7 +89,6 @@ public class ModifProfilServlet extends HttpServlet {
 						e.printStackTrace();
 					}
 				}	
-			
 		} 
 		else {
 			try {
