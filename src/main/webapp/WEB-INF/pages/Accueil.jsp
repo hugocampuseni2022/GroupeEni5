@@ -70,7 +70,7 @@
 			<div>
 				<br>
                 <input type="radio" id="radioAchats" name="radio" value="achat">
-                <label for="achats">Achats</label>
+                <label for="radioAchats">Achats</label>
             </div>
             <div>
                 <input type="checkbox" id="enchereOuverte" name="checkboxAchats" >           <!-- accessible seulement si 'radioAchats' est selectionné -->
@@ -85,7 +85,7 @@
            	<div>
            		<br>
            		<input type="radio" id="radioVentes" name="radio" value="vente">
-                <label for="ventes">Mes ventes</label>
+                <label for="radioVentes">Mes ventes</label>
            	</div>
            	<div>
                 <input type="checkbox" id="mesVentesEnCours" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
