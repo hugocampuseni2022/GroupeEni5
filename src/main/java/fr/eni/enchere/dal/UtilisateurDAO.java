@@ -14,4 +14,6 @@ public interface UtilisateurDAO {
 	
 	Utilisateur selectByPseudo (String pseudo) throws DALException;
 	
+	void deleteArticle(int noUtilisateur) throws DALException;
+	
 }

@@ -21,7 +21,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	private static final String UPDATE = "UPDATE UTILISATEURS SET pseudo = ? , nom = ? , prenom = ?, "
 											+ "email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? WHERE no_utilisateur = ?";
 	private static final String SELECT_BY_PSEUDO = "select pseudo, nom, prenom, email, telephone, rue, code_postal, ville from UTILISATEURS where pseudo = ?";
-											
+	private static final String DELETE_ARTICLE = "DELETE FROM ARTICLES_VENDUS WHERE no_utilisateur = ? ";										
 	
 	@Override
 	public Utilisateur connection(String login, String mdp) throws DALException {
@@ -76,9 +76,25 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	}
 			
 	
-	public void delete(int noUtilisateur) throws DALException {
+	public void deleteArticle(int noUtilisateur) throws DALException {
 		
 	
+		try (Connection connection= ConnectionProvider.getConnection()){
+			
+				pStmt = connection.prepareStatement(DELETE_ARTICLE);
+				pStmt.setInt(1,noUtilisateur);
+				 
+				pStmt.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					throw new DALException ("erreur sur la suppression d'article", e);
+		}
+		
+	}
+	
+	public void delete(int noUtilisateur) throws DALException {
+		
+		
 		try (Connection connection= ConnectionProvider.getConnection()){
 			
 				pStmt = connection.prepareStatement(DELETE);
