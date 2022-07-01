@@ -104,7 +104,7 @@
 							<p>Ma proposition :</p>
 						</div>
 						<div class="col-6">
-							<form action="" method="post">
+							<form action="encherir" method="post">
 								<div>
 									<input type="number" maxlength="4" min="1">
 									<!-- ${user.getArticle.getMeilleureOffre+10} -->
