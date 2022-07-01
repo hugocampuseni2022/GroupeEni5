@@ -25,58 +25,71 @@
 					   <c:forEach var ="user2" items = "${catalogue}">
 					   		<c:forEach var = "enchere2" items = "${user2.getListeEnchere()}">
 					   			<c:if test="${enchere.getNumero_Enchere()== enchere2.getNumero_Enchere()}">
-									<c:choose>
-											<c:when test="${id!= user2.getNoUtilisateur()}">
-													<div>
-														<t1>Vous avez remporté la vente</t1>
-													</div>
-													
-											</c:when>
-											
-											<c:otherwise>	
-													<t1>${user2.getNom()} a remporté l'enchere</t1>
-											</c:otherwise>
-											
-									</c:choose>
-						
-										<div>
-											${article.getNomArticle()}
-										</div>
-										
-										<div>
-											Description : ${article.getDescription()}
-										</div>
-										
-										<div>
-											Meilleure offre : ${article.getPrixVente()}<c:if test="${id== utilisateur.getNoUtilisateur()}">par ${user2.getNom()}</c:if>
-										</div>
-										
-										<div>
-											Mise à prix : ${article.getMiseAPrix()}
-										</div>
-									
-									<c:if test="${id== utilisateur.getNoUtilisateur()}">
-										<div>
-											Fin de l'enchère : ${article.getDateFinEncheres()}
-										</div>
-									</c:if>
-									
-									<div>
-										<p>Retrait :${article.getLieuRetrait().getRue()}</p>
-										
-										<div>
-											${article.getLieuRetrait().getCode_postal()}
-											${article.getLieuRetrait().getVille()}
-										</div>		
-									</div>
-									
-										<div>
-											Vendeur : ${utilisateur.getPseudo()}
-										</div>
-									<c:if test="${id != utilisateur.getNoUtilisateur()}">
+					   				<c:if test="${article.getPrixVente()==enchere2.getMontant_Enchere()}">
+										<c:choose>
+												<c:when test="${id==user2.getNoUtilisateur()}">
+														<div>
+															<t1>Vous avez remporté la vente</t1>
+														</div>
+														
+												</c:when>
+												
+												<c:otherwise>	
+														<t1>${user2.getPseudo()} a remporté l'enchere</t1>
+												</c:otherwise>
+												
+										</c:choose>
+							
 											<div>
-												Tel : ${utilisateur.getTelephone()}
+												${article.getNomArticle()}
 											</div>
+											
+											<div>
+												Description : ${article.getDescription()}
+											</div>
+											
+											<div>
+												Meilleure offre : ${article.getPrixVente()} <c:if test="${id== utilisateur.getNoUtilisateur()}">par ${user2.getPseudo()}</c:if>
+											</div>
+											
+											<div>
+												Mise à prix : ${article.getMiseAPrix()}
+											</div>
+										
+										<c:if test="${id== utilisateur.getNoUtilisateur()}">
+											<div>
+												Fin de l'enchère : ${article.getDateFinEncheres()}
+											</div>
+										</c:if>
+										
+										<div>
+											<p>Retrait :${article.getLieuRetrait().getRue()}</p>
+											
+											<div>
+												${article.getLieuRetrait().getCode_postal()}
+												${article.getLieuRetrait().getVille()}
+											</div>		
+										</div>
+										
+											<div>
+												Vendeur : ${utilisateur.getPseudo()}
+											</div>
+										<c:if test="${id != utilisateur.getNoUtilisateur()}">
+												<div>
+													Tel : ${utilisateur.getTelephone()}
+												</div>
+										</c:if>
+										<form action="WinAuctionServlet" method="post">
+											<c:choose>
+													<c:when test="${id== utilisateur.getNoUtilisateur()}">
+														<button name="btn" value="Retrait Effectué">Retrait Effectué</button>
+													</c:when>
+													
+													<c:otherwise>	
+														<button name="btn" value="Back"> Back</button>
+													</c:otherwise>
+											</c:choose>
+										</form>
 									</c:if>
 								</c:if>
 							</c:forEach>
@@ -85,21 +98,6 @@
 				</c:if>
 			</c:forEach>
 		</c:forEach>
-			
-			
-			<c:forEach var="utilisateur" items="${catalogue}">
-				<form action="WinAuctionServlet" method="post">
-						<c:choose>
-								<c:when test="${id== utilisateur.getNoUtilisateur()}">
-									 <button name="btn" value="Retrait Effectué">Retrait Effectué</button>
-								</c:when>
-								
-								<c:otherwise>	
-									<button name="btn" value="Back"> Back</button>
-								</c:otherwise>
-						</c:choose>
-				</form>	
-			</c:forEach>
 	</main>	
 		
 		
