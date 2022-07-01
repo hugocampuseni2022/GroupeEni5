@@ -16,6 +16,7 @@ import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.FactoryBLL;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Categorie;
+import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.bo.Utilisateur;
 
 /**
@@ -45,6 +46,12 @@ public class AccueilServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		String filtreNom = "";
 		int filtreCategorie = 0;
+		boolean filtreEnchereOuverte = false;
+		boolean filtreMesEnchere = false;
+		boolean filtreEnchereRemportes = false;
+		boolean filtreVentesEnCours = false;
+		boolean filtreVentesCree = false;
+		boolean filtreVentesEnd = false;
 		
 		if ("deconnexion".equals(action)) {
 			session.removeAttribute("id");
@@ -57,8 +64,6 @@ public class AccueilServlet extends HttpServlet {
 			filtreNom = request.getParameter("filtreNom") ;
 		}
 		
-		System.out.println(request.getParameter("categorie"));
-		
 		if (!("0".equals(request.getParameter("categorie")) || request.getParameter("categorie")==null)) {
 			filtreCategorie = Integer.parseInt(request.getParameter("categorie"));
 		}
@@ -66,24 +71,24 @@ public class AccueilServlet extends HttpServlet {
 		if ("true".equals( session.getAttribute("connected"))) {
 			if ("achat".equals(request.getParameter("radio"))) {
 				if ("on".equals(request.getParameter("enchereOuverte"))) {
-					
+					filtreEnchereOuverte = true;
 				}
 				if ("on".equals(request.getParameter("mesEncheres"))) {
-									
+					filtreMesEnchere = true;
 				}
 				if ("on".equals(request.getParameter("mesEnchereRemportees"))) {
-					
+					filtreEnchereRemportes = true;
 				}
 			}
 			if ("vente".equals(request.getParameter("radio"))) {
 				if ("on".equals(request.getParameter("mesVentesEnCours"))) {
-					
+					filtreVentesEnCours = true;
 				}
 				if ("on".equals(request.getParameter("ventesNonDebutees"))) {
-									
+					filtreVentesCree = true;	
 				}
 				if ("on".equals(request.getParameter("ventesTerminees"))) {
-					
+					filtreVentesEnd = true;
 				}
 			}
 		}
@@ -97,13 +102,7 @@ public class AccueilServlet extends HttpServlet {
 		
 		if (!("true".equals( session.getAttribute("connected")))) {
 			session.setAttribute("connected", "false");
-			for (Utilisateur u : catalogue) {
-				for (Article a : u.getListeArticle()) {
-					if (a.getEtatVente().equals("En cours")) {
-						listeFiltrer.add(a);
-					}
-				}
-			}
+			listeFiltrer = applyFilter(filtreNom, filtreCategorie);
 		} else {
 			for (Utilisateur u : catalogue) {
 				for (Article a : u.getListeArticle()) {			
@@ -134,4 +133,51 @@ public class AccueilServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	public List<Article> applyFilter(String filtreNom, int filtreCategorie) {
+		List<Article> filtreArticle = new ArrayList<Article>();
+		for (Utilisateur u : catalogue) {
+			for (Article a : u.getListeArticle()) {
+				if (a.getEtatVente().equals("En cours")) {
+
+					if (!("".equals(filtreNom)) && !(filtreCategorie==0)) {
+						if (a.getNomArticle().contains(filtreNom) && a.getNoCategorie()==filtreCategorie) {
+							filtreArticle.add(a);
+						}
+					} else if (!(filtreCategorie==0)) {
+						if (a.getNoCategorie()==filtreCategorie) {
+							filtreArticle.add(a);
+						}
+					} else if (!("".equals(filtreNom))) {
+						if (a.getNomArticle().contains(filtreNom)) {
+							filtreArticle.add(a);
+						}
+					} else {
+						filtreArticle.add(a);
+					}
+					
+				}
+			}
+		}
+		return filtreArticle;
+	}
+	
+//	public List<Article> applyFilter(String filtreNom, int filtreCategorie, boolean filtreEnchereOuverte, boolean filtreMesEnchere,	boolean filtreEnchereRemportes, boolean filtreVentesEnCours,boolean filtreVentesCree,boolean filtreVentesEnd) {
+//		List<Article> filtreArticle = new ArrayList<Article>();
+//		for (Utilisateur u : catalogue) {
+//			for (Article a : u.getListeArticle()) {
+//				if (!("".equals(filtreNom)) && !(filtreCategorie==0) && filtreEnchereOuverte && filtreMesEnchere && filtreEnchereRemportes) {
+//					for (Enchere e : a.getListeEnchere()) {
+//						if (a.getNomArticle().contains(filtreNom) && a.getNoCategorie()==filtreCategorie && a.getEtatVente().equals("En cours") && u.getNoUtilisateur()==Integer.parseInt(String.valueOf(session.getAttribute("id"))) && ) {
+//							filtreArticle.add(a);
+//						}
+//					}
+//					
+//					
+//					
+//				}
+//			}
+//		}
+//		
+//		
+//	}
 }
