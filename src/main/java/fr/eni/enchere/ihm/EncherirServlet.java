@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.FactoryBLL;
+import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Categorie;
 import fr.eni.enchere.bo.Utilisateur;
 
@@ -40,6 +41,18 @@ public class EncherirServlet extends HttpServlet {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
+		
+		int id = 0;
+		
+		for (Utilisateur u : catalogue) {
+			for(Article a : u.getListeArticle()) {
+				if (Integer.parseInt(req.getParameter("no"))==a.getNoArticle()) {
+					id = a.getNoArticle();
+				}
+			} 
+		}
+		
+		req.setAttribute("noArticle", id);	
 		req.setAttribute("catalogue", catalogue);
 		req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);
 	}

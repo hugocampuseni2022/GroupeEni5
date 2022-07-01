@@ -33,7 +33,6 @@
 						<div class="row">
 							<div class="col-3 position-relative">
 								<a class="position-absolute top-50 start-50 translate-middle">img placeholder</a>
-								<!-- ${article.getImage} -->
 							</div>
 							<div class="col-9">
 								<div class="row">
@@ -61,7 +60,7 @@
 									</div>
 									<div class="col-6">
 										<div>
-											${article.getCategorie()}
+											${article.getNoCategorie()}
 										</div>
 									</div>
 								</div>
@@ -95,7 +94,7 @@
 									</div>
 									<div class="col-6">
 										<div>
-											${article.getDateFinEnchere()}
+											${article.getDateFinEncheres()}
 										</div>
 									</div>
 								</div>
@@ -119,7 +118,7 @@
 									</div>
 									<div class="col-6">
 										<div>
-											${utilisateur.getPseudo}
+											${utilisateur.getPseudo()}
 										</div>
 									</div>
 								</div>
@@ -133,7 +132,7 @@
 										<form action="encherir" method="post">
 											<div>
 												<input type="number" maxlength="4" min="1" name="offre" id="">
-												<!-- ${utilisateur.getArticle().getMontant_Enchere()+10} -->
+												<!-- utilisateur.getArticle().getMontant_Enchere()+10 -->
 												
 												
 												<!-- if (offre>utilisateur.getCredit) btnEncher=disabled -->
