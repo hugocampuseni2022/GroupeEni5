@@ -58,15 +58,14 @@
 			<div class="col-12 text-start">
 				<h4>Filtres :</h4>
 			</div>
-			<form action="" method="get" class="col-12">
+			<form action="Accueil?action=filtrer" method="get" class="col-12">
 				<div class="">
 					<div>
-						<input type="text" placeholder="Le nom de l'article contient" size="30">
+						<input type="text" name="filtreNom" placeholder="Le nom de l'article contient" size="30">
 					</div>
-					
 					<label for="categorie">Catégorie :</label>
 					<select name="categorie">
-					    <option value="">Toutes</option>
+					    <option value="0">Toutes</option>
 					    <c:forEach var="categorie" items="${categories}">
 			    		    <option value="${categorie.noCategorie}">${categorie.libelle}</option>
 					    </c:forEach>
@@ -104,30 +103,34 @@
 			<div>
 				<!-- Liste des articles dans la bdd -->
 				<c:forEach var="utilisateur" items="${catalogue}">
-					<c:forEach var="article" items="${utilisateur.getListeArticle()}">	
-						<div class="card mb-3" style="max-width: 540px;">
-							<div class="row no-gutters">
-								<div class="col-md-4">
-									<img src="..." class="card-img" alt="...">
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-										<a href="#" class="card-title">${article.getNomArticle()}</a>
-										<c:choose>
-											<c:when test="${article.getPrixVente()<article.getMiseAPrix()}">
-												<p class="card-text">Prix : ${article.getMiseAPrix()} points</p>
-											</c:when>
-											<c:otherwise>
-												<p class="card-text">Prix : ${article.getPrixVente()} points</p>
-											</c:otherwise>
-										</c:choose>
-										<p class="card-text">Fin de l'enchère : ${article.getDateFinEncheres()}</p>
-										<span class="card-text">Vendeur : </span>
-										<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
+					<c:forEach var="article" items="${utilisateur.getListeArticle()}">
+						<c:forEach var="articleFiltre" items="${filtre}">
+							<c:if test="${article.getNoArticle()==articleFiltre.getNoArticle()}">						
+								<div class="card mb-3" style="max-width: 540px;">
+									<div class="row no-gutters">
+										<div class="col-md-4">
+											<img src="..." class="card-img" alt="...">
+										</div>
+										<div class="col-md-8">
+											<div class="card-body">
+												<a href="#" class="card-title">${article.getNomArticle()}</a>
+												<c:choose>
+													<c:when test="${article.getPrixVente()<article.getMiseAPrix()}">
+														<p class="card-text">Prix : ${article.getMiseAPrix()} points</p>
+													</c:when>
+													<c:otherwise>
+														<p class="card-text">Prix : ${article.getPrixVente()} points</p>
+													</c:otherwise>
+												</c:choose>
+												<p class="card-text">Fin de l'enchère : ${article.getDateFinEncheres()}</p>
+												<span class="card-text">Vendeur : </span>
+												<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
+							</c:if>
+						</c:forEach>
 					</c:forEach>
 				</c:forEach>
 			</div>

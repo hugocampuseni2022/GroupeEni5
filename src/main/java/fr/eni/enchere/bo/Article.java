@@ -90,11 +90,11 @@ public class Article {
 	}
 
 	public void setEtatVente(Date now, Date debut, Date fin) {
-		if (now.compareTo(debut)>0) {
+		if (now.compareTo(debut)<0) {
 			this.etatVente = "Créée";
-		} else if (debut.compareTo(fin)>0) {
-			this.etatVente = "En cours";
 		} else if (debut.compareTo(fin)<0) {
+			this.etatVente = "En cours";
+		} else if (debut.compareTo(fin)>0) {
 			this.etatVente = "Terminé";
 		}
 	}
