@@ -61,9 +61,9 @@ public class WinAuctionServlet extends HttpServlet {
 		
 			for (Utilisateur u : catalogue) {
 				for(Article a : u.getListeArticle()) {
-//					if (Integer.parseInt(request.getParameter("idArticle"))==a.getNoArticle()) {
+					if (Integer.parseInt(request.getParameter("no"))==a.getNoArticle()) {
 					id = a.getNoArticle();
-//				}
+			}
 			} 
 		}
 			
