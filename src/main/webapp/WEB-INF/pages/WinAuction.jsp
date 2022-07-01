@@ -48,7 +48,7 @@
 										</div>
 										
 										<div>
-											Meilleure offre : ${article.getPrixVente()}<c:if test="${id== user2.getNoUtilisateur()}">par ${user2.getNom()}</c:if>
+											Meilleure offre : ${article.getPrixVente()}<c:if test="${id== utilisateur.getNoUtilisateur()}">par ${user2.getNom()}</c:if>
 										</div>
 										
 										<div>
