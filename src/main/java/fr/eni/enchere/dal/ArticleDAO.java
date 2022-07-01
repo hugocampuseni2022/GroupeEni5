@@ -32,8 +32,8 @@ public interface ArticleDAO {
 		List<Enchere> selectEnchereByUser(int idUser) throws DALException;
 		
 		List<Categorie> selectCategorie() throws DALException;
-		
-		int encherir (int idArticle, int meilleureOffre) throws DALException;
+
+		void encherir(int idArticle, int idUser, Enchere enchere) throws DALException;
 	}
 
 
