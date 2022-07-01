@@ -49,7 +49,7 @@ public class ArticleImpl implements ArticleManager {
 			daoArticle.insert(article, id);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
-			throw new BLLException ("erreur enregistrement Article");
+			throw new BLLException ("erreur enregistrement Article", e);
 		}
 		
 	}
@@ -60,7 +60,7 @@ public class ArticleImpl implements ArticleManager {
 			daoArticle.delete(noArticle);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
-			throw new BLLException("Erreur supprimer Article");
+			throw new BLLException("Erreur supprimer Article", e);
 		}
 		
 	}

@@ -40,6 +40,8 @@ public class ArticleDAOImpl implements ArticleDAO{
 	
 	private static final String INSERT_ENCHERE = "insert into ENCHERES (date_enchere, montant_enchere, no_article, no_utilisateur) values (?, ?, ?, ?)";
 	
+	private static final String INSERT_RETRAIT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville) VALUES (?, ?, ?, ? )";
+	
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;									
 	private static Statement stmt;
@@ -52,7 +54,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 	//try with resources 
 		try (Connection conn = ConnectionProvider.getConnection()){
 			
-			pStmt = conn.prepareStatement(INSERT);
+			pStmt = conn.prepareStatement(INSERT,PreparedStatement.RETURN_GENERATED_KEYS);
 			
 					
 			//Valoriser les parametres 
@@ -70,6 +72,22 @@ public class ArticleDAOImpl implements ArticleDAO{
 			//Etape : executer la requete
 			
 			pStmt.executeUpdate();
+			
+			
+			rs = pStmt.getGeneratedKeys();
+			if(rs.next()) {
+				pStmt = conn.prepareStatement(INSERT_RETRAIT);
+				
+				pStmt.setInt(1, rs.getInt(1));
+				pStmt.setString(2,article.getLieuRetrait().getRue());
+				pStmt.setString(3,article.getLieuRetrait().getCode_postal());
+				pStmt.setString(4,article.getLieuRetrait().getVille());
+			
+				pStmt.executeUpdate();	
+				
+			}
+			
+			
 		} catch (SQLException e) {
 			
 			
