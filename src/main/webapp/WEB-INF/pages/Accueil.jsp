@@ -59,81 +59,111 @@
 				<h4>Filtres :</h4>
 			</div>
 			<form action="Accueil?action=filtrer" method="get" class="col-12">
-				<div class="">
-					<div>
-						<input type="text" name="filtreNom" placeholder="Le nom de l'article contient" size="30">
-					</div>
-					<label for="categorie">Catégorie :</label>
-					<select name="categorie">
-					    <option value="0">Toutes</option>
-					    <c:forEach var="categorie" items="${categories}">
-			    		    <option value="${categorie.noCategorie}">${categorie.libelle}</option>
-					    </c:forEach>
-					</select>
-					<c:if test="${connected}">
-						<div>
-							<br>
-			                <input type="radio" id="radioAchats" name="radio" value="achat">
-			                <label for="radioAchats">Achats</label>
-			            </div>
-			            <div>
-		            		<label><input type="checkbox" name="enchereOuverte" id="checkboxAchats" disabled> enchère ouvertes</label>           <!-- accessible seulement si 'radioAchats' est selectionné -->
-			                <br>
-			                <label><input type="checkbox" name="mesEncheres" id="checkboxAchats" disabled> mes enchères</label>             <!-- accessible seulement si 'radioAchats' est selectionné -->
-			                <br>
-			                <label><input type="checkbox" name="mesEnchereRemportees" id="checkboxAchats" disabled> mes enchères remportées</label>     <!-- accessible seulement si 'radioAchats' est selectionné -->
-			           	</div>
-			           	<div>
-			           		<br>
-			           		<input type="radio" id="radioVentes" name="radio" value="vente">
-			                <label for="radioVentes">Mes ventes</label>
-			           	</div>
-			           	<div>
-			                <label><input type="checkbox" name="mesVentesEnCours" id="checkboxVentes" disabled> mes ventes en cours</label>       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-			                <br>
-			                <label><input type="checkbox" name="ventesNonDebutees" id="checkboxVentes" disabled> ventes non débutées</label>     	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-			                <br>
-			                <label><input type="checkbox" name="ventesTerminees" id="checkboxVentes" disabled> ventes terminées</label>       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-			            </div>
-		            </c:if>
-		            <br>
-					<button>Rechercher</button>
-				</div>
-			</form>
-			<div>
-				<!-- Liste des articles dans la bdd -->
-				<c:forEach var="utilisateur" items="${catalogue}">
-					<c:forEach var="article" items="${utilisateur.getListeArticle()}">
-						<c:forEach var="articleFiltre" items="${filtre}">
-							<c:if test="${article.getNoArticle()==articleFiltre.getNoArticle()}">						
-								<div class="card mb-3" style="max-width: 540px;">
-									<div class="row no-gutters">
-										<div class="col-md-4">
-											<img src="..." class="card-img" alt="...">
-										</div>
-										<div class="col-md-8">
-											<div class="card-body">
-												<a href="Redirection?etat=${article.getEtatVente()}&no=${article.getNoArticle()}" class="card-title">${article.getNomArticle()}</a>
-												<c:choose>
-													<c:when test="${article.getPrixVente()<article.getMiseAPrix()}">
-														<p class="card-text">Prix : ${article.getMiseAPrix()} points</p>
-													</c:when>
-													<c:otherwise>
-														<p class="card-text">Prix : ${article.getPrixVente()} points</p>
-													</c:otherwise>
-												</c:choose>
-												<p class="card-text">Fin de l'enchère : ${article.getDateFinEncheres()}</p>
-												<span class="card-text">Vendeur : </span>
-												<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
+				<div class="container">
+					<div class="row">
+						<!-- Div Param Filtre -->
+						<div class="col-12 col-sm-12 col-md-9 flex-sm-column-reverse flex-md-row">
+							<div class="container">
+								<div class="row">
+									<!-- Search Bar -->
+									<div class="col-12">
+										<input type="text" name="filtreNom" placeholder="Le nom de l'article contient" size="30">
+									</div>
+									<!-- Catégories -->
+									<div class="col-12">
+										<label for="categorie">Catégorie :</label>
+										<select name="categorie">
+										    <option value="0">Toutes</option>
+										    <c:forEach var="categorie" items="${categories}">
+								    		    <option value="${categorie.noCategorie}">${categorie.libelle}</option>
+										    </c:forEach>
+										</select>
+									</div>
+									<!-- Radios -->
+									<c:if test="${connected}">
+										<div class="col-12">
+											<div class="container">
+												<div class="row">
+													<!-- Radio Achat -->
+													<div class="col-12 col-sm-12 col-md-6">
+														<div>
+											                <input type="radio" id="radioAchats" name="radio" value="achat">
+											                <label for="radioAchats">Achats</label>
+											            </div>
+											            <div>
+										            		<label><input type="checkbox" name="enchereOuverte" id="checkboxAchats" disabled> enchère ouvertes</label>           <!-- accessible seulement si 'radioAchats' est selectionné -->
+										            	</div>
+										            	<div>
+											                <label><input type="checkbox" name="mesEncheres" id="checkboxAchats" disabled> mes enchères</label>             <!-- accessible seulement si 'radioAchats' est selectionné -->
+											            </div>
+											            <div>
+											                <label><input type="checkbox" name="mesEnchereRemportees" id="checkboxAchats" disabled> mes enchères remportées</label>     <!-- accessible seulement si 'radioAchats' est selectionné -->
+											           	</div>
+													</div>
+													<!-- Radio Vente -->
+													<div class="col-12 col-sm-12 col-md-6">
+														<div>
+											           		<input type="radio" id="radioVentes" name="radio" value="vente">
+											                <label for="radioVentes">Mes ventes</label>
+											           	</div>
+											           	<div>
+											                <label><input type="checkbox" name="mesVentesEnCours" id="checkboxVentes" disabled> mes ventes en cours</label>       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+											            </div>
+											            <div>
+											                <label><input type="checkbox" name="ventesNonDebutees" id="checkboxVentes" disabled> ventes non débutées</label>     	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+											            </div>
+											            <div>
+											                <label><input type="checkbox" name="ventesTerminees" id="checkboxVentes" disabled> ventes terminées</label>       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+											            </div>
+													</div>
+												</div>
 											</div>
+										</div>
+									</c:if>
+								</div>
+							</div>
+						</div>
+						<!-- Div bouton -->
+						<div class="col-12 col-sm-12 col-md-3">
+							<button>Rechercher</button>
+						</div>
+					</div>
+				</div>
+			</form>        		
+		</div>
+		<div>
+			<!-- Liste des articles dans la bdd -->
+			<c:forEach var="utilisateur" items="${catalogue}">
+				<c:forEach var="article" items="${utilisateur.getListeArticle()}">
+					<c:forEach var="articleFiltre" items="${filtre}">
+						<c:if test="${article.getNoArticle()==articleFiltre.getNoArticle()}">						
+							<div class="card mb-3" style="max-width: 540px;">
+								<div class="row no-gutters">
+									<div class="col-md-4">
+										<img src="..." class="card-img" alt="...">
+									</div>
+									<div class="col-md-8">
+										<div class="card-body">
+											<a href="Redirection?etat=${article.getEtatVente()}&no=${article.getNoArticle()}" class="card-title">${article.getNomArticle()}</a>
+											<c:choose>
+												<c:when test="${article.getPrixVente()<article.getMiseAPrix()}">
+													<p class="card-text">Prix : ${article.getMiseAPrix()} points</p>
+												</c:when>
+												<c:otherwise>
+													<p class="card-text">Prix : ${article.getPrixVente()} points</p>
+												</c:otherwise>
+											</c:choose>
+											<p class="card-text">Fin de l'enchère : ${article.getDateFinEncheres()}</p>
+											<span class="card-text">Vendeur : </span>
+											<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
 										</div>
 									</div>
 								</div>
-							</c:if>
-						</c:forEach>
+							</div>
+						</c:if>
 					</c:forEach>
 				</c:forEach>
-			</div>
+			</c:forEach>
 		</div>
 	</main>
 		<script>
