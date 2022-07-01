@@ -104,7 +104,12 @@ public class AccueilServlet extends HttpServlet {
 			session.setAttribute("connected", "false");
 			listeFiltrer = applyFilter(filtreNom, filtreCategorie);
 		} else {
-			listeFiltrer = applyFilter(filtreNom, filtreCategorie, filtreEnchereOuverte, filtreMesEnchere, filtreEnchereRemportes, filtreVentesEnCours, filtreVentesCree, filtreVentesEnd);
+			//listeFiltrer = applyFilter(filtreNom, filtreCategorie, filtreEnchereOuverte, filtreMesEnchere, filtreEnchereRemportes, filtreVentesEnCours, filtreVentesCree, filtreVentesEnd);
+			for (Utilisateur u : catalogue) {
+				for (Article a : u.getListeArticle()) {
+					listeFiltrer.add(a);
+				}
+			}
 		}
 		
 		for (Utilisateur utilisateur : catalogue) {
