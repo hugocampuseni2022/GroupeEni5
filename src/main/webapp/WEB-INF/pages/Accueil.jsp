@@ -71,7 +71,6 @@
 			    		    <option value="${categorie.noCategorie}">${categorie.libelle}</option>
 					    </c:forEach>
 					</select>
-					<script src="script/Accueil.js"></script>
 					<div>
 						<br>
 		                <input type="radio" id="radioAchats" name="radio" value="achat">
