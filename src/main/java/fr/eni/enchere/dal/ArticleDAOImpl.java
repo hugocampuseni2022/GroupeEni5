@@ -305,6 +305,12 @@ public class ArticleDAOImpl implements ArticleDAO{
 		}
 		
 	}
+
+	@Override
+	public int encherir(int idArticle, int meilleureOffre) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
 
 		
