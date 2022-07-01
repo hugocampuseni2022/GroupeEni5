@@ -78,11 +78,11 @@ public class WinAuctionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if("Retrait Effectué".equals(request.getParameterValues("btn")[0])) {
-			 request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/Accueil");;
 		}
 		
 		else if ("Back".equals(request.getParameterValues("btn")[0])) {
-			request.getRequestDispatcher("/WEB-INF/pages/Accueil.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/Accueil");;
 			
 		}
 		
