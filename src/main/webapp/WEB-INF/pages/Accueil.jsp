@@ -61,7 +61,7 @@
 			<form action="" method="get" class="col-12">
 				<div class="">
 					<div>
-						<input type="text" placeholder="Le nom de l'article contient">
+						<input type="text" placeholder="Le nom de l'article contient" size="30">
 					</div>
 					
 					<label for="categorie">Catégorie :</label>
@@ -71,30 +71,32 @@
 			    		    <option value="${categorie.noCategorie}">${categorie.libelle}</option>
 					    </c:forEach>
 					</select>
-					<div>
-						<br>
-		                <input type="radio" id="radioAchats" name="radio" value="achat">
-		                <label for="radioAchats">Achats</label>
-		            </div>
-		            <div>
-	            		<label><input type="checkbox" name="enchereOuverte" id="checkboxAchats" disabled> enchère ouvertes</label>           <!-- accessible seulement si 'radioAchats' est selectionné -->
-		                <br>
-		                <label><input type="checkbox" name="mesEncheres" id="checkboxAchats" disabled> mes enchères</label>             <!-- accessible seulement si 'radioAchats' est selectionné -->
-		                <br>
-		                <label><input type="checkbox" name="mesEnchereRemportees" id="checkboxAchats" disabled> mes enchères remportées</label>     <!-- accessible seulement si 'radioAchats' est selectionné -->
-		           	</div>
-		           	<div>
-		           		<br>
-		           		<input type="radio" id="radioVentes" name="radio" value="vente">
-		                <label for="radioVentes">Mes ventes</label>
-		           	</div>
-		           	<div>
-		                <label><input type="checkbox" name="mesVentesEnCours" id="checkboxVentes" disabled> mes ventes en cours</label>       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-		                <br>
-		                <label><input type="checkbox" name="ventesNonDebutees" id="checkboxVentes" disabled> ventes non débutées</label>     	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-		                <br>
-		                <label><input type="checkbox" name="ventesTerminees" id="checkboxVentes" disabled> ventes terminées</label>       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-		            </div>
+					<c:if test="${connected}">
+						<div>
+							<br>
+			                <input type="radio" id="radioAchats" name="radio" value="achat">
+			                <label for="radioAchats">Achats</label>
+			            </div>
+			            <div>
+		            		<label><input type="checkbox" name="enchereOuverte" id="checkboxAchats" disabled> enchère ouvertes</label>           <!-- accessible seulement si 'radioAchats' est selectionné -->
+			                <br>
+			                <label><input type="checkbox" name="mesEncheres" id="checkboxAchats" disabled> mes enchères</label>             <!-- accessible seulement si 'radioAchats' est selectionné -->
+			                <br>
+			                <label><input type="checkbox" name="mesEnchereRemportees" id="checkboxAchats" disabled> mes enchères remportées</label>     <!-- accessible seulement si 'radioAchats' est selectionné -->
+			           	</div>
+			           	<div>
+			           		<br>
+			           		<input type="radio" id="radioVentes" name="radio" value="vente">
+			                <label for="radioVentes">Mes ventes</label>
+			           	</div>
+			           	<div>
+			                <label><input type="checkbox" name="mesVentesEnCours" id="checkboxVentes" disabled> mes ventes en cours</label>       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+			                <br>
+			                <label><input type="checkbox" name="ventesNonDebutees" id="checkboxVentes" disabled> ventes non débutées</label>     	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+			                <br>
+			                <label><input type="checkbox" name="ventesTerminees" id="checkboxVentes" disabled> ventes terminées</label>       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+			            </div>
+		            </c:if>
 		            <br>
 					<button>Rechercher</button>
 				</div>
