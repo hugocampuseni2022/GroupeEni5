@@ -113,7 +113,7 @@
 										</div>
 										<div class="col-md-8">
 											<div class="card-body">
-												<a href="#" class="card-title">${article.getNomArticle()}</a>
+												<a href="Redirection?etat=${article.getEtatVente()}" class="card-title">${article.getNomArticle()}</a>
 												<c:choose>
 													<c:when test="${article.getPrixVente()<article.getMiseAPrix()}">
 														<p class="card-text">Prix : ${article.getMiseAPrix()} points</p>
