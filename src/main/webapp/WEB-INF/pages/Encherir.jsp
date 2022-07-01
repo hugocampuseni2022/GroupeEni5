@@ -33,7 +33,7 @@
 				</div>
 				<div class="col-9">
 					<div class="row">
-						<a>nom article / placeholder</a>
+						<p>${utilisateur.getArticle().getNomArticle()}</p>
 						<!-- ${user.getArticle.getNom} -->
 					</div>
 					<div class="row">
@@ -41,7 +41,7 @@
 							<p>Description :</p>
 						</div>
 						<div class="col-6">
-							<p>bla bla bla / placeholder</p>
+							<p>${utilisateur.getArticle().getDescription()}</p>
 							<!-- ${user.getArticle.getDescription} -->
 						</div>
 					</div>
@@ -50,7 +50,7 @@
 							<p>Catégorie :</p>
 						</div>
 						<div class="col-6">
-							<p>Informatique / placeholder</p>
+							<p>${utilisateur.getArticle().getCategorie()}</p>
 							<!-- ${user.getArticle.getCategorie} -->
 						</div>
 					</div>
@@ -59,8 +59,8 @@
 							<p>Meilleure offre :</p>
 						</div>
 						<div class="col-6">
-							<p>210 pts par Bob / placeholder</p>
-							<!-- ${user.getArticle.getMeilleureOffre} -->
+							<p>${enchere.getMontant_Enchere()}</p>
+							<!-- ${enchere.getMontant_Enchere()} -->
 						</div>
 					</div>
 					<div class="row">
@@ -68,7 +68,7 @@
 							<p>Mise à prix :</p>
 						</div>
 						<div class="col-6">
-							<p>185 points / placeholder</p>
+							<p>${utilisateur.getArticle().getMiseAPrix()}</p>
 							<!-- ${user.getArticle.getMiseAPrix} -->
 						</div>
 					</div>
@@ -77,8 +77,8 @@
 							<p>Fin de l'enchère :</p>
 						</div>
 						<div class="col-6">
-							<p>09/10/2018 / placeholder</p>
-							<!-- ${user.getArticle.getDateFinEncheres} -->
+							<p>${enchere.getDateEnchere()}</p>
+							<!-- ${enchere.getDateEnchere()} -->
 						</div>
 					</div>
 					<div class="row">
@@ -86,7 +86,7 @@
 							<p>Retrait :</p>
 						</div>
 						<div class="col-6">
-							<p>10 rue de la soif<br> 44000 Nantes / placeholder</p>
+							<p>${utilisateur.}</p>
 							<!-- ${user.getArticle.getLieuRetrait} -->
 						</div>
 					</div>
