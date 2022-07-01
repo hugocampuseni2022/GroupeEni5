@@ -7,11 +7,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Encherir</title>
+<link rel="stylesheet" href="style/Encherir.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
 	<header class="container-fluid">
-		<div = class="row">
+		<div class="row">
 			<div class="col-sm-12 col-md-4 logo">
 				<span>ENI-Enchères</span>
 			</div>
