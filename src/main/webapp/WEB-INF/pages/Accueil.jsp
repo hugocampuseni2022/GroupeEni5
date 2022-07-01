@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Acceuil</title>
+<title>Accueil</title>
 <link rel="stylesheet" href="style/Accueil.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
@@ -61,7 +61,7 @@
 			<form action="" method="get" class="col-12">
 				<div class="">
 					<div>
-						<input type="text" placeholder="Le nom de l'article contient">
+						<input type="text" placeholder="Le nom de l'article contient" size="30">
 					</div>
 					
 					<label for="categorie">Catégorie :</label>
@@ -71,52 +71,32 @@
 			    		    <option value="${categorie.noCategorie}">${categorie.libelle}</option>
 					    </c:forEach>
 					</select>
-					<script src="script/Accueil.js"></script>
-					<div>
-						<br>
-		                <input type="radio" id="radioAchats" name="radio" value="achat">
-		                <label for="radioAchats">Achats</label>
-		            </div>
-		            <div>
-			            <c:choose>
-			            	<c:when test="radioAchats">
-			            		<input type="checkbox" id="enchereOuverte" name="checkboxAchats" >           <!-- accessible seulement si 'radioAchats' est selectionné -->
-				                <label for="enchereOuverte">enchères ouvertes</label>
-				                <br>
-				                <input type="checkbox" id="mesEncheres" name="checkboxAchats" >              <!-- accessible seulement si 'radioAchats' est selectionné -->
-				                <label for="mesEncheres">mes enchères</label>
-				                <br>
-				                <input type="checkbox" id="mesEnchereRemportees" name="checkboxAchats" >     <!-- accessible seulement si 'radioAchats' est selectionné -->
-				                <label for="mesEnchereRemportees">mes enchères remportées</label>
-			            	</c:when>
-			            	<c:otherwise>
-				            	<input type="checkbox" id="enchereOuverte" name="checkboxAchats" disabled="disabled">      
-				                <label for="enchereOuverte">enchères ouvertes</label>
-				                <br>
-				                <input type="checkbox" id="mesEncheres" name="checkboxAchats" disabled="disabled">        
-				                <label for="mesEncheres">mes enchères</label>
-				                <br>
-				                <input type="checkbox" id="mesEnchereRemportees" name="checkboxAchats" disabled="disabled">
-				                <label for="mesEnchereRemportees">mes enchères remportées</label>
-			            	</c:otherwise>
-			            </c:choose>
-		                
-		           	</div>
-		           	<div>
-		           		<br>
-		           		<input type="radio" id="radioVentes" name="radio" value="vente">
-		                <label for="radioVentes">Mes ventes</label>
-		           	</div>
-		           	<div>
-		                <input type="checkbox" id="mesVentesEnCours" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-		                <label for="mesVentesEnCours">mes ventes en cours</label>
-		                <br>
-		                <input type="checkbox" id="ventesNonDebutees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-		                <label for="ventesNonDebutees">ventes non débutées</label>
-		                <br>
-		                <input type="checkbox" id="ventesTerminees" name="checkboxVentes">       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
-		                <label for="ventesTerminees">ventes terminées</label>
-		            </div>
+					<c:if test="${connected}">
+						<div>
+							<br>
+			                <input type="radio" id="radioAchats" name="radio" value="achat">
+			                <label for="radioAchats">Achats</label>
+			            </div>
+			            <div>
+		            		<label><input type="checkbox" name="enchereOuverte" id="checkboxAchats" disabled> enchère ouvertes</label>           <!-- accessible seulement si 'radioAchats' est selectionné -->
+			                <br>
+			                <label><input type="checkbox" name="mesEncheres" id="checkboxAchats" disabled> mes enchères</label>             <!-- accessible seulement si 'radioAchats' est selectionné -->
+			                <br>
+			                <label><input type="checkbox" name="mesEnchereRemportees" id="checkboxAchats" disabled> mes enchères remportées</label>     <!-- accessible seulement si 'radioAchats' est selectionné -->
+			           	</div>
+			           	<div>
+			           		<br>
+			           		<input type="radio" id="radioVentes" name="radio" value="vente">
+			                <label for="radioVentes">Mes ventes</label>
+			           	</div>
+			           	<div>
+			                <label><input type="checkbox" name="mesVentesEnCours" id="checkboxVentes" disabled> mes ventes en cours</label>       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+			                <br>
+			                <label><input type="checkbox" name="ventesNonDebutees" id="checkboxVentes" disabled> ventes non débutées</label>     	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+			                <br>
+			                <label><input type="checkbox" name="ventesTerminees" id="checkboxVentes" disabled> ventes terminées</label>       	 <!-- accessible seulement si 'radioVentes' est selectionné -->
+			            </div>
+		            </c:if>
 		            <br>
 					<button>Rechercher</button>
 				</div>
@@ -153,6 +133,84 @@
 			</div>
 		</div>
 	</main>
+		<script>
+            // assign onclick handler to hazard checkbox
+            document.getElementById('radioAchats').onclick = function() {
+            
+            // is hazard checkbox checked?
+            var radio1 = this.checked; // true or false
+            
+            // get list of radio buttons with name 'ship'
+            var check1 = this.form.elements["checkboxAchats"];
+
+            // loop through list of radio buttons
+            for (var i=0, len=check1.length; i<len; i++) {
+                var r = check1[i]; // current radio button
+
+                if ( radio1 ) { // hazard checkbox checked
+                    r.disabled = false; // no radios disabled   
+                } else { // hazard not checked 
+                    r.checked = false; // unchecked
+                    r.disabled = true; // disable
+                } 
+
+            }
+
+            var check2 = this.form.elements["checkboxVentes"];
+
+            for (var i=0, len=check2.length; i<len; i++) {
+                var r = check2[i]; // current radio button
+
+                if ( radio1 ) { // hazard checkbox checked
+                    r.checked = false; // unchecked
+                    r.disabled = true; // disable                 
+                } else { // hazard not checked 
+                    r.disabled = false; // no radios disabled  
+                } 
+
+            }
+            
+            }
+            
+            // assign onclick handler to hazard checkbox
+            document.getElementById('radioVentes').onclick = function() {
+
+            // is hazard checkbox checked?
+            var radio2 = this.checked; // true or false
+
+            // get list of radio buttons with name 'ship'
+            var check2 = this.form.elements["checkboxVentes"];
+
+            // loop through list of radio buttons
+            for (var i=0, len=check2.length; i<len; i++) {
+                var r = check2[i]; // current radio button
+
+                if ( radio2 ) { // hazard checkbox checked
+
+                    r.disabled = false; // no radios disabled   
+                } else { // hazard not checked 
+                    r.checked = false; // unchecked
+                    r.disabled = true; // disable
+                } 
+
+            }
+
+            var check1 = this.form.elements["checkboxAchats"];
+
+            for (var i=0, len=check1.length; i<len; i++) {
+                var r = check1[i]; // current radio button
+
+                if ( radio2 ) { // hazard checkbox checked
+                    r.checked = false; // unchecked
+                    r.disabled = true; // disable                 
+                } else { // hazard not checked 
+                    r.disabled = false; // no radios disabled  
+                } 
+
+            }
+            }
+
+	</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

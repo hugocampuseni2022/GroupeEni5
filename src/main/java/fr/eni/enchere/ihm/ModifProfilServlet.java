@@ -92,7 +92,14 @@ public class ModifProfilServlet extends HttpServlet {
 				}	
 		} 
 		else {
+			if(!(request.getParameter("mdpActuel").equals(mdpCourant))){
+				request.setAttribute("erreur", "Mot de passe faux");
+				request.setAttribute("catalogue", catalogue);
+				request.getRequestDispatcher("/WEB-INF/pages/ModifProfil.jsp").forward(request, response);
+			}
+			else {
 			try {
+				UG.supprimerArticle(Integer.parseInt(request.getParameterValues("idUtilisateur")[0]));
 				UG.supprimerUtilisateur(Integer.parseInt(request.getParameterValues("idUtilisateur")[0]));
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
@@ -101,8 +108,8 @@ public class ModifProfilServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			response.sendRedirect(request.getContextPath()+"/Accueil");
-			
+			response.sendRedirect(request.getContextPath()+"/Accueil?action=deconnexion");
+			}
 			
 		}
 		
