@@ -104,11 +104,7 @@ public class AccueilServlet extends HttpServlet {
 			session.setAttribute("connected", "false");
 			listeFiltrer = applyFilter(filtreNom, filtreCategorie);
 		} else {
-			for (Utilisateur u : catalogue) {
-				for (Article a : u.getListeArticle()) {			
-					listeFiltrer.add(a);	
-				}
-			}
+			listeFiltrer = applyFilter(filtreNom, filtreCategorie, filtreEnchereOuverte, filtreMesEnchere, filtreEnchereRemportes, filtreVentesEnCours, filtreVentesCree, filtreVentesEnd);
 		}
 		
 		for (Utilisateur utilisateur : catalogue) {
@@ -161,23 +157,91 @@ public class AccueilServlet extends HttpServlet {
 		return filtreArticle;
 	}
 	
-//	public List<Article> applyFilter(String filtreNom, int filtreCategorie, boolean filtreEnchereOuverte, boolean filtreMesEnchere,	boolean filtreEnchereRemportes, boolean filtreVentesEnCours,boolean filtreVentesCree,boolean filtreVentesEnd) {
-//		List<Article> filtreArticle = new ArrayList<Article>();
-//		for (Utilisateur u : catalogue) {
-//			for (Article a : u.getListeArticle()) {
-//				if (!("".equals(filtreNom)) && !(filtreCategorie==0) && filtreEnchereOuverte && filtreMesEnchere && filtreEnchereRemportes) {
-//					for (Enchere e : a.getListeEnchere()) {
-//						if (a.getNomArticle().contains(filtreNom) && a.getNoCategorie()==filtreCategorie && a.getEtatVente().equals("En cours") && u.getNoUtilisateur()==Integer.parseInt(String.valueOf(session.getAttribute("id"))) && ) {
-//							filtreArticle.add(a);
-//						}
-//					}
-//					
-//					
-//					
-//				}
-//			}
-//		}
-//		
-//		
-//	}
+	public List<Article> applyFilter(String filtreNom, int filtreCategorie, boolean filtreEnchereOuverte, boolean filtreMesEnchere,	boolean filtreEnchereRemportes, boolean filtreVentesEnCours,boolean filtreVentesCree,boolean filtreVentesEnd) {
+		List<Article> filtreArticle = new ArrayList<Article>();
+		for (Utilisateur u : catalogue) {
+			for (Article a : u.getListeArticle()) {
+				if (!("".equals(filtreNom)) &&
+						!(filtreCategorie==0) &&
+						filtreEnchereOuverte &&
+						filtreEnchereRemportes &&
+						filtreMesEnchere
+						) {
+					
+				}
+					
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				if (!("".equals(filtreNom))) {
+					if (a.getNoCategorie()==filtreCategorie) {
+						for (Article art : filtreArticle) {
+							if (!(a.getNoArticle()==art.getNoArticle())) {
+								filtreArticle.add(a);
+							}
+						}
+					}
+				}
+				if (!(filtreCategorie==0)) {
+					if (a.getNoCategorie()==filtreCategorie) {
+						for (Article art : filtreArticle) {
+							if (!(a.getNoArticle()==art.getNoArticle())) {
+								filtreArticle.add(a);
+							}
+						}
+					}
+				}
+				if (filtreEnchereOuverte) {
+					if (a.getEtatVente().equals("En cours")) {
+						for (Article art : filtreArticle) {
+							if (!(a.getNoArticle()==art.getNoArticle())) {
+								filtreArticle.add(a);
+							}
+						}
+					}
+				}
+				if (filtreMesEnchere) {
+					for (Enchere e1 : u.getListeEnchere()) {
+						for (Enchere e2 : a.getListeEnchere()) {
+							if (e1==e2) {
+								System.out.println("test");
+								for (Article art : filtreArticle) {
+									if (!(a.getNoArticle()==art.getNoArticle())) {
+										filtreArticle.add(a);
+									}
+								}
+							}
+						}
+					}
+				}
+				if (filtreEnchereRemportes) {
+					if (a.getEtatVente().equals("Terminé")) {
+						for (Enchere e1 : u.getListeEnchere()) {
+							for (Enchere e2 : a.getListeEnchere()) {
+								if (e1==e2 && e1.getMontant_Enchere()==a.getPrixVente()) {
+									System.out.println("test");
+									for (Article art : filtreArticle) {
+										if (!(a.getNoArticle()==art.getNoArticle())) {
+											filtreArticle.add(a);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return filtreArticle;
+	}
 }

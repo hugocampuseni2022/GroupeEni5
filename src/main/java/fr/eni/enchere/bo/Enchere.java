@@ -7,12 +7,13 @@ public class Enchere {
 	// attributes
 	private Timestamp dateEnchere;
 	private int montant_Enchere;
+	private int numero_Enchere;
 	
-	// construct
-	public Enchere(Timestamp dateEnchere, int montant_Enchere) {
+	public Enchere(Timestamp dateEnchere, int montant_Enchere, int numero_Enchere) {
 		super();
 		this.dateEnchere = dateEnchere;
 		this.montant_Enchere = montant_Enchere;
+		this.numero_Enchere = numero_Enchere;
 	}
 
 	// getters and setters
@@ -31,5 +32,15 @@ public class Enchere {
 	public void setMontant_Enchere(int montant_Enchere) {
 		this.montant_Enchere = montant_Enchere;
 	}
+
+	public int getNumero_Enchere() {
+		return numero_Enchere;
+	}
+
+	public void setNumero_Enchere(int numero_Enchere) {
+		this.numero_Enchere = numero_Enchere;
+	}
+	
+	
 	
 }

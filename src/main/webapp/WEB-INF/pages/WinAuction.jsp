@@ -48,7 +48,7 @@
 						</div>
 						
 						<div>
-							Mise à prix : ${article.getPrixVente()}
+							Mise à prix : ${article.getMiseAPrix()}
 						</div>
 						<c:if test="${id== utilisateur.getNoUtilisateur()}">
 							<div>
