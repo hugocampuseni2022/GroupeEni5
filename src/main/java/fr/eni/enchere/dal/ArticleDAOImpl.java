@@ -38,9 +38,12 @@ public class ArticleDAOImpl implements ArticleDAO{
 	
 	private static final String SELECT_CATEGORIE = "SELECT * FROM CATEGORIES";
 	
+	private static final String INSERT_ENCHERE = "insert into ENCHERES (date_enchere, montant_enchere, no_article, no_utilisateur) values (?, ?, ?, ?)";
+	
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;									
 	private static Statement stmt;
+	
 	@Override
 	public void insert (Article article, int idUser) throws DALException {
 		
@@ -306,11 +309,23 @@ public class ArticleDAOImpl implements ArticleDAO{
 		
 	}
 
-	@Override
-	public int encherir(int idArticle, int meilleureOffre) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void encherir(int idArticle, int idUser, Enchere enchere) throws DALException {
+		try (Connection conn = ConnectionProvider.getConnection()){
+			pStmt = conn.prepareStatement(INSERT_ENCHERE);
+			
+			pStmt.setDate(1, enchere.getDateEnchere());
+			pStmt.setInt(2, enchere.getMontant_Enchere());
+			pStmt.setInt(3, idArticle);
+			pStmt.setInt(4, idUser);
+			
+			pStmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new DALException ("erreur insert enchère", e);
+		}
 	}
+	
+	
+	
 }
 
 		
