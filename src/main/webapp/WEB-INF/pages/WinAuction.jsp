@@ -57,7 +57,10 @@
 						</c:if>
 						
 						<div>
-							Retrait : ${article.getLieuRetrait()}
+							<p>Retrait : 	${article.getLieuRetrait().getRue()}</p>
+										<div>${article.getLieuRetrait().getCode_postal()}
+												${article.getLieuRetrait().getVille()}</div>
+									
 						</div>
 						
 						<div>
