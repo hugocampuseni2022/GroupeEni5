@@ -11,116 +11,137 @@
 <link rel="stylesheet" href="style/ModifProfil.css">
 </head>
 <body>
-	<header>
-		<h2>ENI-Encheres</h2>
-	</header>
-	<main>
-		<div>
-			<h3>Mon Profil</h3>
+	<header class="container-fluid">
+		<div class = "row">
+			<div class="col-sm-12 col-md-12 logo">
+				<h2>ENI-Encheres</h2>
+			</div>
 		</div>
-		<div>
+	</header>
+	<main class="container-fluid">
+	
+		<div> <!--  debut	div titre main -->
+			<div>
+				<h3>Mon Profil</h3>
+			</div>
+		</div> <!-- 	Fin div titre main -->
+		
+		
+		<div> 
+		 	
 			<p>	${error}	</p>					
 			<p>	${erreur}	</p>
 			<c:forEach var="utilisateur" items="${catalogue}">
 				<c:if test="${id== utilisateur.getNoUtilisateur()}">
 					<form action="ModifProfilServlet" method="post"> 			<!--   TODO lien vers page 'Profil'   -->
 						<input type = "hidden" name ="idUtilisateur" value="${utilisateur.getNoUtilisateur()}"/></input> 
-						<div class="hstack gap-3">
+		
 							<div>
-								<label>Pseudo :</label>
+								<div>
+									<label>Pseudo :</label>
+								</div>
+								<div>
+									<input type="text" name="newPseudo" size="30" value = "${utilisateur.getPseudo()}" >
+								</div>
 							</div>
 							<div>
-								<input type="text" name="newPseudo" size="30" value = "${utilisateur.getPseudo()}" >
+								<div>
+									<label>Nom :</label>
+								</div>
+								<div>
+									<input type="text" name="newNom" size="30" value = "${utilisateur.getNom()}">
+								</div>
+							</div>
+						
+						
+							<div>
+								<div>
+									<label>Prénom :</label>
+								</div>
+								<div>
+									<input type="text" name="newPrenom" size="30" value = "${utilisateur.getPrenom()}">
+								</div>
 							</div>
 							<div>
-								<label>Nom :</label>
+								<div>
+									<label>Email :</label>
+								</div>
+								<div>
+									<input type="text" name="newEmail" size="30" value = "${utilisateur.getEmail()}">
+								</div>
+							</div>
+						
+						
+							<div>
+								<div>
+									<label>Téléphone :</label>
+								</div>
+								<div>
+									<input type="text" name="newTelephone" size="30" value = "${utilisateur.getTelephone()}">
+								</div>
 							</div>
 							<div>
-								<input type="text" name="newNom" size="30" value = "${utilisateur.getNom()}">
+								<div>
+									<label>Rue :</label>
+								</div>
+								<div>
+									<input type="text" name="newRue" size="30" value = "${utilisateur.getRue()}">
+								</div>
 							</div>
-						</div>
-						<div  class="hstack gap-3">
+					
 							<div>
-								<label>Prénom :</label>
-							</div>
-							<div>
-								<input type="text" name="newPrenom" size="30" value = "${utilisateur.getPrenom()}">
-							</div>
-							<div>
-								<label>Email :</label>
-							</div>
-							<div>
-								<input type="text" name="newEmail" size="30" value = "${utilisateur.getEmail()}">
-							</div>
-						</div>
-						<div  class="hstack gap-3">
-							<div>
-								<label>Téléphone :</label>
+								<div>
+									<label>Code postal :</label>
+								</div>
+								<div>
+									<input type="text" name="newCodePostal" size="30" value ="${utilisateur.getCodePostale()}">
+								</div>
 							</div>
 							<div>
-								<input type="text" name="newTelephone" size="30" value = "${utilisateur.getTelephone()}">
+								<div>
+									<label>Ville :</label>
+								</div>
+								<div>
+									<input type="text" name="newVille" size="30" value = "${utilisateur.getVille()}">
+								</div>
+							</div>
+						
+							<div>
+								<div>
+									<label>Mot de passe actuel :</label>
+								</div>
+								<div>
+									<input type="password" name="mdpActuel" size="30"></input>
+								</div>
+							</div>
+						
+							<div>
+								<div>
+									<label>Nouveau mot de passe :</label>
+								</div>
+								<div>
+									<input type="password" name="newMdp" size="30"></input>
+								</div>
 							</div>
 							<div>
-								<label>Rue :</label>
+								<div>
+									<label>Confirmation :</label>
+								</div>
+								<div>
+									<input type="password" name="confirmNewMdp" size="30"></input>
+								</div>
 							</div>
-							<div>
-								<input type="text" name="newRue" size="30" value = "${utilisateur.getRue()}">
-							</div>
-						</div>
-						<div  class="hstack gap-3">
-							<div>
-								<label>Code postal :</label>
-							</div>
-							<div>
-								<input type="text" name="newCodePostal" size="30" value ="${utilisateur.getCodePostale()}">
-							</div>
-							<div>
-								<label>Ville :</label>
-							</div>
-							<div>
-								<input type="text" name="newVille" size="30" value = "${utilisateur.getVille()}">
-							</div>
-						</div>
-						<div  class="hstack gap-3">
-							<div>
-								<label>Mot de passe actuel :</label>
-							</div>
-							<div>
-								<input type="password" name="mdpActuel" size="30"></input>
-							</div>
-							<div>
-								<!-- Case vide -->
-							</div>
-						</div>
-						<div  class="hstack gap-3">
-							<div>
-								<label>Nouveau mot de passe :</label>
-							</div>
-							<div>
-								<input type="password" name="newMdp" size="30"></input>
-							</div>
-							<div>
-								<label>Confirmation :</label>
-							</div>
-							<div>
-								<input type="password" name="confirmNewMdp" size="30"></input>
-							</div>
-						</div>
-						<div>
-							
-							
-						</div>
-						<div>
-							<p> Credit : ${utilisateur.getCredit()}</p>	<!-- TODO ${user.getCredit} -->
-						</div>
-						<div>
-							<!--   Ligne vide entre 'Crédit' et les boutons 	 -->
-						</div>
-						<button name="btn" value="enregistrer">Enregistrer</button>
-						<button name="btn" value="supprimer">Supprimer mon compte</button>
-						</form>
-					</c:if>		
-				</c:forEach>
+						
+								<div>
+									<p> Credit : ${utilisateur.getCredit()}</p>	<!-- TODO ${user.getCredit} -->
+								</div>
+								<div>
+									<button name="btn" value="enregistrer">Enregistrer</button>
+									<button name="btn" value="supprimer">Supprimer mon compte</button>
+								</div>
+					</form>
+				</c:if>		
+			</c:forEach>
 		</div>
 	</main>
 	
