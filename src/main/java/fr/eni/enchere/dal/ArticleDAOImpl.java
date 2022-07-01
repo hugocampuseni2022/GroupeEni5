@@ -269,7 +269,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 			
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
-				enchereArticle.add(new Enchere(rs.getDate("date_enchere"), rs.getInt("montant_enchere")));
+				enchereArticle.add(new Enchere(rs.getTimestamp("date_enchere"), rs.getInt("montant_enchere")));
 			}
 			return enchereArticle;
 		} catch (SQLException e){
@@ -304,7 +304,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 			
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
-				enchereUser.add(new Enchere(rs.getDate("date_enchere"), rs.getInt("montant_enchere")));
+				enchereUser.add(new Enchere(rs.getTimestamp("date_enchere"), rs.getInt("montant_enchere")));
 			}
 			return enchereUser;
 		} catch (SQLException e){
@@ -331,7 +331,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 		try (Connection conn = ConnectionProvider.getConnection()){
 			pStmt = conn.prepareStatement(INSERT_ENCHERE);
 			
-			pStmt.setDate(1, enchere.getDateEnchere());
+			pStmt.setTimestamp(1, enchere.getDateEnchere());
 			pStmt.setInt(2, enchere.getMontant_Enchere());
 			pStmt.setInt(3, idArticle);
 			pStmt.setInt(4, idUser);
