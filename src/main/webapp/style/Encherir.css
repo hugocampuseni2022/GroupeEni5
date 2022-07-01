@@ -10,3 +10,10 @@
 	vertical-align: middle;
 	font-size: 2rem;
 }
+
+header {
+	background: #212121;
+	color: white;
+	padding-top : 10px;
+	padding-bottom: 10px;
+}
