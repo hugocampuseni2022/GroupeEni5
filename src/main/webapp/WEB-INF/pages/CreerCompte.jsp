@@ -10,41 +10,114 @@
 <title>Creer Compte</title>
 </head>
 <body>
-<h1> Enchère ENI</h1>
-<h2>Mon Profil</h2>
-
-<form action="CreerCompte" method = "post">
-<label>Pseudo : </label>
- <input type="text" name = "pseudo" required></input> 
-<label>Nom : </label>
- <input type="text" name = "nom" required></input> 
- <label>Prénom : </label>
- <input type="text" name = "prenom" required></input> 
- <label>Email : </label>
- <input type="email" name = "mail" required></input> 
- <label>Telephone : </label>
- <input type="tel" name = "telephone"></input> 
- <label>Rue : </label>
- <input type="text" name = "rue" required></input> 
- <label>Code Postal : </label>
- <input type="text" name = "code postal" required></input> 
- <label>Ville : </label>
- <input type="text" name = "ville" required></input> 
- <label>Mots de passe : </label>
- <input type="password" name = "mot de passe" required></input> 
- <label>Confirmation : </label>
- <input type="password" name = "Confirmation" required></input> 
- <button>Créer</button>
-</form>
-<p>${error2}</p>
-
-<a href = "<%=request.getContextPath()%>/Accueil" ><button>Annuler</button> </a>
-
-
-
-
-
-
+	<header>
+		<h1> Enchère ENI</h1>
+	</header>
+	
+	<main>
+		<div>
+			<h2>Mon Profil</h2>
+		</div>
+		
+			<form action="CreerCompte" method = "post">
+					<div>
+						<div>
+							<label>Pseudo : </label>
+						</div>
+						<div>
+							<input type="text" name = "pseudo" required></input> 
+						</div>
+					</div>
+					<div>
+						<div>
+							<label>Nom : </label>
+						</div>
+						<div>
+							<input type="text" name = "nom" required></input> 
+						</div>
+					</div>
+					<div>
+						<div>
+							<label>Prénom : </label>
+						</div>
+						<div>
+							<input type="text" name = "prenom" required></input> 
+						</div>
+					</div> 
+					<div>
+						<div>
+							<label>Email : </label>
+						</div>
+						<div>
+							<input type="email" name = "mail" required></input> 
+						</div>
+					</div>
+					<div>
+						<div>
+							<label>Telephone : </label>
+						</div>
+						<div>
+							<input type="tel" name = "telephone"></input>
+						</div>
+					</div>
+					<div>
+						<div>
+							<label>Rue : </label>
+						</div>
+						<div>
+							 <input type="text" name = "rue" required></input> 
+						</div>
+					</div>
+					<div>
+						<div>
+							<label>Code Postal : </label>
+						</div>
+						<div>
+							<input type="text" name = "code postal" required></input>
+						</div>
+					</div>
+					<div>
+						<div>
+							<label>Ville : </label>
+						</div>
+						<div>
+							<input type="text" name = "ville" required></input> 
+						</div>
+					</div>
+					<div>
+						<div>
+							<label>Mots de passe : </label>
+						</div>
+						<div>
+							<input type="password" name = "mot de passe" required></input> 
+						</div>
+					</div>
+					<div>
+						<div>
+							<label>Confirmation : </label>
+						</div>
+						<div>
+						 	<input type="password" name = "Confirmation" required></input> 
+						</div>
+					</div> 
+						
+					 		
+				 		
+			</form>
+					<div>
+						<p>${error2}</p>
+					</div>			
+				
+					<div> 	
+						<div>
+							<button>Créer</button>
+						</div>
+						<div>
+							<a href = "<%=request.getContextPath()%>/Accueil" >
+							<button>Annuler</button> </a>
+						</div>
+					</div>
+	</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
