@@ -33,38 +33,48 @@
 						<div class="row">
 							<div class="col-3 position-relative">
 								<a class="position-absolute top-50 start-50 translate-middle">img placeholder</a>
-								<!-- ${user.getArticle.getImage} -->
+								<!-- ${article.getImage} -->
 							</div>
 							<div class="col-9">
 								<div class="row">
-									<p>${utilisateur.getArticle().getNomArticle()}</p>
-									<!-- ${user.getArticle.getNom} -->
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<p>Description :</p>
-									</div>
-									<div class="col-6">
-										<p>${utilisateur.getArticle().getDescription()}</p>
-										<!-- ${user.getArticle.getDescription} -->
+									<div>
+										${article.getNomArticle()}
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-3">
-										<p>Catégorie :</p>
+										<div>
+											Description :
+										</div>
 									</div>
 									<div class="col-6">
-										<p>${utilisateur.getArticle().getCategorie()}</p>
-										<!-- ${user.getArticle.getCategorie} -->
+										<div>
+											${article.getDescription()}
+										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-3">
-										<p>Meilleure offre :</p>
+										<div>
+											Catégorie :
+										</div>
 									</div>
 									<div class="col-6">
-										<p>${enchere.getMontant_Enchere()}</p>
-										<!-- ${enchere.getMontant_Enchere()} -->
+										<div>
+											${article.getCategorie()}
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-3">
+										<div>
+											Meilleure offre :
+										</div>
+									</div>
+									<div class="col-6">
+										<div>
+											${enchere.getMontant_Enchere()}
+										</div>
 									</div>
 								</div>
 								<div class="row">
@@ -72,40 +82,52 @@
 										<p>Mise à prix :</p>
 									</div>
 									<div class="col-6">
-										<p>${utilisateur.getArticle().getMiseAPrix()}</p>
-										<!-- ${user.getArticle.getMiseAPrix} -->
+										<div>
+											${article.getMiseAPrix()}
+										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-3">
-										<p>Fin de l'enchère :</p>
+										<div>
+											Fin de l'enchère :
+										</div>
 									</div>
 									<div class="col-6">
-										<p>${enchere.getDateEnchere()}</p>
-										<!-- ${enchere.getDateEnchere()} -->
+										<div>
+											${article.getDateFinEnchere()}
+										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-3">
-										<p>Retrait :</p>
+										<div>
+											Retrait :
+										</div>
 									</div>
 									<div class="col-6">
-										<p>${utilisateur.getArticle().getLieuRetrait()}</p>
-										<!-- ${user.getArticle.getLieuRetrait} -->
+										<div>
+											${article.getLieuRetrait()}
+										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-3">
-										<p>Vendeur :</p>
+										<div>
+											Vendeur :
+										</div>
 									</div>
 									<div class="col-6">
-										<p>jojo44 / placeholder</p>
-										<!-- ${user.getPseudo} -->
+										<div>
+											${utilisateur.getPseudo}
+										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-3">
-										<p>Ma proposition :</p>
+										<div>
+											Ma proposition :
+										</div>
 									</div>
 									<div class="col-6">
 										<form action="encherir" method="post">
@@ -114,8 +136,7 @@
 												<!-- ${utilisateur.getArticle().getMontant_Enchere()+10} -->
 												
 												
-												<!-- if (offre>utilisateur.getCredit){
-												btnEncher=disabledx -->
+												<!-- if (offre>utilisateur.getCredit) btnEncher=disabled -->
 												
 												<button name="btnEncher">Enchérir</button>
 											</div>
