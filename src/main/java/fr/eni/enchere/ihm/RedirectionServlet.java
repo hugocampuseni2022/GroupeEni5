@@ -26,12 +26,12 @@ public class RedirectionServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if ("En cours".equals(request.getParameter("etat"))) {
-			request.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		if ("En cours".equals(request.getParameter("etat"))) {	
+			response.sendRedirect(request.getContextPath()+"/EncherirServlet?no=" + request.getParameter("no"));	
 		} else if ("Terminé".equals(request.getParameter("etat"))) {
-			request.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(request, response);
-		}
+			response.sendRedirect(request.getContextPath()+"/WinAuctionServlet?no=" + request.getParameter("no"));
+		} 
 	}
 
 	/**
