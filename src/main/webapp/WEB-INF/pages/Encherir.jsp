@@ -34,17 +34,12 @@
 							<div class="col-3 position-relative">
 								<a class="position-absolute top-50 start-50 translate-middle">img placeholder</a>
 							</div>
-							
 							<div class="row">
-							<div class="col-3">
-									<div>
-										Article :
-									</div>
-							</div>
-							<div class="col-9">
-								<div class="row">
-									<div>
-										${article.getNomArticle()}
+								<div class="col-9">
+									<div class="row">
+										<div>
+											${article.getNomArticle()}
+										</div>
 									</div>
 								</div>
 							</div>
@@ -73,16 +68,33 @@
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Meilleure offre :
+									<div class="row">
+										<div class="col-3">
+											<div>
+												Meilleure offre :
+											</div>
 										</div>
-									</div>
 									<div class="col-6">
-										<div>
-											${enchere.getMontant_Enchere()}
-										</div>
+										<c:choose>
+											<c:when test="${!empty article.getListeEnchere()}">
+												<c:forEach var ="enchere" items = "${article.getListeEnchere()}">
+					 							  <c:forEach var ="user2" items = "${catalogue}">
+					   									<c:forEach var = "enchere2" items = "${user2.getListeEnchere()}">	
+															<c:if test="${enchere.getNumero_Enchere()== enchere2.getNumero_Enchere()}">
+						   										<c:if test ="${article.getPrixVente()==enchere2.getMontant_Enchere()}">
+																	<div>
+																		<p>${enchere.getMontant_Enchere()} par ${user2.getPseudo()}</p>
+																	</div>
+																</c:if>
+															</c:if>
+											 			</c:forEach>
+											 		</c:forEach>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<p>Pas d'enchere pour le moment</p>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 								<div class="row">
@@ -117,9 +129,12 @@
 										<div>
 											<p>
 												${article.getLieuRetrait().getRue()}
+											</p>
+											
+											<div>
 												${article.getLieuRetrait().getCode_postal()}
 												${article.getLieuRetrait().getVille()}
-											</p>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -136,12 +151,39 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-3">
-										
+									<div class="col-3">		
+										Ma proposition :
 									</div>
-						</div>
-						</div>	
-					</div>
+									<div class="col-6">
+									   <c:choose>
+									  		 <c:when test="${empty article.getListeEnchere()}">
+												<div>
+													<input type="number" name = "offre" required  min="${article.getMiseAPrix()}" step = "5"></input>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<input type="number" name = "offre" required  min="${enchere2.getMontant_Enchere()}" step = "5"></input>
+											</c:otherwise>
+										</c:choose>
+									</div>					
+								</div>
+								
+								<form action="EncherirServlet"   method = "post">
+									<c:choose>
+										<c:when test="${empty article.getListeEnchere()}">
+											<button  name="btn" value="Encherir">
+												Enchérir
+											</button>
+										</c:when>
+										<c:otherwise>
+											<button  name="btn" value="Encherir2">
+												Enchérir
+											</button>
+										</c:otherwise>
+									</c:choose>
+								</form>
+								
+					</div>	
 				</c:if>
 			</c:forEach>
 		</c:forEach>
