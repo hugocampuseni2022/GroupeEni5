@@ -87,7 +87,7 @@
 																	</div>
 																</c:if>
 															</c:if>
-											 			</c:forEach>
+											 			</c:forEa ch>
 											 		</c:forEach>
 												</c:forEach>
 											</c:when>
@@ -169,18 +169,9 @@
 								</div>
 								
 								<form action="EncherirServlet"   method = "post">
-									<c:choose>
-										<c:when test="${empty article.getListeEnchere()}">
 											<button  name="btn" value="Encherir">
 												Enchérir
 											</button>
-										</c:when>
-										<c:otherwise>
-											<button  name="btn" value="Encherir2">
-												Enchérir
-											</button>
-										</c:otherwise>
-									</c:choose>
 								</form>
 								
 					</div>	

@@ -66,10 +66,10 @@ public class EncherirServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		if("Encherir2".equals(request.getParameterValues("btn")[0])) {
+		if("Encherir".equals(request.getParameterValues("btn")[0])) {
 			
 			try {
-				manager.modifPrixDeVente(Integer.parseInt(request.getParameter("offre")));
+				manager.encherir(Integer.parseInt(request.getParameter("IDARTICLE")),request.getParameter("IDUTILISATEUR"),new Enchere(request.getParameter("DATEENCHERE"), Integer.parseInt(request.getParameter("offre"),Integer.parseInt(request.getParameter("NUMEROENCHERE"));
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -79,6 +79,8 @@ public class EncherirServlet extends HttpServlet {
 			}
 			
 			else {
+				
+				
 				
 				
 			}
