@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.form-line{
+	display : flex ;
+	justify-content:space-evenly;
+	
+}
+
+lesBoutons {
+	
+	display : flex ;
+	justify-content:space-evenly;
+	outline: none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius: 40px;
+  background: white;
+  border: 2px solid #be0a26;
+  color: #be0a26;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.bouton {
+  
+
+}
+
+#titre {
+		display : flex ;
+		justify-content: center ;
+}
+
+.form-labeEtInput{
+	display : flex ;
+	justify-content: space-between;
+}
+
+.form-label{
+	width: 120px;
+	
+	
+}
+
+
+	

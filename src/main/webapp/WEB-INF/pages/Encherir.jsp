@@ -55,7 +55,6 @@
 								</div>
 								<div class="row">
 									<div class="col-3">
-										<div class="blue">Blue</div> <!-- ********************************************* -->
 										<div>
 											Catégorie :
 										</div>
@@ -108,7 +107,11 @@
 									</div>
 									<div class="col-6">
 										<div>
-											${article.getLieuRetrait()}
+											<p>
+												${article.getLieuRetrait().getRue()}
+												${article.getLieuRetrait().getCode_postal()}
+												${article.getLieuRetrait().getVille()}
+											</p>
 										</div>
 									</div>
 								</div>
@@ -133,13 +136,22 @@
 									<div class="col-6">
 										<form action="encherir" method="post">
 											<div>
-												<input type="number" maxlength="4" min="1" name="offre" id="">
-												<!-- utilisateur.getArticle().getMontant_Enchere()+10 -->
+												<!-- si pas encore d'enchere, 'placeholder'= miseAPrix, sinon, 'placeholder'=meilleureOffre + 5 -->
+													<input type="number" maxlength="4" min="1" name="offre" id="offre" placeholder="">
 												
 												
-												<!-- if (offre>utilisateur.getCredit) btnEncher=disabled -->
+													<!-- utilisateur.getArticle().getMontant_Enchere()+10 -->
+													
+													<!-- if (offre>utilisateur.getCredit) btnEncher=disabled -->
+												<%-- <c:choose>
+													<c:when test="${utilisateur.getCredit()}=>offre"> --%>
+														<button name="btnEncher" >Enchérir</button>
+													<%-- </c:when>
+													<c:otherwise>
+														<button name="btnEncher" disabled>Enchérir</button> <!-- afficher à l'utilisateur qu'il n'a pas assez de crédit -->
+													</c:otherwise>
+												</c:choose> --%>
 												
-												<button name="btnEncher">Enchérir</button>
 											</div>
 										</form>
 									</div>
