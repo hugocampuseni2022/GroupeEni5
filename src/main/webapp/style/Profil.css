@@ -48,3 +48,11 @@ button:hover {
 button:active {
   letter-spacing: 2px;
 }
+
+.table tr{
+	padding:10px;
+}
+
+.table tr td{
+	padding:10px;
+}
