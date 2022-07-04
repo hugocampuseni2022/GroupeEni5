@@ -38,12 +38,14 @@ public class EncherirServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		session = req.getSession();
+		
 		try {
 			catalogue = manager.getAll();
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
 		
+		req.setAttribute("catalogue", catalogue);
 		int id = 0;
 		
 		for (Utilisateur u : catalogue) {
@@ -59,9 +61,13 @@ public class EncherirServlet extends HttpServlet {
 		}
 		
 		req.setAttribute("noArticle", id);	
+
+		req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);
+
 		req.setAttribute("catalogue", catalogue);
 		req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);	
 		
+
 	}
 	
 	@Override

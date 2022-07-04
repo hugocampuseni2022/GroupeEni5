@@ -13,55 +13,64 @@
 </head>
 <body>
 	<header>
-		<a id="logo" classe="titre" href = "<%=request.getContextPath()%>/Accueil" style="text-decoration:none;">ENI-Encheres</a>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<a id="logo" classe="titre" href = "<%=request.getContextPath()%>/Accueil" style="text-decoration:none;">ENI-Encheres</a>
+				</div>
+			</div>
+		</div>
 	</header>
 	<main>
 		<div>
 			<div>
 				<c:forEach var="utilisateur" items="${catalogue}">
 					<c:if test="${pseudo.equals(utilisateur.getPseudo())}">
-						<table>
-						<tr>
-							<td>Pseudo :</td>
-							<td>${utilisateur.getPseudo()}</td>
-						</tr>
-						<tr>
-							<td>Nom :</td>
-							<td>${utilisateur.getNom()}</td>
-						</tr>
-						<tr>
-							<td>Prénom :</td>
-							<td>${utilisateur.getPrenom()}</td>
-						</tr>
-						<tr>
-							<td>Email :</td>
-							<td>${utilisateur.getEmail()}</td>
-						</tr>
-						<tr>
-							<td>Téléphone :</td>
-							<td>${utilisateur.getTelephone()}</td>
-						</tr>
-						<tr>
-							<td>Rue :</td>
-							<td>${utilisateur.getRue()}</td>
-						</tr>
-						<tr>
-							<td>Code postal :</td>
-							<td>${utilisateur.getCodePostale()}</td>
-						</tr>
-						<tr>
-							<td>Ville :</td>
-							<td>${utilisateur.getVille()}</td>
-						</tr>
-					</table>
+						<div class="row">
+							<table class="col-12 d-flex justify-content-center table">
+
+								<tr>
+									<td class="p-10 m-10">Pseudo :</td>
+									<td class="p-10 m-10">${utilisateur.getPseudo()}</td>
+								</tr>
+								<tr>
+									<td class="p-10 m-10">Nom :</td>
+									<td class="p-10 m-10">${utilisateur.getNom()}</td>
+								</tr>
+								<tr>
+									<td>Prénom :</td>
+									<td>${utilisateur.getPrenom()}</td>
+								</tr>
+								<tr>
+									<td>Email :</td>
+									<td>${utilisateur.getEmail()}</td>
+								</tr>
+								<tr>
+									<td>Téléphone :</td>
+									<td>${utilisateur.getTelephone()}</td>
+								</tr>
+								<tr>
+									<td>Rue :</td>
+									<td>${utilisateur.getRue()}</td>
+								</tr>
+								<tr>
+									<td>Code postal :</td>
+									<td>${utilisateur.getCodePostale()}</td>
+								</tr>
+								<tr>
+									<td>Ville :</td>
+									<td>${utilisateur.getVille()}</td>
+								</tr>
+							</table>
+						</div>	
 					</c:if>
 				</c:forEach>
 			</div>
 		</div>
-		<div>
+		<div class="d-flex justify-content-center mt-3">
 			<c:if test="${pseudo.equals(username)}">
-				<form action="ModifProfilServlet" method="get"> 				<!-- TODO lien vers la page de modif profil -->
-					<button>Modifier</button> 				<!-- TODO affichage button (c:if user=userEnCours) -->
+				<form action="ModifProfilServlet" method="get">
+					<button>Modifier</button>
 				</form>
 			</c:if>
 		</div>
