@@ -1,6 +1,7 @@
 package fr.eni.enchere.ihm;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.FactoryBLL;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Categorie;
+import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.bo.Utilisateur;
 
 /**
@@ -50,17 +52,33 @@ public class EncherirServlet extends HttpServlet {
 			for(Article a : u.getListeArticle()) {
 				if (Integer.parseInt(req.getParameter("no"))==a.getNoArticle()) {
 					id = a.getNoArticle();
+					System.out.println(a.getLieuRetrait().getRue());
+					System.out.println(a.getLieuRetrait().getCode_postal());
+					System.out.println(a.getLieuRetrait().getVille());
 				}
 			} 
+			
 		}
 		
 		req.setAttribute("noArticle", id);	
+<<<<<<< HEAD
 		req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);
+=======
+		req.setAttribute("catalogue", catalogue);
+		req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);	
+		
+>>>>>>> branch 'main' of https://github.com/hugocampuseni2022/GroupeEni5.git
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);
+		//req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);
+		session = req.getSession();
+		
+		
+		
+		
+		
 	}
 
 }

@@ -22,12 +22,145 @@
 	<c:forEach var="utilisateur" items="${catalogue}">
 		<c:forEach var="article" items="${utilisateur.getListeArticle()}">
 				<c:if test="${noArticle==article.getNoArticle()}">
+<<<<<<< HEAD
 											<div class="container-fluid">
 												<div class="row">
 													<div class="col-12">
 														<h3>Détail vente</h3>				
 													</div>
 												</div>
+=======
+				
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12">
+								<h3>Détail vente</h3>				
+							</div>
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-3 position-relative">
+								<a class="position-absolute top-50 start-50 translate-middle">img placeholder</a>
+							</div>
+							<div class="col-9">
+								<div class="row">
+									<div>
+										${article.getNomArticle()}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-3">
+										<div>
+											Description :
+										</div>
+									</div>
+									<div class="col-6">
+										<div>
+											${article.getDescription()}
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-3">
+										<div>
+											Catégorie :
+										</div>
+									</div>
+									<div class="col-6">
+										<div>
+											${article.getNoCategorie()}
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-3">
+										<div>
+											Meilleure offre :
+										</div>
+									</div>
+									<div class="col-6">
+										<div>
+											${enchere.getMontant_Enchere()}
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-3">
+										<p>Mise à prix :</p>
+									</div>
+									<div class="col-6">
+										<div>
+											${article.getMiseAPrix()}
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-3">
+										<div>
+											Fin de l'enchère :
+										</div>
+									</div>
+									<div class="col-6">
+										<div>
+											${article.getDateFinEncheres()}
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-3">
+										<div>
+											Retrait :
+										</div>
+									</div>
+									<div class="col-6">
+										<div>
+											<p>
+												${article.getLieuRetrait().getRue()}
+												${article.getLieuRetrait().getCode_postal()}
+												${article.getLieuRetrait().getVille()}
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-3">
+										<div>
+											Vendeur :
+										</div>
+									</div>
+									<div class="col-6">
+										<div>
+											${utilisateur.getPseudo()}
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-3">
+										<div>
+											Ma proposition :
+										</div>
+									</div>
+									<div class="col-6">
+										<form action="encherir" method="post">
+											<div>
+												<!-- si pas encore d'enchere, 'placeholder'= miseAPrix, sinon, 'placeholder'=meilleureOffre + 5 -->
+													<input type="number" maxlength="4" min="1" name="offre" id="offre" placeholder="">
+												
+												
+													<!-- utilisateur.getArticle().getMontant_Enchere()+10 -->
+													
+													<!-- if (offre>utilisateur.getCredit) btnEncher=disabled -->
+												<%-- <c:choose>
+													<c:when test="${utilisateur.getCredit()}=>offre"> --%>
+														<button name="btnEncher" >Enchérir</button>
+													<%-- </c:when>
+													<c:otherwise>
+														<button name="btnEncher" disabled>Enchérir</button> <!-- afficher à l'utilisateur qu'il n'a pas assez de crédit -->
+													</c:otherwise>
+												</c:choose> --%>
+												
+>>>>>>> branch 'main' of https://github.com/hugocampuseni2022/GroupeEni5.git
 											</div>
 										<div class="container-fluid">
 											<div class="row">
