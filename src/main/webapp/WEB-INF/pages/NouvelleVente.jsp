@@ -30,6 +30,7 @@
         	${error}
             <form action="NouvelleVenteServlet" class="col-12 col-sm-12 col-md-10 col-lg-8 p-4 d-flex flex-column justify-content-center" method="post">
             	<input type = "hidden" name ="id" value="${id}"/>
+            	<input type = "hidden" name ="no" value="${noArticle}"/>
                 <div class="mb-2 d-flex justify-content-center">
                     <label for="article">Article :</label>
                     <input type="text" name="article" id="article"></input>

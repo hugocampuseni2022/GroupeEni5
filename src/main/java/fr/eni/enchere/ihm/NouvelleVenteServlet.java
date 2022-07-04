@@ -92,8 +92,16 @@ public class NouvelleVenteServlet extends HttpServlet {
 				
 				}
 				
-			}			
-			else {
+			} else if ("annulerVente".equals(request.getParameterValues("btn")[0])){
+				try {
+					manager.supprimerArticle(Integer.parseInt(request.getParameter("no")));
+					response.sendRedirect(request.getContextPath()+"/Accueil");
+				} catch (BLLException e) {
+					e.printStackTrace();
+					request.getRequestDispatcher("/WEB-INF/pages/NouvelleVente.jsp").forward(request, response);
+				}
+				
+			} else {
 				response.sendRedirect(request.getContextPath()+"/Accueil");	
 			}
 		}
