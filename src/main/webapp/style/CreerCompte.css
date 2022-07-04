@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.form-line{
+	display : flex ;
+	justify-content:space-evenly;
+	
+}
+
+.button {
+	display : flex;
+	justify-content: center;
+}
+
+#titre {
+		display : flex ;
+		justify-content: center ;
+}
+
+.form-labeEtInput{
+	display : flex ;
+	justify-content: space-between;
+}
+
+.form-label{
+	width: 120px;
+	
+	
+}
+
+
+	
