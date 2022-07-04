@@ -11,7 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-	<header class="container-fluid ">
+	<header class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 col-md-4 logo">
 				<span>ENI-Enchères</span>
@@ -60,7 +60,7 @@
 			</div>
 			<form action="Accueil?action=filtrer" method="get" class="col-12">
 				<div class="container">
-					<div class="row">
+					<div class="row recherche">
 						<!-- Div Param Filtre -->
 						<div class="col-12 col-sm-12 col-md-9 flex-sm-column-reverse flex-md-row">
 							<div class="container">
@@ -124,8 +124,8 @@
 							</div>
 						</div>
 						<!-- Div bouton -->
-						<div class="col-12 col-sm-12 col-md-3">
-							<button>Rechercher</button>
+						<div class="div-button col-12 col-sm-12 col-md-3 d-flex justify-content-center align-items-center">
+							<button class="button-28">Rechercher</button>
 						</div>
 					</div>
 				</div>
@@ -140,7 +140,7 @@
 							<div class="card mb-3" style="max-width: 540px;">
 								<div class="row no-gutters">
 									<div class="col-md-4">
-										<img src="..." class="card-img" alt="...">
+										<img src="" class="card-img" alt="...">
 									</div>
 									<div class="col-md-8">
 										<div class="card-body">
@@ -164,86 +164,86 @@
 					</c:forEach>
 				</c:forEach>
 			</c:forEach>
-		</div>
+		</div>		
 	</main>
-		<script>
-            // assign onclick handler to hazard checkbox
-            document.getElementById('radioAchats').onclick = function() {
-            
-            // is hazard checkbox checked?
-            var radio1 = this.checked; // true or false
-            
-            // get list of radio buttons with name 'ship'
-            var check1 = this.form.elements["checkboxAchats"];
+	<script>
+           // assign onclick handler to hazard checkbox
+           document.getElementById('radioAchats').onclick = function() {
+           
+           // is hazard checkbox checked?
+           var radio1 = this.checked; // true or false
+           
+           // get list of radio buttons with name 'ship'
+           var check1 = this.form.elements["checkboxAchats"];
 
-            // loop through list of radio buttons
-            for (var i=0, len=check1.length; i<len; i++) {
-                var r = check1[i]; // current radio button
+           // loop through list of radio buttons
+           for (var i=0, len=check1.length; i<len; i++) {
+               var r = check1[i]; // current radio button
 
-                if ( radio1 ) { // hazard checkbox checked
-                    r.disabled = false; // no radios disabled   
-                } else { // hazard not checked 
-                    r.checked = false; // unchecked
-                    r.disabled = true; // disable
-                } 
+               if ( radio1 ) { // hazard checkbox checked
+                   r.disabled = false; // no radios disabled   
+               } else { // hazard not checked 
+                   r.checked = false; // unchecked
+                   r.disabled = true; // disable
+               } 
 
-            }
+           }
 
-            var check2 = this.form.elements["checkboxVentes"];
+           var check2 = this.form.elements["checkboxVentes"];
 
-            for (var i=0, len=check2.length; i<len; i++) {
-                var r = check2[i]; // current radio button
+           for (var i=0, len=check2.length; i<len; i++) {
+               var r = check2[i]; // current radio button
 
-                if ( radio1 ) { // hazard checkbox checked
-                    r.checked = false; // unchecked
-                    r.disabled = true; // disable                 
-                } else { // hazard not checked 
-                    r.disabled = false; // no radios disabled  
-                } 
+               if ( radio1 ) { // hazard checkbox checked
+                   r.checked = false; // unchecked
+                   r.disabled = true; // disable                 
+               } else { // hazard not checked 
+                   r.disabled = false; // no radios disabled  
+               } 
 
-            }
-            
-            }
-            
-            // assign onclick handler to hazard checkbox
-            document.getElementById('radioVentes').onclick = function() {
+           }
+           
+           }
+           
+           // assign onclick handler to hazard checkbox
+           document.getElementById('radioVentes').onclick = function() {
 
-            // is hazard checkbox checked?
-            var radio2 = this.checked; // true or false
+           // is hazard checkbox checked?
+           var radio2 = this.checked; // true or false
 
-            // get list of radio buttons with name 'ship'
-            var check2 = this.form.elements["checkboxVentes"];
+           // get list of radio buttons with name 'ship'
+           var check2 = this.form.elements["checkboxVentes"];
 
-            // loop through list of radio buttons
-            for (var i=0, len=check2.length; i<len; i++) {
-                var r = check2[i]; // current radio button
+           // loop through list of radio buttons
+           for (var i=0, len=check2.length; i<len; i++) {
+               var r = check2[i]; // current radio button
 
-                if ( radio2 ) { // hazard checkbox checked
+               if ( radio2 ) { // hazard checkbox checked
 
-                    r.disabled = false; // no radios disabled   
-                } else { // hazard not checked 
-                    r.checked = false; // unchecked
-                    r.disabled = true; // disable
-                } 
+                   r.disabled = false; // no radios disabled   
+               } else { // hazard not checked 
+                   r.checked = false; // unchecked
+                   r.disabled = true; // disable
+               } 
 
-            }
+           }
 
-            var check1 = this.form.elements["checkboxAchats"];
+           var check1 = this.form.elements["checkboxAchats"];
 
-            for (var i=0, len=check1.length; i<len; i++) {
-                var r = check1[i]; // current radio button
+           for (var i=0, len=check1.length; i<len; i++) {
+               var r = check1[i]; // current radio button
 
-                if ( radio2 ) { // hazard checkbox checked
-                    r.checked = false; // unchecked
-                    r.disabled = true; // disable                 
-                } else { // hazard not checked 
-                    r.disabled = false; // no radios disabled  
-                } 
+               if ( radio2 ) { // hazard checkbox checked
+                   r.checked = false; // unchecked
+                   r.disabled = true; // disable                 
+               } else { // hazard not checked 
+                   r.disabled = false; // no radios disabled  
+               } 
 
-            }
-            }
+           }
+           }
 
-	</script>
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

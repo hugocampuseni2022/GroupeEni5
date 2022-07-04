@@ -37,12 +37,10 @@
 
 header {
 	background: #212121;
-	color: white;
+	color: red;
 	padding-top : 10px;
 	padding-bottom: 10px;
 }
-
-
 
 @media screen and (max-width: 767px) {
 	
