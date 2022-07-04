@@ -13,7 +13,13 @@
 </head>
 <body>
 	<header>
-		<a id="logo" classe="titre" href = "<%=request.getContextPath()%>/Accueil" style="text-decoration:none;">ENI-Encheres</a>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<a id="logo" classe="titre" href = "<%=request.getContextPath()%>/Accueil" style="text-decoration:none;">ENI-Encheres</a>
+				</div>
+			</div>
+		</div>
 	</header>
 	<main>
 		<div>
@@ -60,8 +66,8 @@
 		</div>
 		<div>
 			<c:if test="${pseudo.equals(username)}">
-				<form action="ModifProfilServlet" method="get"> 				<!-- TODO lien vers la page de modif profil -->
-					<button>Modifier</button> 				<!-- TODO affichage button (c:if user=userEnCours) -->
+				<form action="ModifProfilServlet" method="get">
+					<button>Modifier</button>
 				</form>
 			</c:if>
 		</div>
