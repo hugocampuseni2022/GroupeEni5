@@ -122,11 +122,11 @@
 							<p>${error2}</p>
 						</div>			
 					
-						<div id = button> 	
-							<div>
+						<div id = "lesBoutons"> 	
+							<div class = "bouton">
 								<button>Créer</button>
 							</div>
-							<div>
+							<div class = "bouton">
 								<a href = "<%=request.getContextPath()%>/Accueil" >
 								<button>Annuler</button> </a>
 							</div>

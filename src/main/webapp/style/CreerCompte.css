@@ -6,9 +6,29 @@
 	
 }
 
-.button {
-	display : flex;
-	justify-content: center;
+lesBoutons {
+	
+	display : flex ;
+	justify-content:space-evenly;
+	outline: none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius: 40px;
+  background: white;
+  border: 2px solid #be0a26;
+  color: #be0a26;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.bouton {
+  
+
 }
 
 #titre {
