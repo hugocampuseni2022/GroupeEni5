@@ -14,7 +14,7 @@
 	<header class="container-fluid">
 		<div class = "row">
 			<div class="col-sm-12 col-md-12 logo">
-				<h2>ENI-Encheres</h2>
+				<a href = "<%=request.getContextPath()%>/Accueil">ENI-Encheres</a>
 			</div>
 		</div>
 	</header>

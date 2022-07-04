@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h2>ENI-Encheres</h2>
+        <a href = "<%=request.getContextPath()%>/Accueil">ENI-Encheres</a>
         <a href="">Enchères</a>              <!-- TODO lien -->
         <a href="">Vendre un article</a>     <!-- TODO lien -->
         <a href="">Mon profil</a>            <!-- TODO lien -->

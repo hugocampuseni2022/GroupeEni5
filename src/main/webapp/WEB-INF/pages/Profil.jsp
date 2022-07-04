@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<h2>ENI-Encheres</h2>
+		<a href = "<%=request.getContextPath()%>/Accueil">ENI-Encheres</a>
 	</header>
 	<main>
 		<div>
