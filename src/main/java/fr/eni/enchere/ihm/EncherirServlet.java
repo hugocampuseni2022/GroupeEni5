@@ -61,13 +61,13 @@ public class EncherirServlet extends HttpServlet {
 		}
 		
 		req.setAttribute("noArticle", id);	
-<<<<<<< HEAD
+
 		req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);
-=======
+
 		req.setAttribute("catalogue", catalogue);
 		req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);	
 		
->>>>>>> branch 'main' of https://github.com/hugocampuseni2022/GroupeEni5.git
+
 	}
 	
 	@Override
