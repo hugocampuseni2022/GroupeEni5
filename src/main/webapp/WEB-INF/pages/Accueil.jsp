@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Accueil</title>
-<link rel="stylesheet" href="style/Accueil.css">
+<link rel="stylesheet" href="style/Accueil2.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
@@ -52,25 +52,23 @@
 	</header>
 	<main class="container">
 		<div class="row">
-			<div class="col-12 text-center">
+			<div class="col-12 text-center titre">
 				<h3>Liste des enchères</h3>
 			</div>
-			<div class="col-12 text-start">
-				<h4>Filtres :</h4>
-			</div>
 			<form action="Accueil?action=filtrer" method="get" class="col-12">
-				<div class="container">
-					<div class="row recherche">
+				<fieldset class="container">
+					<legend>Filtres :</legend>
+					<div class="row">
 						<!-- Div Param Filtre -->
 						<div class="col-12 col-sm-12 col-md-9 flex-sm-column-reverse flex-md-row">
 							<div class="container">
 								<div class="row">
 									<!-- Search Bar -->
-									<div class="col-12">
-										<input type="text" name="filtreNom" placeholder="Le nom de l'article contient" size="30">
+									<div class="col-12 padding-div">
+										<input type="text" name="filtreNom" placeholder="Le nom de l'article contient" size="25">
 									</div>
 									<!-- Catégories -->
-									<div class="col-12">
+									<div class="col-12 padding-div">
 										<label for="categorie">Catégorie :</label>
 										<select name="categorie">
 										    <option value="0">Toutes</option>
@@ -81,11 +79,11 @@
 									</div>
 									<!-- Radios -->
 									<c:if test="${connected}">
-										<div class="col-12">
+										<div class="col-12 padding-div">
 											<div class="container">
 												<div class="row">
 													<!-- Radio Achat -->
-													<div class="col-12 col-sm-12 col-md-6">
+													<div class="col-12 col-sm-12 col-md-6 padding-div">
 														<div>
 											                <input type="radio" id="radioAchats" name="radio" value="achat">
 											                <label for="radioAchats">Achats</label>
@@ -101,7 +99,7 @@
 											           	</div>
 													</div>
 													<!-- Radio Vente -->
-													<div class="col-12 col-sm-12 col-md-6">
+													<div class="col-12 col-sm-12 col-md-6 padding-div">
 														<div>
 											           		<input type="radio" id="radioVentes" name="radio" value="vente">
 											                <label for="radioVentes">Mes ventes</label>
@@ -125,45 +123,47 @@
 						</div>
 						<!-- Div bouton -->
 						<div class="div-button col-12 col-sm-12 col-md-3 d-flex justify-content-center align-items-center">
-							<button class="button-28">Rechercher</button>
+							<button id="button">Rechercher</button>
 						</div>
 					</div>
-				</div>
+				</fieldset>
 			</form>        		
-		</div>
-		<div>
-			<!-- Liste des articles dans la bdd -->
-			<c:forEach var="utilisateur" items="${catalogue}">
-				<c:forEach var="article" items="${utilisateur.getListeArticle()}">
-					<c:forEach var="articleFiltre" items="${filtre}">
-						<c:if test="${article.getNoArticle()==articleFiltre.getNoArticle()}">						
-							<div class="card mb-3" style="max-width: 540px;">
-								<div class="row no-gutters">
-									<div class="col-md-4">
-										<img src="" class="card-img" alt="...">
-									</div>
-									<div class="col-md-8">
-										<div class="card-body">
-											<a href="Redirection?etat=${article.getEtatVente()}&no=${article.getNoArticle()}" class="card-title">${article.getNomArticle()}</a>
-											<c:choose>
-												<c:when test="${article.getPrixVente()<article.getMiseAPrix()}">
-													<p class="card-text">Prix : ${article.getMiseAPrix()} points</p>
-												</c:when>
-												<c:otherwise>
-													<p class="card-text">Prix : ${article.getPrixVente()} points</p>
-												</c:otherwise>
-											</c:choose>
-											<p class="card-text">Fin de l'enchère : ${article.getDateFinEncheres()}</p>
-											<span class="card-text">Vendeur : </span>
-											<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
+			<div class="col-12">
+				<!-- Liste des articles dans la bdd -->
+				<div class="row justify-content-evenly">
+					<c:forEach var="utilisateur" items="${catalogue}">
+						<c:forEach var="article" items="${utilisateur.getListeArticle()}">
+							<c:forEach var="articleFiltre" items="${filtre}">
+								<c:if test="${article.getNoArticle()==articleFiltre.getNoArticle()}">						
+									<div class="card mb-3 col-12 col-sm-12 col-md-5" style="max-width: 540px;">
+										<div class="row no-gutters">
+											<div class="col-4">
+												<img src="" class="card-img" alt="...">
+											</div>
+											<div class="col-8">
+												<div class="card-body">
+													<a href="Redirection?etat=${article.getEtatVente()}&no=${article.getNoArticle()}" class="card-title">${article.getNomArticle()}</a>
+													<c:choose>
+														<c:when test="${article.getPrixVente()<article.getMiseAPrix()}">
+															<p class="card-text">Prix : ${article.getMiseAPrix()} points</p>
+														</c:when>
+														<c:otherwise>
+															<p class="card-text">Prix : ${article.getPrixVente()} points</p>
+														</c:otherwise>
+													</c:choose>
+													<p class="card-text">Fin de l'enchère : ${article.getDateFinEncheres()}</p>
+													<span class="card-text">Vendeur : </span>
+													<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
+												</div>
+											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-						</c:if>
+								</c:if>
+							</c:forEach>
+						</c:forEach>
 					</c:forEach>
-				</c:forEach>
-			</c:forEach>
+				</div>
+			</div>
 		</div>		
 	</main>
 	<script>
