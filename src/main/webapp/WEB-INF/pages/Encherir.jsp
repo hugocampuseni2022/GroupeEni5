@@ -21,8 +21,7 @@
 	<main>
 	<c:forEach var="utilisateur" items="${catalogue}">
 		<c:forEach var="article" items="${utilisateur.getListeArticle()}">
-				<c:if test="${noArticle==article.getNoArticle()}">
-				
+				<c:if test="${noArticle==article.getNoArticle()}">					
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-12">
@@ -35,12 +34,21 @@
 							<div class="col-3 position-relative">
 								<a class="position-absolute top-50 start-50 translate-middle">img placeholder</a>
 							</div>
+							
+							<div class="row">
+							<div class="col-3">
+									<div>
+										Article :
+									</div>
+							</div>
 							<div class="col-9">
 								<div class="row">
 									<div>
 										${article.getNomArticle()}
 									</div>
 								</div>
+							</div>
+							</div>	
 								<div class="row">
 									<div class="col-3">
 										<div>
@@ -129,40 +137,13 @@
 								</div>
 								<div class="row">
 									<div class="col-3">
-										<div>
-											Ma proposition :
-										</div>
+										
 									</div>
-									<div class="col-6">
-										<form action="encherir" method="post">
-											<div>
-												<!-- si pas encore d'enchere, 'placeholder'= miseAPrix, sinon, 'placeholder'=meilleureOffre + 5 -->
-													<input type="number" maxlength="4" min="1" name="offre" id="offre" placeholder="">
-												
-												
-													<!-- utilisateur.getArticle().getMontant_Enchere()+10 -->
-													
-													<!-- if (offre>utilisateur.getCredit) btnEncher=disabled -->
-												<%-- <c:choose>
-													<c:when test="${utilisateur.getCredit()}=>offre"> --%>
-														<button name="btnEncher" >Enchérir</button>
-													<%-- </c:when>
-													<c:otherwise>
-														<button name="btnEncher" disabled>Enchérir</button> <!-- afficher à l'utilisateur qu'il n'a pas assez de crédit -->
-													</c:otherwise>
-												</c:choose> --%>
-												
-											</div>
-										</form>
-									</div>
-								</div>
-			
-							</div>
 						</div>
+						</div>	
 					</div>
-					
-				</c:if>	
-			</c:forEach>		
+				</c:if>
+			</c:forEach>
 		</c:forEach>
 	</main>
 

@@ -1,3 +1,4 @@
+
 package fr.eni.enchere.bo;
 
 import java.sql.Timestamp;
