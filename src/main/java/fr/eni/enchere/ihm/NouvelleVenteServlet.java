@@ -3,6 +3,7 @@ package fr.eni.enchere.ihm;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,7 @@ import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.FactoryBLL;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Retrait;
+import fr.eni.enchere.bo.Utilisateur;
 
 /**
  * Servlet implementation class NouvelleVenteServlet
@@ -25,6 +27,7 @@ public class NouvelleVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArticleManager manager;
 	private HttpSession session;
+	private List<Utilisateur> catalogue;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,6 +46,26 @@ public class NouvelleVenteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session = request.getSession();
+		try {
+			catalogue =  manager.getAll();
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int id = 0;
+		if (!("".equals(request.getParameter("no")) || request.getParameter("no")==null)) {
+			for (Utilisateur u : catalogue) {
+				for(Article a : u.getListeArticle()) {
+					if (Integer.parseInt(request.getParameter("no"))==a.getNoArticle()) {
+						id = a.getNoArticle();
+					}
+				} 
+			}
+		}
+			
+		request.setAttribute("noArticle", id);	
+		request.setAttribute("catalogue", catalogue);
 		request.getRequestDispatcher("/WEB-INF/pages/NouvelleVente.jsp").forward(request, response);
 	}
 
