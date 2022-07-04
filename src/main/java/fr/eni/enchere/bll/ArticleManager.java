@@ -29,6 +29,8 @@ public interface ArticleManager {
 	
 	void encherir(int noArticle, int noUtilisateur, Enchere enchere) throws BLLException;
 	
+	void modifPrixDeVente (int prixVente) throws BLLException;
+	
 	
 	
 	

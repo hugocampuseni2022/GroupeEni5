@@ -146,6 +146,16 @@ public class ArticleImpl implements ArticleManager {
 		
 	}
 	
+	public void modifPrixDeVente (int prixVente) throws BLLException {
+		
+		try {
+			daoArticle.modifPrixDeVente(prixVente);
+			
+		}catch (DALException e) {
+			throw new BLLException(e.getMessage(), e);
+		}
+		
+	}
 	
 
 	

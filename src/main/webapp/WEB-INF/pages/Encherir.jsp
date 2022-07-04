@@ -22,135 +22,145 @@
 	<c:forEach var="utilisateur" items="${catalogue}">
 		<c:forEach var="article" items="${utilisateur.getListeArticle()}">
 				<c:if test="${noArticle==article.getNoArticle()}">
-				
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-12">
-								<h3>Détail vente</h3>				
-							</div>
-						</div>
-					</div>
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-3 position-relative">
-								<a class="position-absolute top-50 start-50 translate-middle">img placeholder</a>
-							</div>
-							<div class="col-9">
-								<div class="row">
-									<div>
-										${article.getNomArticle()}
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Description :
-										</div>
-									</div>
-									<div class="col-6">
-										<div>
-											${article.getDescription()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<div class="blue">Blue</div> <!-- ********************************************* -->
-										<div>
-											Catégorie :
-										</div>
-									</div>
-									<div class="col-6">
-										<div>
-											${article.getNoCategorie()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Meilleure offre :
-										</div>
-									</div>
-									<div class="col-6">
-										<div>
-											${enchere.getMontant_Enchere()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<p>Mise à prix :</p>
-									</div>
-									<div class="col-6">
-										<div>
-											${article.getMiseAPrix()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Fin de l'enchère :
-										</div>
-									</div>
-									<div class="col-6">
-										<div>
-											${article.getDateFinEncheres()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Retrait :
-										</div>
-									</div>
-									<div class="col-6">
-										<div>
-											${article.getLieuRetrait()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Vendeur :
-										</div>
-									</div>
-									<div class="col-6">
-										<div>
-											${utilisateur.getPseudo()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Ma proposition :
-										</div>
-									</div>
-									<div class="col-6">
-										<form action="encherir" method="post">
-											<div>
-												<input type="number" maxlength="4" min="1" name="offre" id="">
-												<!-- utilisateur.getArticle().getMontant_Enchere()+10 -->
-												
-												
-												<!-- if (offre>utilisateur.getCredit) btnEncher=disabled -->
-												
-												<button name="btnEncher">Enchérir</button>
+											<div class="container-fluid">
+												<div class="row">
+													<div class="col-12">
+														<h3>Détail vente</h3>				
+													</div>
+												</div>
 											</div>
-										</form>
-									</div>
-								</div>
-			
-							</div>
-						</div>
-					</div>
-					
-				</c:if>	
-			</c:forEach>		
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-3 position-relative">
+													<a class="position-absolute top-50 start-50 translate-middle">img placeholder</a>
+												</div>
+												<div class="col-9">
+													<div class="row">
+														<div class="col-3">
+															<div>
+																Article :
+															</div>
+														</div >
+														<div class="col-6">
+															<div>
+																${article.getNomArticle()}
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-3">
+															<div>
+																Description :
+															</div>
+														</div>
+														<div class="col-6">
+															<div>
+																${article.getDescription()}
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-3">
+															<div>
+																Catégorie :
+															</div>
+														</div>
+														<div class="col-6">
+															<div>
+																${article.getNoCategorie()}
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-3">
+															<div>
+																Meilleure offre :
+															</div>
+														</div>
+														<div class="col-6">
+															<div>
+																${enchere.getMontant_Enchere()}
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-3">
+															<p>Mise à prix :</p>
+														</div>
+														<div class="col-6">
+															<div>
+																${article.getMiseAPrix()}
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-3">
+															<div>
+																Fin de l'enchère :
+															</div>
+														</div>
+														<div class="col-6">
+															<div>
+																${article.getDateFinEncheres()}
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-3">
+															<div>
+																Retrait :
+															</div>
+														</div>
+														<div class="col-6">
+															<div>
+																<p>${article.getLieuRetrait().getRue()}</p>
+															<div>
+																${article.getLieuRetrait().getCode_postal()}
+																${article.getLieuRetrait().getVille()}
+															</div>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-3">
+															<div>
+																Vendeur :
+															</div>
+														</div>
+														<div class="col-6">
+															<div>
+																${utilisateur.getPseudo()}
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-3">
+															<div>
+																Ma proposition :
+															</div>
+														</div>
+														<div class="col-6">
+															<form action="encherir" method="post">
+																<div>
+																	<input type="number" maxlength="4" min="1" name="offre" id="">
+																	<!-- utilisateur.getArticle().getMontant_Enchere()+10 -->
+																	
+																	
+																	<!-- if (offre>utilisateur.getCredit) btnEncher=disabled -->
+																	
+																	<button name="btnEncher">Enchérir</button>
+																</div>
+															</form>
+														</div>
+													</div>
+								
+												</div>
+											</div>
+											</div>
+								
+						
+				</c:if>
+			</c:forEach>
 		</c:forEach>
 	</main>
 
