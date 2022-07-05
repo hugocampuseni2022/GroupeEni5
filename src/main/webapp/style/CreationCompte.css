@@ -1,9 +1,32 @@
 @charset "UTF-8";
 
+
+.logo {
+	height: 50px;
+	line-height: 50px;
+}
+
+.logo a {
+	display: inline-block;
+	font-size: 2rem;
+	text-decoration: none;
+	color: white;
+}
+
+.logo a:hover {
+	color: white;
+}
+
+header {
+	background: #212121;
+	padding-top : 10px;
+	padding-bottom: 10px;
+	margin-bottom: 25px;
+}
+
 .form-line{
 	display : flex ;
-	justify-content:space-evenly;
-	
+	justify-content:space-evenly;	
 }
 
 lesBoutons {
@@ -24,11 +47,6 @@ lesBoutons {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.25s ease;
-}
-
-.bouton {
-  
-
 }
 
 #titre {
