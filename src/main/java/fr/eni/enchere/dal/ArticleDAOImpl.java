@@ -42,7 +42,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 	
 	private static final String INSERT_RETRAIT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville) VALUES (?, ?, ?, ? )";
 	
-	private static final String UPDATE_PRIX_DE_VENTE = "UPDATE ARTICLES_VENDUS SET  prix_vente  = ?";
+	private static final String UPDATE_PRIX_DE_VENTE = "UPDATE ARTICLES_VENDUS SET prix_vente  = ?";
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;									
 	private static Statement stmt;
@@ -338,6 +338,8 @@ public class ArticleDAOImpl implements ArticleDAO{
 			pStmt.setInt(4, idUser);
 			
 			pStmt.executeUpdate();
+			
+			modifPrixDeVente(enchere.getMontant_Enchere());
 		} catch (SQLException e) {
 			throw new DALException ("erreur insert enchère", e);
 		}

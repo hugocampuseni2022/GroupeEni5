@@ -83,3 +83,29 @@ main{
 		text-align: center;
 	}
 }
+
+@media screen and (max-width: 424px) {
+	
+	main{
+		font-size: 13px
+	}
+}
+
+@media screen and (max-width: 352px) {
+	
+	main{
+		font-size: 12px
+	}
+}
+
+@media screen and (max-width: 330px) {
+	
+	.text{
+		font-size: 10px
+	}
+}
+
+.test{
+	padding-right: 0px !important;
+}
+
