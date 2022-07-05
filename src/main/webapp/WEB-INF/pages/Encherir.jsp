@@ -19,6 +19,9 @@
 		</div>
 	</header>
 	<main>
+	<form action="EncherirServlet"   method = "post">
+	<input type = "hidden" name ="id" value="${id}"/>
+	<input type = "hidden" name ="no" value="${noArticle}"/>
 	<c:forEach var="utilisateur" items="${catalogue}">
 		<c:forEach var="article" items="${utilisateur.getListeArticle()}">
 				<c:if test="${noArticle==article.getNoArticle()}">					
@@ -87,7 +90,7 @@
 																	</div>
 																</c:if>
 															</c:if>
-											 			</c:forEa ch>
+											 			</c:forEach>
 											 		</c:forEach>
 												</c:forEach>
 											</c:when>
@@ -162,22 +165,32 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<input type="number" name = "offre" required  min="${enchere2.getMontant_Enchere()}" step = "5"></input>
+												<input type="number" name = "offre" required  min="${article.getPrixVente()+5}" step = "5"></input>
 											</c:otherwise>
 										</c:choose>
 									</div>					
 								</div>
-								
-								<form action="EncherirServlet"   method = "post">
-											<button  name="btn" value="Encherir">
-												Enchérir
+									
+							 <c:choose>
+							 
+									<c:when test="${utilisateur.getCredit()< article.getMiseAPrix()or utilisateur.getCredit()< article.getPrixVente()}">
+											 <button  name="btn" value="unavailable" >
+													Enchérir
 											</button>
-								</form>
+											<p>${error}</p>
+									</c:when>
 								
-					</div>	
+									<c:otherwise>
+												 <button  name="btn" value="Encherir" >
+													Enchérir
+												</button>		
+									</c:otherwise>
+						</c:choose>			
+					</div>		
 				</c:if>
 			</c:forEach>
 		</c:forEach>
+		</form>
 	</main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

@@ -1,7 +1,10 @@
 package fr.eni.enchere.ihm;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -66,10 +69,11 @@ public class EncherirServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		
 		if("Encherir".equals(request.getParameterValues("btn")[0])) {
-			
+			System.out.println(Integer.parseInt(request.getParameter("no")));
 			try {
-				manager.encherir(Integer.parseInt(request.getParameter("IDARTICLE")),request.getParameter("IDUTILISATEUR"),new Enchere(request.getParameter("DATEENCHERE"), Integer.parseInt(request.getParameter("offre"),Integer.parseInt(request.getParameter("NUMEROENCHERE"));
+				manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))));
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -78,16 +82,33 @@ public class EncherirServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			else {
+			response.sendRedirect(request.getContextPath()+"/Accueil");
+			}
+			
+			else if ("unavailable".equals(request.getParameterValues("btn")[0])) {
 				
+				request.setAttribute("error", "Credit insufisant pour enchérir");	
 				
+				request.setAttribute("catalogue", catalogue);
+				int id = 0;
+				
+				for (Utilisateur u : catalogue) {
+					for(Article a : u.getListeArticle()) {
+						if (Integer.parseInt(request.getParameter("no"))==a.getNoArticle()) {
+							id = a.getNoArticle();
+						}
+					} 
+					
+				}
+				
+				request.setAttribute("noArticle", id);	
+				request.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(request, response);
+
 				
 				
 			}
-			
-			
-			response.sendRedirect(request.getContextPath()+"/Accueil");
-		}
+		
+	
 		
 		
 	}

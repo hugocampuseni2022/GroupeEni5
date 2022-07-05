@@ -16,6 +16,12 @@ public class Enchere {
 		this.montant_Enchere = montant_Enchere;
 		this.numero_Enchere = numero_Enchere;
 	}
+	
+	public Enchere(Timestamp dateEnchere, int montant_Enchere) {
+		super();
+		this.dateEnchere = dateEnchere;
+		this.montant_Enchere = montant_Enchere;
+	}
 
 	// getters and setters
 	public Timestamp getDateEnchere() {

@@ -42,7 +42,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 	
 	private static final String INSERT_RETRAIT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville) VALUES (?, ?, ?, ? )";
 	
-	private static final String UPDATE_PRIX_DE_VENTE = "UPDATE ARTICLES_VENDUS SET prix_vente  = ?";
+	private static final String UPDATE_PRIX_DE_VENTE = "UPDATE ARTICLES_VENDUS SET prix_vente = ? WHERE no_article = ?";
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;									
 	private static Statement stmt;
@@ -339,18 +339,19 @@ public class ArticleDAOImpl implements ArticleDAO{
 			
 			pStmt.executeUpdate();
 			
-			modifPrixDeVente(enchere.getMontant_Enchere());
+			modifPrixDeVente(enchere.getMontant_Enchere(),idArticle);
 		} catch (SQLException e) {
 			throw new DALException ("erreur insert enchère", e);
 		}
 	}
 	
-	public void modifPrixDeVente (int prixVente) throws DALException {
+	public void modifPrixDeVente (int prixVente, int numeroArticle) throws DALException {
 		
 		try (Connection conn = ConnectionProvider.getConnection()){
 			pStmt = conn.prepareStatement(UPDATE_PRIX_DE_VENTE);
 			
 			pStmt.setInt(1, prixVente);
+			pStmt.setInt(2, numeroArticle);
 			
 		
 			pStmt.executeUpdate();
