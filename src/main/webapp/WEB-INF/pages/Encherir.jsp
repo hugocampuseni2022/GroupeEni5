@@ -181,6 +181,7 @@
 							 <c:choose>
 							 
 									<c:when test="${utilisateur.getCredit()< article.getMiseAPrix()or utilisateur.getCredit()-5< article.getPrixVente()}">
+										<input type = "hidden" name ="credit" value="${utilisateur.getCredit()}"/>
 											 <button  name="btn" value="unavailable" >
 													Enchérir
 											</button>
