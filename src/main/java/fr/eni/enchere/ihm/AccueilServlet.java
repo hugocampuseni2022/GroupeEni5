@@ -198,47 +198,47 @@ public class AccueilServlet extends HttpServlet {
 						} else {
 							req5 = "1=1";
 						}
-						filtreArticle = manager.filtreClassique("SELECT A.* FROM ARTICLES_VENDUS A JOIN ENCHERES E ON A.no_article=E.no_article WHERE " + req1 + " AND " + req2 + " AND " + req3 + " AND " + req4 + " AND " + req5 + " GROUP BY A.no_article, A.nom_article, A.description, A.date_debut_encheres, A.date_fin_encheres, A.prix_initial, A.prix_vente, A.no_utilisateur, A.no_categorie");
+						filtreArticle = manager.filtreClassique("SELECT A.* FROM ARTICLES_VENDUS A JOIN ENCHERES E ON A.no_article=E.no_article WHERE " + req1 + " AND " + req2 + " AND " + req3 + " OR " + req4 + " AND " + req5 + " GROUP BY A.no_article, A.nom_article, A.description, A.date_debut_encheres, A.date_fin_encheres, A.prix_initial, A.prix_vente, A.no_utilisateur, A.no_categorie");
 					} else if (filtreEnchereRemportes){
 						req4 = "E.no_utilisateur=" + session.getAttribute("id");
 						req5 = "(montant_enchere=prix_vente AND DATEDIFF( DAY, GETDATE(), date_fin_encheres)<0)";
-						filtreArticle = manager.filtreClassique("SELECT A.* FROM ARTICLES_VENDUS A JOIN ENCHERES E ON A.no_article=E.no_article WHERE " + req1 + " AND " + req2 + " AND " + req3 + " AND " + req4 + " AND " + req5 + " GROUP BY A.no_article, A.nom_article, A.description, A.date_debut_encheres, A.date_fin_encheres, A.prix_initial, A.prix_vente, A.no_utilisateur, A.no_categorie");
+						filtreArticle = manager.filtreClassique("SELECT A.* FROM ARTICLES_VENDUS A JOIN ENCHERES E ON A.no_article=E.no_article WHERE " + req1 + " AND " + req2 + " AND " + req3 + " OR " + req4 + " AND " + req5 + " GROUP BY A.no_article, A.nom_article, A.description, A.date_debut_encheres, A.date_fin_encheres, A.prix_initial, A.prix_vente, A.no_utilisateur, A.no_categorie");
 					} else {
 						filtreArticle = manager.filtreClassique("SELECT * FROM ARTICLES_VENDUS WHERE " + req1 + " AND " + req2 + " AND " + req3);
 					}
 				} else if (filtreMesEnchere) {
-					req3 = "1=1";
+					req3 = "0=1";
 					req4 = "E.no_utilisateur=" + session.getAttribute("id");
 					if (filtreEnchereRemportes) {
 						req5 = "(montant_enchere=prix_vente AND DATEDIFF( DAY, GETDATE(), date_fin_encheres)<0)";
 					} else {
 						req5 = "1=1";
 					}
-					filtreArticle = manager.filtreClassique("SELECT A.* FROM ARTICLES_VENDUS A JOIN ENCHERES E ON A.no_article=E.no_article WHERE " + req1 + " AND " + req2 + " AND " + req3 + " AND " + req4 + " AND " + req5 + " GROUP BY A.no_article, A.nom_article, A.description, A.date_debut_encheres, A.date_fin_encheres, A.prix_initial, A.prix_vente, A.no_utilisateur, A.no_categorie");
+					filtreArticle = manager.filtreClassique("SELECT A.* FROM ARTICLES_VENDUS A JOIN ENCHERES E ON A.no_article=E.no_article WHERE " + req1 + " AND " + req2 + " AND " + req3 + " OR " + req4 + " AND " + req5 + " GROUP BY A.no_article, A.nom_article, A.description, A.date_debut_encheres, A.date_fin_encheres, A.prix_initial, A.prix_vente, A.no_utilisateur, A.no_categorie");
 				}else if (filtreEnchereRemportes) {
-					req3 = "1=1";
+					req3 = "0=1";
 					req4 = "E.no_utilisateur=" + session.getAttribute("id");
 					req5 = "(montant_enchere=prix_vente AND DATEDIFF( DAY, GETDATE(), date_fin_encheres)<0)";
-					filtreArticle = manager.filtreClassique("SELECT A.* FROM ARTICLES_VENDUS A JOIN ENCHERES E ON A.no_article=E.no_article WHERE " + req1 + " AND " + req2 + " AND " + req3 + " AND " + req4 + " AND " + req5 + " GROUP BY A.no_article, A.nom_article, A.description, A.date_debut_encheres, A.date_fin_encheres, A.prix_initial, A.prix_vente, A.no_utilisateur, A.no_categorie");
+					filtreArticle = manager.filtreClassique("SELECT A.* FROM ARTICLES_VENDUS A JOIN ENCHERES E ON A.no_article=E.no_article WHERE " + req1 + " AND " + req2 + " AND " + req3 + " OR " + req4 + " AND " + req5 + " GROUP BY A.no_article, A.nom_article, A.description, A.date_debut_encheres, A.date_fin_encheres, A.prix_initial, A.prix_vente, A.no_utilisateur, A.no_categorie");
 				} else {
 					filtreArticle = manager.filtreClassique("SELECT * FROM ARTICLES_VENDUS WHERE " + req1 + " AND " + req2 + " AND (DATEDIFF(DAY, date_debut_encheres, GETDATE())>=0 OR (no_utilisateur=" + session.getAttribute("id") + " AND DATEDIFF(DAY, date_debut_encheres, GETDATE())<0))");
 				}
 			} else if (filtreRadio==2) {
 				if (filtreVentesCree || filtreVentesEnCours || filtreVentesEnd) {
 					if (filtreVentesCree) {
-						req3 = "(DATEDIFF( DAY, GETDATE(), date_fin_encheres)>=0 AND DATEDIFF(DAY, date_debut_encheres, GETDATE())>=0)";
+						req3 = "DATEDIFF(DAY, date_debut_encheres, GETDATE())<0";
 					} else {
-						req3 = "1=1";
+						req3 = "0=1";
 					}
 					if (filtreVentesEnCours) {
-						req4 = "DATEDIFF(DAY, date_debut_encheres, GETDATE())<0";
+						req4 = "(DATEDIFF( DAY, GETDATE(), date_fin_encheres)>=0 AND DATEDIFF(DAY, date_debut_encheres, GETDATE())>=0)";
 					} else {
-						req4 = "1=1";
+						req4 = "0=1";
 					}
 					if (filtreVentesEnd) {
 						req5 = "DATEDIFF(DAY, GETDATE(), date_fin_encheres)<0";
 					} else {
-						req5= "1=1";
+						req5= "0=1";
 					}
 					
 					filtreArticle = manager.filtreClassique("SELECT * FROM ARTICLES_VENDUS WHERE " + req1 + " AND " + req2 + " AND (no_utilisateur=" + session.getAttribute("id") + " AND (" + req3 + " OR " + req4 + " OR " + req5 + "))");
