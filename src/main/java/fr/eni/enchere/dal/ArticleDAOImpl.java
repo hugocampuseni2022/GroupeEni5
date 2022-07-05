@@ -43,6 +43,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 	private static final String INSERT_RETRAIT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville) VALUES (?, ?, ?, ? )";
 	
 	private static final String UPDATE_PRIX_DE_VENTE = "UPDATE ARTICLES_VENDUS SET prix_vente = ? WHERE no_article = ?";
+	
 	private static ResultSet rs;
 	private static PreparedStatement pStmt = null;									
 	private static Statement stmt;
@@ -363,9 +364,23 @@ public class ArticleDAOImpl implements ArticleDAO{
 		
 	}
 	
-	
-	
-	
+	public List<Article> filterClassique(String query) throws DALException {
+		try (Connection conn = ConnectionProvider.getConnection()){
+			List<Article> listeArticle = new ArrayList<Article>();	
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				Article newArticle = new Article(rs.getInt("no_article"),rs.getString("nom_article") , rs.getString("description"), rs.getDate("date_debut_encheres"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("prix_vente"), rs.getInt("no_categorie"));
+				newArticle.setListeEnchere(selectEnchereByArticle(rs.getInt("no_article")));
+				newArticle.setLieuRetrait(selectRetraitByArticle(rs.getInt("no_article")));
+				listeArticle.add(newArticle);
+			}
+			return listeArticle;
+		} catch (SQLException e) {
+			throw new DALException("erreur filtre", e);
+		}
+	}
 }
 
 		

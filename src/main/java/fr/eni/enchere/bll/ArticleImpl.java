@@ -145,7 +145,15 @@ public class ArticleImpl implements ArticleManager {
 		}
 		
 	}
-	
-	
+
+	@Override
+	public List<Article> filtreClassique(String query) throws BLLException {
+		try {
+			return daoArticle.filterClassique(query);
+		} catch (DALException e) {
+			throw new BLLException(e.getMessage(), e);
+		}
+		
+	}
  
 }
