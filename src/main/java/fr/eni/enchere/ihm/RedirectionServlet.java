@@ -31,7 +31,9 @@ public class RedirectionServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/EncherirServlet?no=" + request.getParameter("no"));	
 		} else if ("Terminé".equals(request.getParameter("etat"))) {
 			response.sendRedirect(request.getContextPath()+"/WinAuctionServlet?no=" + request.getParameter("no"));
-		} 
+		} else if ("Créée".equals(request.getParameter("etat"))) {
+			response.sendRedirect(request.getContextPath()+"/NouvelleVenteServlet?no=" + request.getParameter("no"));
+		}
 	}
 
 	/**

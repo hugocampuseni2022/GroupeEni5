@@ -49,13 +49,14 @@ public class WinAuctionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		session= request.getSession();
 		try {
 			catalogue =  manager.getAll();
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		session= request.getSession();
+		
 		request.setAttribute("catalogue", catalogue);
 		int id = 0;
 		

@@ -52,31 +52,42 @@ public class EncherirServlet extends HttpServlet {
 			for(Article a : u.getListeArticle()) {
 				if (Integer.parseInt(req.getParameter("no"))==a.getNoArticle()) {
 					id = a.getNoArticle();
-					System.out.println(a.getLieuRetrait().getRue());
-					System.out.println(a.getLieuRetrait().getCode_postal());
-					System.out.println(a.getLieuRetrait().getVille());
 				}
 			} 
 			
 		}
 		
 		req.setAttribute("noArticle", id);	
-
 		req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);
 
-		req.setAttribute("catalogue", catalogue);
-		req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);	
-		
-
 	}
+
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//req.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(req, resp);
-		session = req.getSession();
-		
-		
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		if("Encherir".equals(request.getParameterValues("btn")[0])) {
+			
+			try {
+				manager.encherir(Integer.parseInt(request.getParameter("IDARTICLE")),request.getParameter("IDUTILISATEUR"),new Enchere(request.getParameter("DATEENCHERE"), Integer.parseInt(request.getParameter("offre"),Integer.parseInt(request.getParameter("NUMEROENCHERE"));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (BLLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			else {
+				
+				
+				
+				
+			}
+			
+			
+			response.sendRedirect(request.getContextPath()+"/Accueil");
+		}
 		
 		
 	}
