@@ -22,7 +22,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 											+ "email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? WHERE no_utilisateur = ?";
 	private static final String SELECT_BY_PSEUDO = "select pseudo, nom, prenom, email, telephone, rue, code_postal, ville from UTILISATEURS where pseudo = ?";
 	private static final String DELETE_ARTICLE = "DELETE FROM ARTICLES_VENDUS WHERE no_utilisateur = ? ";										
-	private static final String UPDATE_CREDIT = "UPDATE UTILISATEURS SET credit = ? WHERE no_utilisateur = ?";
+	
 	
 	@Override
 	public Utilisateur connection(String login, String mdp) throws DALException {
@@ -153,23 +153,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 		}
 	}
 	
-	@Override
-	public void updateCredit(int noUtilisateur,int credit,int enchere) throws DALException {
-		
-		try (Connection conn = ConnectionProvider.getConnection();){
-			pStmt = conn.prepareStatement(UPDATE_CREDIT);
-			
-			pStmt.setInt(1,(credit-enchere));
-			pStmt.setInt(2,noUtilisateur);
-			
-			pStmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			throw new DALException ("erreur updateCredit", e);
-
-		}
-		
-	}
+	
 	
 }

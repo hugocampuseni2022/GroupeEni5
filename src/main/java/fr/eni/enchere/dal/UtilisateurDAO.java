@@ -16,6 +16,6 @@ public interface UtilisateurDAO {
 	
 	void deleteArticle(int noUtilisateur) throws DALException;
 
-	void updateCredit(int noUtilisateur,int credit,int enchere) throws DALException;
+
 	
 }
