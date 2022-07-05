@@ -137,9 +137,9 @@ public class ArticleImpl implements ArticleManager {
 
 	
 	@Override
-	public void encherir(int noArticle, int noUtilisateur, Enchere enchere) throws BLLException {
+	public void encherir(int noArticle, int noUtilisateur, Enchere enchere, int credit) throws BLLException {
 		try {
-			daoArticle.encherir(noArticle, noUtilisateur, enchere);
+			daoArticle.encherir(noArticle, noUtilisateur, enchere,credit);
 		} catch (DALException e) {
 			throw new BLLException(e.getMessage(), e);
 		}
@@ -155,5 +155,6 @@ public class ArticleImpl implements ArticleManager {
 		}
 		
 	}
+	
  
 }

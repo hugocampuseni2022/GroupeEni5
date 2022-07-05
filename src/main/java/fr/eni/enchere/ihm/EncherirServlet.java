@@ -73,7 +73,7 @@ public class EncherirServlet extends HttpServlet {
 		if("Encherir".equals(request.getParameterValues("btn")[0])) {
 			
 			try {
-				manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))));
+				manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))),Integer.parseInt(request.getParameter("credit")));
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -99,19 +99,10 @@ public class EncherirServlet extends HttpServlet {
 							id = a.getNoArticle();
 						}
 					} 
-					
 				}
-				
 				request.setAttribute("noArticle", id);	
 				request.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(request, response);
-
-				
-				
 			}
-		
-	
-		
-		
 	}
 
 }
