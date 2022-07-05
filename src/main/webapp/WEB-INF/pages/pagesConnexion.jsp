@@ -14,7 +14,7 @@
 	<header class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 col-md-4 logo">
-				<a href="<%=request.getContextPath()%>/Accueil">Eni-Enchères</a>
+				<a href="<%=request.getContextPath()%>/Accueil">ENI-Enchères</a>
             </div>
 		</div>
 	</header>
