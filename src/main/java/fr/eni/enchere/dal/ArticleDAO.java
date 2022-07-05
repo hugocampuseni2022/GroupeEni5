@@ -36,6 +36,8 @@ public interface ArticleDAO {
 		void encherir(int idArticle, int idUser, Enchere enchere) throws DALException;
 
 		void modifPrixDeVente(int prixVente,int numeroArticle) throws DALException;
+		
+		List<Article> filterClassique(String query) throws DALException;
 	}
 
 

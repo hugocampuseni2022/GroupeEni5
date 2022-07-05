@@ -29,10 +29,6 @@ public interface ArticleManager {
 	
 	void encherir(int noArticle, int noUtilisateur, Enchere enchere) throws BLLException;
 	
-
-	
-	
-	
-	
+	List<Article> filtreClassique(String query) throws BLLException;
 	
 }
