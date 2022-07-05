@@ -23,6 +23,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	private static final String SELECT_BY_PSEUDO = "select pseudo, nom, prenom, email, telephone, rue, code_postal, ville from UTILISATEURS where pseudo = ?";
 	private static final String DELETE_ARTICLE = "DELETE FROM ARTICLES_VENDUS WHERE no_utilisateur = ? ";										
 	
+	
 	@Override
 	public Utilisateur connection(String login, String mdp) throws DALException {
 		try (Connection connection= ConnectionProvider.getConnection()){
@@ -151,12 +152,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			throw new DALException("", e);
 		}
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	
