@@ -61,14 +61,21 @@
 								</div>
 								<div class="row">
 									<div class="col-3">
-										<div>
-											Catégorie :
-										</div>
+									
+										   
+												<div>
+													Catégorie :
+												</div> 
+										
 									</div>
 									<div class="col-6">
-										<div>
-											${article.getNoCategorie()}
-										</div>
+										<c:forEach var="categorie" items="${categories}">
+												<c:if test ="${article.getNoCategorie() == categorie.noCategorie}">
+														<div>
+															${categorie.libelle}
+														</div>	
+												</c:if>
+										</c:forEach>
 									</div>
 								</div>
 									<div class="row">
@@ -173,7 +180,8 @@
 									
 							 <c:choose>
 							 
-									<c:when test="${utilisateur.getCredit()< article.getMiseAPrix()or utilisateur.getCredit()< article.getPrixVente()}">
+									<c:when test="${utilisateur.getCredit()< article.getMiseAPrix()or utilisateur.getCredit()-5< article.getPrixVente()}">
+										<input type = "hidden" name ="credit" value="${utilisateur.getCredit()}"/>
 											 <button  name="btn" value="unavailable" >
 													Enchérir
 											</button>
@@ -181,9 +189,10 @@
 									</c:when>
 								
 									<c:otherwise>
-												 <button  name="btn" value="Encherir" >
+												<button  name="btn" value="Encherir" >
 													Enchérir
-												</button>		
+												</button>
+														
 									</c:otherwise>
 						</c:choose>			
 					</div>		

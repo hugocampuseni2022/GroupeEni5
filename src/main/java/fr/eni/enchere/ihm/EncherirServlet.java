@@ -71,7 +71,7 @@ public class EncherirServlet extends HttpServlet {
 	
 		
 		if("Encherir".equals(request.getParameterValues("btn")[0])) {
-			System.out.println(Integer.parseInt(request.getParameter("no")));
+			
 			try {
 				manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))));
 			} catch (NumberFormatException e) {
@@ -81,6 +81,7 @@ public class EncherirServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			
 			response.sendRedirect(request.getContextPath()+"/Accueil");
 			}
