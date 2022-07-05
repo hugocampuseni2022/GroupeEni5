@@ -46,6 +46,7 @@ public class AccueilServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		String filtreNom = "";
 		int filtreCategorie = 0;
+		int filtreRadio = 0;
 		boolean filtreEnchereOuverte = false;
 		boolean filtreMesEnchere = false;
 		boolean filtreEnchereRemportes = false;
@@ -70,6 +71,7 @@ public class AccueilServlet extends HttpServlet {
 		
 		if ("true".equals( session.getAttribute("connected"))) {
 			if ("achat".equals(request.getParameter("radio"))) {
+				filtreRadio = 1;
 				if ("on".equals(request.getParameter("enchereOuverte"))) {
 					filtreEnchereOuverte = true;
 				}
@@ -81,6 +83,7 @@ public class AccueilServlet extends HttpServlet {
 				}
 			}
 			if ("vente".equals(request.getParameter("radio"))) {
+				filtreRadio = 2;
 				if ("on".equals(request.getParameter("mesVentesEnCours"))) {
 					filtreVentesEnCours = true;
 				}
@@ -162,91 +165,86 @@ public class AccueilServlet extends HttpServlet {
 		return filtreArticle;
 	}
 	
-	public List<Article> applyFilter(String filtreNom, int filtreCategorie, boolean filtreEnchereOuverte, boolean filtreMesEnchere,	boolean filtreEnchereRemportes, boolean filtreVentesEnCours,boolean filtreVentesCree,boolean filtreVentesEnd) {
-		List<Article> filtreArticle = new ArrayList<Article>();
-		for (Utilisateur u : catalogue) {
-			for (Article a : u.getListeArticle()) {
-				if (!("".equals(filtreNom)) &&
-						!(filtreCategorie==0) &&
-						filtreEnchereOuverte &&
-						filtreEnchereRemportes &&
-						filtreMesEnchere
-						) {
-					
-				}
-					
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				if (!("".equals(filtreNom))) {
-					if (a.getNoCategorie()==filtreCategorie) {
-						for (Article art : filtreArticle) {
-							if (!(a.getNoArticle()==art.getNoArticle())) {
-								filtreArticle.add(a);
-							}
-						}
-					}
-				}
-				if (!(filtreCategorie==0)) {
-					if (a.getNoCategorie()==filtreCategorie) {
-						for (Article art : filtreArticle) {
-							if (!(a.getNoArticle()==art.getNoArticle())) {
-								filtreArticle.add(a);
-							}
-						}
-					}
-				}
-				if (filtreEnchereOuverte) {
-					if (a.getEtatVente().equals("En cours")) {
-						for (Article art : filtreArticle) {
-							if (!(a.getNoArticle()==art.getNoArticle())) {
-								filtreArticle.add(a);
-							}
-						}
-					}
-				}
-				if (filtreMesEnchere) {
-					for (Enchere e1 : u.getListeEnchere()) {
-						for (Enchere e2 : a.getListeEnchere()) {
-							if (e1==e2) {
-								System.out.println("test");
-								for (Article art : filtreArticle) {
-									if (!(a.getNoArticle()==art.getNoArticle())) {
-										filtreArticle.add(a);
-									}
-								}
-							}
-						}
-					}
-				}
-				if (filtreEnchereRemportes) {
-					if (a.getEtatVente().equals("Terminé")) {
-						for (Enchere e1 : u.getListeEnchere()) {
-							for (Enchere e2 : a.getListeEnchere()) {
-								if (e1==e2 && e1.getMontant_Enchere()==a.getPrixVente()) {
-									System.out.println("test");
-									for (Article art : filtreArticle) {
-										if (!(a.getNoArticle()==art.getNoArticle())) {
-											filtreArticle.add(a);
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
+	public List<Article> applyFilter(String filtreNom, int filtreCategorie, int filtreRadio, boolean filtreEnchereOuverte, boolean filtreMesEnchere,	boolean filtreEnchereRemportes, boolean filtreVentesEnCours,boolean filtreVentesCree,boolean filtreVentesEnd) {
+		List<Article> filtreArticle;
+		String req1;
+		String req2;
+		String req3;
+		String req4;
+		String req5;
+		
+		if (!("".equals(filtreNom))) {
+			req1 = "nom_article LIKE '%" + filtreNom + "%'";
+		} else {
+			req1 = "1=1";
 		}
+		
+		if (!(filtreCategorie==0)) {
+			req2 = "no_categorie=" + filtreCategorie;
+		} else {
+			req2 = "1=1";
+		}
+		
+		if (filtreRadio==1) {
+			if (filtreEnchereOuverte) {
+				req3 = "(DATEDIFF( DAY, GETDATE(), date_fin_encheres)>=0 AND DATEDIFF(DAY, date_debut_encheres, GETDATE())>=0)";
+				if (filtreMesEnchere) {
+					req4 = "E.no_utilisateur=1";
+					if (filtreEnchereRemportes) {
+						req5 = "(montant_enchere=prix_vente AND DATEDIFF( DAY, GETDATE(), date_fin_encheres)<0)";
+					} else {
+						req5 = "1=1";
+					}
+					//Appelle Méthode
+				} else if (filtreEnchereRemportes){
+					req4 = "E.no_utilisateur=1";
+					req5 = "(montant_enchere=prix_vente AND DATEDIFF( DAY, GETDATE(), date_fin_encheres)<0)";
+					//Appelle Méthode
+				} else {
+					//Appelle Méthode
+				}
+			} else if (filtreMesEnchere) {
+				req3 = "1=1";
+				req4 = "E.no_utilisateur=1";
+				if (filtreEnchereRemportes) {
+					req5 = "(montant_enchere=prix_vente AND DATEDIFF( DAY, GETDATE(), date_fin_encheres)<0)";
+				} else {
+					req5 = "1=1";
+				}
+				//Appelle Méthode
+			}else if (filtreEnchereRemportes) {
+				req3 = "1=1";
+				req4 = "E.no_utilisateur=1";
+				req3 = "(montant_enchere=prix_vente AND DATEDIFF( DAY, GETDATE(), date_fin_encheres)<0)";
+				//Appelle Méthode
+			} else {
+				//Appelle Méthode
+			}
+		} else if (filtreRadio==2) {
+			if (filtreVentesCree || filtreVentesEnCours || filtreVentesEnd) {
+				if (filtreVentesCree) {
+					req3 = "(DATEDIFF( DAY, GETDATE(), date_fin_encheres)>=0 AND DATEDIFF(DAY, date_debut_encheres, GETDATE())>=0)";
+				} else {
+					req3 = "1=1";
+				}
+				if (filtreVentesEnCours) {
+					req4 = "DATEDIFF(DAY, date_debut_encheres, GETDATE())<0";
+				} else {
+					req4 = "1=1";
+				}
+				if (filtreVentesEnd) {
+					req5 = "DATEDIFF( DAY, GETDATE(), date_fin_encheres)<0)";
+				} else {
+					req5= "1=1";
+				}
+				//Appelle Méthode
+			} else {
+				//Appelle Methode
+			}
+		} else {
+			//Appelle Méthode
+		}
+		
 		return filtreArticle;
 	}
 }
