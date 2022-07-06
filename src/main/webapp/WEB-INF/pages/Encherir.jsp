@@ -160,26 +160,29 @@
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-3">		
-										Ma proposition :
+								<c:if test="${connected.equals(true) and id!=utilisateur.noUtilisateur}">
+									<div class="row">
+										<div class="col-3">		
+											Ma proposition :
+										</div>
+										<div class="col-6">
+										   <c:choose>
+										  		 <c:when test="${empty article.getListeEnchere()}">
+													<div>
+														<input type="number" name = "offre" required  min="${article.getMiseAPrix()}" step = "5"></input>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<input type="number" name = "offre" required  min="${article.getPrixVente()+5}" step = "5"></input>
+												</c:otherwise>
+											</c:choose>
+										</div>					
 									</div>
-									<div class="col-6">
-									   <c:choose>
-									  		 <c:when test="${empty article.getListeEnchere()}">
-												<div>
-													<input type="number" name = "offre" required  min="${article.getMiseAPrix()}" step = "5"></input>
-												</div>
-											</c:when>
-											<c:otherwise>
-												<input type="number" name = "offre" required  min="${article.getPrixVente()+5}" step = "5"></input>
-											</c:otherwise>
-										</c:choose>
-									</div>					
-								</div>
+								
 										<button  name="btn" value="Encherir" >
 											Enchérir
 										</button>
+								</c:if>
 										<p>${error}</p>		
 					
 						<input type = "hidden" name ="credit" value="${utilisateur.getCredit()}"/>		
