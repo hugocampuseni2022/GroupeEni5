@@ -6,6 +6,7 @@ import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Categorie;
 import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.bo.Utilisateur;
+import fr.eni.enchere.dal.DALException;
 
 
 public interface ArticleManager {
@@ -27,8 +28,10 @@ public interface ArticleManager {
 	
 	List<Categorie> getCategories() throws BLLException;
 	
-	void encherir(int noArticle, int noUtilisateur, Enchere enchere) throws BLLException;
+	void encherir(int noArticle, int noUtilisateur, Enchere enchere, int credit) throws BLLException;
 	
 	List<Article> filtreClassique(String query) throws BLLException;
+	
+	void updateCredit(int noUtilisateur,int credit) throws BLLException;
 	
 }

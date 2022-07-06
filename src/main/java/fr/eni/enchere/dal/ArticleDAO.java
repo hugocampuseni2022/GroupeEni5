@@ -39,7 +39,7 @@ public interface ArticleDAO {
 		
 		List<Article> filterClassique(String query) throws DALException;
 		
-		void updateCredit(int noUtilisateur,int credit,int enchere) throws DALException;
+		void updateCredit(int noUtilisateur,int credit) throws DALException;
 	}
 
 

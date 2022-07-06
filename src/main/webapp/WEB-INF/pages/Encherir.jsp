@@ -177,24 +177,12 @@
 										</c:choose>
 									</div>					
 								</div>
-									
-							 <c:choose>
-							 
-									<c:when test="${utilisateur.getCredit()< article.getMiseAPrix()or utilisateur.getCredit()-5< article.getPrixVente()}">
-										<input type = "hidden" name ="credit" value="${utilisateur.getCredit()}"/>
-											 <button  name="btn" value="unavailable" >
-													Enchérir
-											</button>
-											<p>${error}</p>
-									</c:when>
-								
-									<c:otherwise>
-												<button  name="btn" value="Encherir" >
-													Enchérir
-												</button>
-														
-									</c:otherwise>
-						</c:choose>			
+										<button  name="btn" value="Encherir" >
+											Enchérir
+										</button>
+										<p>${error}</p>		
+					
+						<input type = "hidden" name ="credit" value="${utilisateur.getCredit()}"/>		
 					</div>		
 				</c:if>
 			</c:forEach>
