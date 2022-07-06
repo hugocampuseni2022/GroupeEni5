@@ -155,6 +155,16 @@ public class ArticleImpl implements ArticleManager {
 		}
 		
 	}
+
+	@Override
+	public void updateCredit(int noUtilisateur, int credit) throws BLLException {
+		try {
+			daoArticle.updateCredit(noUtilisateur, credit);
+		} catch (DALException e) {
+			throw new BLLException(e.getMessage(),e);
+		}
+		
+	}
 	
  
 }
