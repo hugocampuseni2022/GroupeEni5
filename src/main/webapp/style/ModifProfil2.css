@@ -32,7 +32,6 @@ button {
 	height: 40px;
 	text-align: center;
 	width: 130px;
-	border-radius: 40px;
 	background: white;
 	border: 2px solid #be0a26;
 	color: #be0a26;
@@ -42,12 +41,38 @@ button {
 	font-weight: bold;
 	cursor: pointer;
 	transition: all 0.25s ease;
-  }
-  button:hover {
-	color: white;
-	background: #be0a26;
-  }
-  button:active {
-	letter-spacing: 2px;
-  }
+ }
+ button:hover {
+color: white;
+background: #be0a26;
+ }
+ button:active {
+letter-spacing: 2px;
+ }
   
+.white{
+	background: white;
+}
+
+.btnSuppr{
+	width:200px;
+}
+
+table tr{
+	margin: 15px;
+}
+
+table tr td{
+	padding: 10px;
+	border-style: none;
+}
+
+@media screen and (max-width: 991px){
+	.table{
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+
+

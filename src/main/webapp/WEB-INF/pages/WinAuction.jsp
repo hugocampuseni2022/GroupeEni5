@@ -7,89 +7,94 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WinAuction</title>
+<link rel="stylesheet" href="style/EnchereGagne.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
-	<body>
-		<header class="container-fluid ">
-				<div class="row">
-					<div class="col-sm-12 col-md-4 logo">
-						<a href = "<%=request.getContextPath()%>/Accueil">ENI-Enchères</a>
-					</div>
+<body>
+	<header class="container-fluid ">
+			<div class="row">
+				<div class="col-sm-12 col-md-4 logo">
+					<a href = "<%=request.getContextPath()%>/Accueil">ENI-Enchères</a>
 				</div>
-		</header>
+			</div>
+	</header>
 	<main>
-	<c:forEach var="utilisateur" items="${catalogue}">
-		<c:forEach var="article" items="${utilisateur.getListeArticle()}">
+		<c:forEach var="utilisateur" items="${catalogue}">
+			<c:forEach var="article" items="${utilisateur.getListeArticle()}">
 				<c:if test="${noArticle==article.getNoArticle()}">
 					<c:forEach var ="enchere" items = "${article.getListeEnchere()}">
 					   <c:forEach var ="user2" items = "${catalogue}">
 					   		<c:forEach var = "enchere2" items = "${user2.getListeEnchere()}">
 					   			<c:if test="${enchere.getNumero_Enchere()== enchere2.getNumero_Enchere()}">
 					   				<c:if test="${article.getPrixVente()==enchere2.getMontant_Enchere()}">
-										<c:choose>
-												<c:when test="${id==user2.getNoUtilisateur()}">
-														<div>
-															<t1>Vous avez remporté la vente</t1>
-														</div>
-														
-												</c:when>
-												
-												<c:otherwise>	
-														<t1>${user2.getPseudo()} a remporté l'enchere</t1>
-												</c:otherwise>
-												
-										</c:choose>
-							
-											<div>
-												${article.getNomArticle()}
-											</div>
-											
-											<div>
-												Description : ${article.getDescription()}
-											</div>
-											
-											<div>
-												Meilleure offre : ${article.getPrixVente()} <c:if test="${id== utilisateur.getNoUtilisateur()}">par ${user2.getPseudo()}</c:if>
-											</div>
-											
-											<div>
-												Mise à prix : ${article.getMiseAPrix()}
-											</div>
+									    <div class="container">
+									        <div class="row justify-content-center back p-4">
+									            <div class="col-12 col-12-sm col-md-8">
 										
-										<c:if test="${id== utilisateur.getNoUtilisateur()}">
-											<div>
-												Fin de l'enchère : ${article.getDateFinEncheres()}
-											</div>
-										</c:if>
-										
-										<div>
-											<p>Retrait :${article.getLieuRetrait().getRue()}</p>
-											
-											<div>
-												${article.getLieuRetrait().getCode_postal()}
-												${article.getLieuRetrait().getVille()}
-											</div>		
-										</div>
-										
-											<div>
-												Vendeur : ${utilisateur.getPseudo()}
-											</div>
-										<c:if test="${id != utilisateur.getNoUtilisateur()}">
-												<div>
-													Tel : ${utilisateur.getTelephone()}
+													<c:choose>
+															<c:when test="${id==user2.getNoUtilisateur()}">
+																<div>
+												                    <h4 class="text-center titre">Vous avez remporté la vente</h4>
+												                </div>
+															</c:when>
+															<c:otherwise>
+																<div>
+												                    <h4 class="text-center titre">${user2.getPseudo()} a remporté l'enchere</h4>
+												                </div>
+															</c:otherwise>
+													</c:choose>
+													<div>
+									                    <p>${article.getNomArticle()}</p>
+									                </div>
+									                <div class="d-none d-sm-none  d-md-flex">
+									                    <p class="label">Description :</p>
+									                    <p class="data">${article.getDescription()}</p>
+									                </div>
+									                <div class="d-flex">
+									                    <p class="label">Meilleure offre :</p>
+									                    <p class="data"> ${article.getPrixVente()}<c:if test="${id== utilisateur.getNoUtilisateur()}"> par <a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${user2.getPseudo()}">${user2.getPseudo()}</a></c:if></p>
+									                </div>
+									                <div class="d-flex">
+									                    <p class="label">Mise à prix :</p>
+									                    <p class="data"> ${article.getMiseAPrix()}</p>
+									                </div>	
+									                
+													<c:if test="${id== utilisateur.getNoUtilisateur()}">
+														<div class="d-flex">
+										                    <p class="label">Fin de l'enchère :</p>
+										                    <p class="data">${article.getDateFinEncheres()}</p>
+										                </div>
+													</c:if>
+													<div class="d-flex">
+									                    <p class="label label-retrait">Retrait :</p>
+									                    <div class="data data-retrait">
+									                        <p>${article.getLieuRetrait().getRue()}</p>
+									                        <p>${article.getLieuRetrait().getCode_postal()} ${article.getLieuRetrait().getVille()}</p>
+									                    </div>
+									                </div>
+													<div class="d-flex">
+									                    <p class="label">Vendeur :</p>
+									                    <p class="data"> ${utilisateur.getPseudo()}</p>
+									                </div>
+													<c:if test="${id != utilisateur.getNoUtilisateur()}">
+														<div class="d-flex">
+										                    <p class="label">Tel :</p>
+										                    <p class="data"> ${utilisateur.getTelephone()}</p>
+										                </div>
+													</c:if>
+													<form action="WinAuctionServlet" method="post">
+														<c:choose>
+																<c:when test="${id== utilisateur.getNoUtilisateur()}">
+																	<button name="btn" value="Retrait Effectué" class="button">Retrait Effectué</button>
+																</c:when>	
+																<c:otherwise>	
+																	<button name="btn" value="Back" class="button"> Back</button>
+																</c:otherwise>
+														</c:choose>
+													</form>
 												</div>
-										</c:if>
-										<form action="WinAuctionServlet" method="post">
-											<c:choose>
-													<c:when test="${id== utilisateur.getNoUtilisateur()}">
-														<button name="btn" value="Retrait Effectué">Retrait Effectué</button>
-													</c:when>
-													
-													<c:otherwise>	
-														<button name="btn" value="Back"> Back</button>
-													</c:otherwise>
-											</c:choose>
-										</form>
+											</div>
+										</div>
 									</c:if>
 								</c:if>
 							</c:forEach>
