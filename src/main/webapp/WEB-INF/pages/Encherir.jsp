@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Encherir</title>
-<link rel="stylesheet" href="style/Enchere.css">
+<link rel="stylesheet" href="style/Enchere2.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
@@ -18,176 +18,97 @@
 			</div>
 		</div>
 	</header>
-	<main>
-	<form action="EncherirServlet"   method = "post">
-	<input type = "hidden" name ="id" value="${id}"/>
-	<input type = "hidden" name ="no" value="${noArticle}"/>
-	<c:forEach var="utilisateur" items="${catalogue}">
-		<c:forEach var="article" items="${utilisateur.getListeArticle()}">
-				<c:if test="${noArticle==article.getNoArticle()}">					
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-12">
-								<h3>Détail vente</h3>				
-							</div>
-						</div>
-					</div>
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-3 position-relative">
-								<a class="position-absolute top-50 start-50 translate-middle">img placeholder</a>
-							</div>
-							<div class="row">
-								<div class="col-9">
-									<div class="row">
-										<div>
-											${article.getNomArticle()}
-										</div>
-									</div>
-								</div>
-							</div>
-							</div>	
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Description :
-										</div>
-									</div>
-									<div class="col-6">
-										<div>
-											${article.getDescription()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-									
-										   
-												<div>
-													Catégorie :
-												</div> 
-										
-									</div>
-									<div class="col-6">
-										<c:forEach var="categorie" items="${categories}">
-												<c:if test ="${article.getNoCategorie() == categorie.noCategorie}">
-														<div>
-															${categorie.libelle}
-														</div>	
-												</c:if>
+	<div>
+        <h2 class="text-center">Détail Vente</h2>
+    </div>
+	<main class="container">
+		<div class="row justify-content-center back p-4">
+			<form action="EncherirServlet" method = "post" class="col-12 col-sm-12 col-md-8 col-lg-6">
+				<input type = "hidden" name ="id" value="${id}"/>
+				<input type = "hidden" name ="no" value="${noArticle}"/>
+				<c:forEach var="utilisateur" items="${catalogue}">
+					<c:forEach var="article" items="${utilisateur.getListeArticle()}">
+						<c:if test="${noArticle==article.getNoArticle()}">					
+							<div>
+			                    <p>${article.getNomArticle()}</p>
+			                </div>
+			                <div class="d-flex">
+			                    <p class="label">Description :</p>
+			                    <p class="data">${article.getDescription()}</p>
+			                </div>
+							<div class="d-flex">
+			                    <p class="label">Catégorie :</p>
+			                    <c:forEach var="categorie" items="${categories}">
+									<c:if test ="${article.getNoCategorie() == categorie.noCategorie}">
+										<p class="data">${categorie.libelle}</p>
+									</c:if>
+								</c:forEach>
+			                </div>
+							<div class="d-flex">
+			                    <p class="label">Meilleure offre :</p>
+			                    <c:choose>
+									<c:when test="${!empty article.getListeEnchere()}">
+										<c:forEach var ="enchere" items = "${article.getListeEnchere()}">
+			 							  <c:forEach var ="user2" items = "${catalogue}">
+			   									<c:forEach var = "enchere2" items = "${user2.getListeEnchere()}">	
+													<c:if test="${enchere.getNumero_Enchere()== enchere2.getNumero_Enchere()}">
+				   										<c:if test ="${article.getPrixVente()==enchere2.getMontant_Enchere()}">
+															<div>
+																<p class="data">${enchere.getMontant_Enchere()} pts par ${user2.getPseudo()}</p>
+															</div>
+														</c:if>
+													</c:if>
+									 			</c:forEach>
+									 		</c:forEach>
 										</c:forEach>
-									</div>
-								</div>
-									<div class="row">
-										<div class="col-3">
-											<div>
-												Meilleure offre :
-											</div>
-										</div>
-									<div class="col-6">
-										<c:choose>
-											<c:when test="${!empty article.getListeEnchere()}">
-												<c:forEach var ="enchere" items = "${article.getListeEnchere()}">
-					 							  <c:forEach var ="user2" items = "${catalogue}">
-					   									<c:forEach var = "enchere2" items = "${user2.getListeEnchere()}">	
-															<c:if test="${enchere.getNumero_Enchere()== enchere2.getNumero_Enchere()}">
-						   										<c:if test ="${article.getPrixVente()==enchere2.getMontant_Enchere()}">
-																	<div>
-																		<p>${enchere.getMontant_Enchere()} par ${user2.getPseudo()}</p>
-																	</div>
-																</c:if>
-															</c:if>
-											 			</c:forEach>
-											 		</c:forEach>
-												</c:forEach>
-											</c:when>
-											<c:otherwise>
-												<p>Pas d'enchere pour le moment</p>
-											</c:otherwise>
-										</c:choose>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<p>Mise à prix :</p>
-									</div>
-									<div class="col-6">
-										<div>
-											${article.getMiseAPrix()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Fin de l'enchère :
-										</div>
-									</div>
-									<div class="col-6">
-										<div>
-											${article.getDateFinEncheres()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Retrait :
-										</div>
-									</div>
-									<div class="col-6">
-										<div>
-											<p>
-												${article.getLieuRetrait().getRue()}
-											</p>
-											
-											<div>
-												${article.getLieuRetrait().getCode_postal()}
-												${article.getLieuRetrait().getVille()}
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">
-										<div>
-											Vendeur :
-										</div>
-									</div>
-									<div class="col-6">
-										<div>
-											${utilisateur.getPseudo()}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3">		
-										Ma proposition :
-									</div>
-									<div class="col-6">
-									   <c:choose>
-									  		 <c:when test="${empty article.getListeEnchere()}">
-												<div>
-													<input type="number" name = "offre" required  min="${article.getMiseAPrix()}" step = "5"></input>
-												</div>
-											</c:when>
-											<c:otherwise>
-												<input type="number" name = "offre" required  min="${article.getPrixVente()+5}" step = "5"></input>
-											</c:otherwise>
-										</c:choose>
-									</div>					
-								</div>
-										<button  name="btn" value="Encherir" >
-											Enchérir
-										</button>
-										<p>${error}</p>		
-					
-						<input type = "hidden" name ="credit" value="${utilisateur.getCredit()}"/>		
-					</div>		
-				</c:if>
-			</c:forEach>
-		</c:forEach>
-		</form>
+									</c:when>
+									<c:otherwise>
+										<p class="data">Pas d'enchere pour le moment</p>
+									</c:otherwise>
+								</c:choose>
+			                </div>		
+							<div class="d-flex">
+			                    <p class="label">Mise à prix :</p>
+			                    <p class="data">${article.getMiseAPrix()} pts</p>
+			                </div>
+			                <div class="d-flex">
+			                    <p class="label">Fin de l'enchère :</p>
+			                    <p class="data">${article.getDateFinEncheres()}</p>
+			                </div>
+			                <div class="d-flex">
+			                    <p class="label label-retrait">Retrait :</p>
+			                    <div class="data data-retrait">
+			                        <p>${article.getLieuRetrait().getRue()}</p>
+			                        <p>${article.getLieuRetrait().getCode_postal()} ${article.getLieuRetrait().getVille()}</p>
+			                    </div>
+			                </div>
+			                <div class="d-flex">
+			                    <p class="label">Vendeur :</p>
+			                    <p class="data">${utilisateur.getPseudo()}</p>
+			                </div>		
+			                <c:if test="${connected.equals(\"true\") and id!=utilisateur.noUtilisateur}">
+			                	<div class="d-flex">
+				                    <p class="label">Ma proposition :</p>
+				                    <c:choose>
+								  		 <c:when test="${empty article.getListeEnchere()}">
+											<input type="number" name = "offre" required  min="${article.getMiseAPrix()}" step = "5"></input>
+										</c:when>
+										<c:otherwise>
+											<input type="number" name = "offre" required  min="${article.getPrixVente()+5}" step = "5"></input>
+										</c:otherwise>
+									</c:choose>  
+				                </div>
+				                <div class="d-flex justify-content-center">
+				                    <button class="button" name="btn" value="Encherir">Enchérir</button>
+				                    <p>${error}</p>
+				                </div>
+							</c:if>
+							<input type = "hidden" name ="credit" value="${utilisateur.getCredit()}"/>				
+						</c:if>
+					</c:forEach>
+				</c:forEach>
+			</form>
+		</div>
 	</main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

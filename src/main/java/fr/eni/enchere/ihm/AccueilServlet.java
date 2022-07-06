@@ -108,11 +108,6 @@ public class AccueilServlet extends HttpServlet {
 			listeFiltrer = applyFilter(filtreNom, filtreCategorie);
 		} else {
 			listeFiltrer = applyFilter(filtreNom, filtreCategorie, filtreRadio, filtreEnchereOuverte, filtreMesEnchere, filtreEnchereRemportes, filtreVentesEnCours, filtreVentesCree, filtreVentesEnd);
-//			for (Utilisateur u : catalogue) {
-//				for (Article a : u.getListeArticle()) {
-//					listeFiltrer.add(a);
-//				}
-//			}
 		}
 		
 		for (Utilisateur utilisateur : catalogue) {
