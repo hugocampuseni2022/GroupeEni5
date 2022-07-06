@@ -6,43 +6,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style/CreationCompte.css">
-<link rel="stylesheet" href="style/CreerCompte.css">
+
 <title>Creer Compte</title>
+<link rel="stylesheet" href="style/CreationCompte2.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-	<div>
-		<header>
-					<a href = "<%=request.getContextPath()%>/Accueil" style="text-decoration: none;">ENI-Enchères</a>
-		</header>
-	
-		<main>
-			<div>
-				<h2 id = titre>Mon Profil</h2>
+	<header class = "container-fluid">
+		<div class = "row">
+			<div class="col-sm-12 col-md-4 logo">
+				<a href = "<%=request.getContextPath()%>/Accueil" style="text-decoration: none;">ENI-Enchères</a>
 			</div>
-			
-				<form action="CreerCompte" method = "post">
-					<div class="form-line">
-						<div class = "form-labeEtInput">
-							<div class = "form-label">
-								<label>Pseudo : </label>
-							</div>
-							<div class ="form-input">
-								<input type="text" name = "pseudo" required></input> 
-							</div>
+		</div>
+	</header>
+	<div>
+		<h2 class="text-center">Mon Profil</h2>
+	</div>
+	<main class = "container">
+		<div class = "row justify-content-center back">
+			<form action="CreerCompte" method = "post" class="col-12 col-sm-12 col-md-8 row justify-content-center back">
+				<div class= "d-flex flex-column flex-sm-column flex-md-row justify-content-between my-2">
+					<div class="d-flex " >
+						<div class = "form-label">
+							<label>Pseudo : </label>
 						</div>
-						<div class = "form-labeEtInput">
-							<div class = "form-label">
-								<label >Nom : </label>
-							</div>
-							<div  class ="form-input">
-								<input type="text" name = "nom" required></input> 
-							</div>
+						<div class ="form-input">
+							<input type="text" name = "pseudo" required></input> 
 						</div>
 					</div>
-					<div class="form-line">
-						<div class = "form-labeEtInput">
+				
+					<div class="d-flex">
+						<div class = "form-label">
+							<label >Nom : </label>
+						</div>
+						<div  class ="form-input">
+							<input type="text" name = "nom" required></input> 
+						</div>
+					</div>
+				</div>	
+				<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between my-2">
+						<div class = "d-flex">
 							<div class = "form-label">
 								<label>Prénom : </label>
 							</div>
@@ -50,7 +53,9 @@
 								<input type="text" name = "prenom" required></input> 
 							</div>
 						</div>
-						<div class = "form-labeEtInput">	
+
+						<div class="d-flex">
+							
 							<div class = "form-label">
 								<label>Email : </label>
 							</div>
@@ -58,9 +63,9 @@
 								<input type="email" name = "mail" required></input> 
 							</div>
 						</div>
-					</div>
-					<div class="form-line">
-						<div class = "form-labeEtInput">
+				</div>
+					<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between my-2">
+						<div class = "d-flex">
 							<div class = "form-label">
 								<label>Telephone : </label>
 							</div>
@@ -68,17 +73,18 @@
 								<input type="tel" name = "telephone"></input>
 							</div>
 						</div>
-						<div class = "form-labeEtInput">
+						
+						<div class="d-flex">
 							<div class = "form-label">
 								<label>Rue : </label>
 							</div>
 							<div  class ="form-input">
 								 <input type="text" name = "rue" required></input> 
 							</div>
-						</div>
 					</div>
-					<div class="form-line">
-						<div class = "form-labeEtInput">
+				</div>
+				<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between my-2">
+						<div class = "d-flex">
 							<div class = "form-label">
 								<label>Code Postal : </label>
 							</div>
@@ -86,7 +92,8 @@
 								<input type="text" name = "code postal" required></input>
 							</div>
 						</div>
-						<div class = "form-labeEtInput">
+					
+						<div class = "d-flex">
 							<div class = "form-label">
 								<label>Ville : </label>
 							</div>
@@ -94,9 +101,10 @@
 								<input type="text" name = "ville" required></input> 
 							</div>
 						</div>
-					</div>	
-					<div class="form-line">
-						<div class = "form-labeEtInput">
+				</div>
+				<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between my-2">
+					
+						<div class = "d-flex">
 							<div class = "form-label">
 								<label>Mots de passe : </label>
 							</div>
@@ -104,7 +112,9 @@
 								<input type="password" name = "mot de passe" required></input> 
 							</div>
 						</div>
-						<div class = "form-labeEtInput">
+				
+				
+						<div class = "d-flex">
 							<div class = "form-label">
 								<label>Confirmation : </label>
 							</div>
@@ -112,23 +122,24 @@
 							 	<input type="password" name = "Confirmation" required></input> 
 							</div>
 						</div>
-					</div>
-					<div>
+					
+				</div>
+					<div class= "d-flex flex-column flex-sm-column flex-md-row justify-content-center">
 						<p>${error2}</p>
-					</div>			
-				
-					<div id = "lesBoutons"> 	
-						<div class = "bouton">
-							<button>Créer</button>
-						</div>
-						<div class = "bouton">
-							<a href = "<%=request.getContextPath()%>/Accueil" >
-							<button>Annuler</button> </a>
-						</div>
+					</div>	
+							
+					<div class= "d-flex justify-content-evenly" >
+							<div class = "bouton">
+								<button class = "button">Créer</button>
+							</div>
+							<div class = "bouton">
+								<a href = "<%=request.getContextPath()%>/Accueil" >
+								<button class = "button">Annuler</button> </a>
+							</div>
 					</div>
-				</form >
-		</main>
-	</div>
+			</form >
+		</div>
+	</main>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	
 </body>
