@@ -29,86 +29,91 @@
 		
 		<div class="white m-1 mx-0 p-3 pt-1 d-flex justify-content-center"> <!-- REVIEW padding and margin -->
 		 	
-			<p>	${error}	</p>					
-			<p>	${erreur}	</p>
 			<c:forEach var="utilisateur" items="${catalogue}">
 				<c:if test="${id== utilisateur.getNoUtilisateur()}">
 					<form action="ModifProfilServlet" method="post">
 						<input type = "hidden" name ="idUtilisateur" value="${utilisateur.getNoUtilisateur()}"/></input>
 						
-							<div class="d-flex m-3">	
-						 		<div class="mx-2">
+							<div class="d-flex my-3 flex-column flex-sm-column flex-md-row justify-content-between">	
+						 		<div class="me-lg-5 d-flex m">
 						 			<label>Pseudo :</label>
 						 			<input type="text" name="newPseudo" size="30" value = "${utilisateur.getPseudo()}" >
 						 		</div>						 		
-						 		<div class="mx-2">
+						 		<div class="d-flex">
 						 			<label>Nom :</label>
 						 			<input type="text" name="newNom" size="30" value = "${utilisateur.getNom()}">
 						 		</div>						 		
 						 	</div>
 
-							<div class="d-flex m-3">
-								<div class="mx-2">
+							<div class="d-flex my-3 flex-column flex-sm-column flex-md-row justify-content-between">
+								<div class="me-lg-5 d-flex m">
 									<label>Prénom :</label>
                                 	<input type="text" name="newPrenom" size="30" value = "${utilisateur.getPrenom()}">
 								</div>
-								<div class="mx-2">
+								<div class="d-flex">
 									<label>Email :</label>
                                 	<input type="text" name="newEmail" size="30" value = "${utilisateur.getEmail()}">
 								</div>
 							</div>
 							
-							<div class="d-flex m-3">
-								<div class="mx-2">
+							<div class="d-flex my-3 flex-column flex-sm-column flex-md-row justify-content-between">
+								<div class="me-lg-5 d-flex m">
 									<label>Téléphone :</label>
                                    	<input type="text" name="newTelephone" size="30" value = "${utilisateur.getTelephone()}">
 								</div>
-								<div class="mx-2">
+								<div class="d-flex">
 									<label>Rue :</label>
                                   	<input type="text" name="newRue" size="30" value = "${utilisateur.getRue()}">
 								</div>
 							</div>
 							
-							<div class="d-flex m-3">
-								<div class="mx-2">
+							<div class="d-flex my-3 flex-column flex-sm-column flex-md-row justify-content-between">
+								<div class="me-lg-5 d-flex m">
 									<label>Code postal :</label>
                                    	<input type="text" name="newCodePostal" size="30" value ="${utilisateur.getCodePostale()}">
 								</div>
-								<div class="mx-2">
+								<div class="d-flex">
 									<label>Ville :</label>
                                    	<input type="text" name="newVille" size="30" value = "${utilisateur.getVille()}">
 								</div>
 							</div>
 
-							<div class="d-flex m-3">
-								<div class="mx-2">
-									<label>Mot de passe actuel :</label>
+							<div class="d-flex my-3 flex-column flex-sm-column flex-md-row justify-content-between">
+								<div class="">
+									<label class="ls">Mot de passe actuel :</label>
                                    	<input type="password" name="mdpActuel" size="30"></input>
-								</div>
-								<div class="col-6"></div>	<!-- case vide -->
-							</div>
+								</div>														
+							</div>	<!-- *****************************case vide**************************** -->
 
-							<div class="d-flex m-3">
-								<div class="mx-2">
+							<div class="d-flex my-3 flex-column flex-sm-column flex-md-row justify-content-between">
+								<div class="me-lg-5 d-flex m">
 									<label>Nouveau mot de passe :</label>
                                    	<input type="password" name="newMdp" size="30"></input>
 								</div>
-								<div class="mx-2">
+								<div class="d-flex">
 									<label>Confirmation :</label>
                                    	<input type="password" name="confirmNewMdp" size="30"></input>
 								</div>
 							</div>
                             
-                            <div class="d-flex m-3 mt-5">
-								<div class="mx-2">
+                            <div class="d-flex">
+								<div class="mt-3">
 									<p>Credit : ${utilisateur.getCredit()}</p>
 								</div>
 							</div>
+							
+							<div class="d-flex m-3">
+								<div class="mx-2">
+									<p class="red">	${error}	</p>					
+									<p class="red">	${erreur}	</p>
+								</div>
+							</div>
+										
 
 	                        <div class="row">
 	                            <div class="col-12 text-center">
 	                                <button name="btn" value="enregistrer" class="mx-2">Enregistrer</button>
-	                                <button name="btn" value="supprimer" class="btnSuppr mx-2">Supprimer mon compte</button>
+	                                <button name="btn" value="supprimer" class="btnSuppr mx-2 btnMargin">Supprimer mon compte</button>
 	                            </div>
 	                        </div>
                               
