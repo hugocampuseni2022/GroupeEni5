@@ -30,6 +30,7 @@ public class EncherirServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// session
 	private List<Utilisateur> catalogue;
+	private List<Article> catalogueArticle;
 	private ArticleManager manager;
 	private HttpSession session;
        
@@ -68,41 +69,54 @@ public class EncherirServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
+
+		try {
+			catalogue = manager.getAll();
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("catalogue", catalogue);
+		int id = 0;
+		
+		
 		
 		if("Encherir".equals(request.getParameterValues("btn")[0])) {
-			
-			try {
-				manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))),Integer.parseInt(request.getParameter("credit")));
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (BLLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-			response.sendRedirect(request.getContextPath()+"/Accueil");
-			}
-			
-			else if ("unavailable".equals(request.getParameterValues("btn")[0])) {
+			for (Utilisateur u : catalogue) {
+					for (Article a : u.getListeArticle()) {
+							if (a.getNoArticle() == Integer.parseInt(request.getParameter("no"))) {
+									id = a.getNoArticle();
+									 	if((Integer.parseInt(request.getParameter("credit"))+ a.getPrixVente())< Integer.parseInt(request.getParameter("offre"))) {
+									 		request.setAttribute("error", "Pas assez de credit pour encherir");
+									 		request.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(request, response);
+									}
+							}
+							
+							else {
 				
-				request.setAttribute("error", "Credit insufisant pour enchérir");	
-				
-				request.setAttribute("catalogue", catalogue);
-				int id = 0;
-				
-				for (Utilisateur u : catalogue) {
-					for(Article a : u.getListeArticle()) {
-						if (Integer.parseInt(request.getParameter("no"))==a.getNoArticle()) {
-							id = a.getNoArticle();
+							try {
+								manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))),Integer.parseInt(request.getParameter("credit")));
+							} catch (NumberFormatException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (BLLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+			
+						response.sendRedirect(request.getContextPath()+"/Accueil");
 						}
-					} 
-				}
-				request.setAttribute("noArticle", id);	
-				request.getRequestDispatcher("/WEB-INF/pages/Encherir.jsp").forward(request, response);
+							
+							
+							}
+					}
 			}
+			
+			
+		
+			
 	}
-
 }
+			
+

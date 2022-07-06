@@ -181,6 +181,7 @@
 											Enchérir
 										</button>
 										<p>${error}</p>		
+					
 						<input type = "hidden" name ="credit" value="${utilisateur.getCredit()}"/>		
 					</div>		
 				</c:if>
