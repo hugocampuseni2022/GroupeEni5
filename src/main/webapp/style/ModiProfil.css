@@ -63,7 +63,30 @@ label{
 }
 
 input{
-	width:220px;
+	width:180px;
+}
+
+.red{
+	color: #be0a26;
+}
+
+.ls{
+	width:176px;
+}
+
+@media screen and (max-width: 992px){
+	.wraptext{
+		flex-direction: column;
+	}
+	
+	label{
+		width:180px;	
+	}
+
+	input{
+		width:150px;
+	}
+	
 }
 
 @media screen and (max-width: 767px) {
@@ -71,12 +94,47 @@ input{
 	.logo {
 		text-align: center;
 	}
-}
-
-@media screen and (max-width: 768) {
+	
+	.m{
+		margin-bottom:15px;
+	}
 	
 }
 
+@media screen and (max-width: 434px) {
+	
+	main{
+		font-size: 13px
+	}
+	
+	.btnMargin{
+		margin-top: 15px;
+	}
+	
+	label{
+		width: 160px;
+	}
+	
+	.ls {
+		width: 156px;
+	}
+	
+}
 
+@media screen and (max-width: 352px) {
+	
+	main{
+		font-size: 12px
+	}
+	
+	label{
+		width: 135px;
+	}
+	
+	.ls {
+		width: 131px;
+	}
+	
+}
 
 

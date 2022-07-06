@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+.logo {
+	height: 50px;
+	line-height: 50px;
+}
+
+.logo a {
+	display: inline-block;
+	font-size: 2rem;
+	text-decoration: none;
+	color: white;
+}
+
+.logo a:hover {
+	color: white;
+}
+
+header {
+	background: #212121;
+	padding-top : 10px;
+	padding-bottom: 10px;
+	margin-bottom: 25px;
+}
+
+body {
+	background: #f1f1f1 !important;
+}
+
+button {
+	outline: none;
+	height: 40px;
+	text-align: center;
+	width: 130px;
+	background: white;
+	border: 2px solid #be0a26;
+	color: #be0a26;
+	letter-spacing: 1px;
+	text-shadow: 0;
+	font-size: 12px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+button:hover {
+color: white;
+background: #be0a26;
+}
+button:active {
+letter-spacing: 2px;
+}
+
+
+.onclic {
+width: 40px;
+border-color: #bbbbbb;
+border-width: 3px;
+font-size: 0;
+border-left-color: #1ecd97;
+-webkit-animation: rotating 2s 0.25s linear infinite;
+        animation: rotating 2s 0.25s linear infinite;
+}
+.onclic:after {
+content: "";
+}
+.onclic:hover {
+color: #1ecd97;
+background: white;
+}
+
+.validate {
+font-size: 13px;
+color: white;
+background: #1ecd97;
+}
+.validate:after {
+font-family: "FontAwesome";
+content: "";
+}
+
+@-webkit-keyframes rotating {
+from {
+    transform: rotate(0deg);
+}
+to {
+    transform: rotate(360deg);
+}
+}
+
+@keyframes rotating {
+from {
+    transform: rotate(0deg);
+}
+to {
+    transform: rotate(360deg);
+}
+}
+
+.label {
+    width: 130px;
+    margin-bottom: 10px;
+}
+
+.data {
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+.back {
+    background: white;
+}
+
+input[type='number']{
+    width: 80px;
+    margin-bottom: 10px;
+} 
+
+@media screen and (max-width: 767px) {
+
+    .logo {
+        text-align: center;
+    }
+
+    .label {
+        width: 135px;
+    }
+    
+    .label-retrait {
+        width: 58px;
+    }
+
+    .data {
+        width: 145px;
+    }
+
+    .data-retrait {
+        width: auto;
+    }
+}
