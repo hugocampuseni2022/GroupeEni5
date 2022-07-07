@@ -63,7 +63,7 @@
 								</div>
 								<div class="d-flex">
 									<label>Rue :</label>
-                                  	<input type="text" name="newRue" size="30" value = "${utilisateur.getRue()}">
+                                  	<input type="textù" name="newRue" size="30" value = "${utilisateur.getRue()}">
 								</div>
 							</div>
 							
