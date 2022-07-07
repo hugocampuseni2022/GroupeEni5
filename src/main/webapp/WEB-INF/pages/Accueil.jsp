@@ -34,10 +34,10 @@
 									<a href="<%=request.getContextPath()%>/Accueil?action=deconnexion">Déconnexion</a>
 								</li>
 								<li>
-									<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${username}">Mon profil</a>
+									<a href="<%=request.getContextPath()%>/Profilj?pseudo=${username}">Mon profil</a>
 								</li>
 								<li>
-									<a href="<%=request.getContextPath()%>/NouvelleVenteServlet">Vendre un article</a>
+									<a href="<%=request.getContextPath()%>/NouvelleVente">Vendre un article</a>
 								</li>
 								<li>
 									<a href="<%=request.getContextPath()%>">Enchères</a>
@@ -153,7 +153,7 @@
 													</c:choose>
 													<p class="card-text">Fin de l'enchère : ${article.getDateFinEncheres()}</p>
 													<span class="card-text">Vendeur : </span>
-													<a href="<%=request.getContextPath()%>/ProfilServlet?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
+													<a href="<%=request.getContextPath()%>/Profil?pseudo=${utilisateur.getPseudo()}" class="card-text">${utilisateur.getPseudo()}</a>
 												</div>
 											</div>
 										</div>

@@ -23,7 +23,7 @@
     </div>
 	<main class="container">
 		<div class="row justify-content-center back p-4">
-			<form action="EncherirServlet" method = "post" class="col-12 col-sm-12 col-md-8 col-lg-6">
+			<form action="Encherir" method = "post" class="col-12 col-sm-12 col-md-8 col-lg-6">
 				<input type = "hidden" name ="id" value="${id}"/>
 				<input type = "hidden" name ="no" value="${noArticle}"/>
 				<c:forEach var="utilisateur" items="${catalogue}">

@@ -25,7 +25,7 @@ import fr.eni.enchere.bo.Utilisateur;
 /**
  * Servlet implementation class EncherirServlet
  */
-@WebServlet("/EncherirServlet")
+@WebServlet("/Encherir")
 public class EncherirServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// session

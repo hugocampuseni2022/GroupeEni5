@@ -65,7 +65,7 @@
 			
 				<div class="d-flex justify-content-center m-3">
 					<c:if test="${pseudo.equals(username)}">
-						<form action="ModifProfilServlet" method="get">
+						<form action="ModifProfil" method="get">
 							<button>Modifier</button>
 						</form>
 					</c:if>

@@ -21,7 +21,7 @@ import fr.eni.enchere.dal.DAOFactory;
 /**
  * Servlet implementation class WinAuctionServlet
  */
-@WebServlet("/WinAuctionServlet")
+@WebServlet("/WinAuction")
 public class WinAuctionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

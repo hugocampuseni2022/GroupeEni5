@@ -28,11 +28,11 @@ public class RedirectionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		if ("En cours".equals(request.getParameter("etat"))) {	
-			response.sendRedirect(request.getContextPath()+"/EncherirServlet?no=" + request.getParameter("no"));	
+			response.sendRedirect(request.getContextPath()+"/Encherir?no=" + request.getParameter("no"));	
 		} else if ("Terminé".equals(request.getParameter("etat"))) {
-			response.sendRedirect(request.getContextPath()+"/WinAuctionServlet?no=" + request.getParameter("no"));
+			response.sendRedirect(request.getContextPath()+"/WinAuction?no=" + request.getParameter("no"));
 		} else if ("Créée".equals(request.getParameter("etat"))) {
-			response.sendRedirect(request.getContextPath()+"/NouvelleVenteServlet?no=" + request.getParameter("no"));
+			response.sendRedirect(request.getContextPath()+"/NouvelleVente?no=" + request.getParameter("no"));
 		}
 	}
 
