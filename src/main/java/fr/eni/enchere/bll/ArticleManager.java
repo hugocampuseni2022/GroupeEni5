@@ -20,7 +20,7 @@ public interface ArticleManager {
 
 	Article getArticleById(int noArticle) throws BLLException;
 	
-	void updateArticle(Article article, int id) throws BLLException;
+	void updateArticle(Article article) throws BLLException;
 	
 	List<Utilisateur> getAll() throws BLLException;
 	

@@ -33,7 +33,19 @@ public class Article {
 
 	public Article(String nomArticle, String description, int noCategorie, int miseAPrix, Date dateDebutEncheres,
 			Date dateFinEncheres, Retrait lieuRetrait) {
-		super();
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.noCategorie = noCategorie;
+		this.miseAPrix = miseAPrix;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.lieuRetrait = lieuRetrait;
+		setEtatVente(Date.valueOf(LocalDate.now()),dateDebutEncheres, dateFinEncheres);
+	}
+	
+	public Article(int noArticle,String nomArticle, String description, int noCategorie, int miseAPrix, Date dateDebutEncheres,
+			Date dateFinEncheres, Retrait lieuRetrait) {
+		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.noCategorie = noCategorie;

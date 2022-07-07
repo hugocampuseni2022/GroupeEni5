@@ -24,7 +24,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 	
 	private static final String SELECT_ID = "SELECT * From ARTICLES_VENDUS Where no_article = ?";
 	
-	private static final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article = ? ,description = ? ,date_debut_encheres = ? ,date_fin_encheres = ?,prix_initial = ?, no_categorie = ?";
+	private static final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article = ? ,description = ? ,date_debut_encheres = ? ,date_fin_encheres = ?,prix_initial = ?, no_categorie = ? WHERE no_article = ?";
 	
 	private static final String SELECT_USER_CATALOGUE = "SELECT * FROM UTILISATEURS";
 	
@@ -41,6 +41,8 @@ public class ArticleDAOImpl implements ArticleDAO{
 	private static final String INSERT_ENCHERE = "insert into ENCHERES (date_enchere, montant_enchere, no_article, no_utilisateur) values (?, ?, ?, ?)";
 	
 	private static final String INSERT_RETRAIT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville) VALUES (?, ?, ?, ? )";
+	
+	private static final String UPDATE_RETRAIT = "UPDATE RETRAITS SET rue = ?, code_postal = ?, ville = ? WHERE no_article = ?";
 	
 	private static final String UPDATE_PRIX_DE_VENTE = "UPDATE ARTICLES_VENDUS SET prix_vente = ? WHERE no_article = ?";
 	
@@ -158,7 +160,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 	}
 		
 	@Override
-	public void update(Article article, int idUser) throws DALException {
+	public void update(Article article) throws DALException {
 	
 	
 	//Etape 1 : se connecter la BD
@@ -176,20 +178,23 @@ public class ArticleDAOImpl implements ArticleDAO{
 			stmt.setDate(3, article.getDateDebutEncheres());
 			stmt.setDate(4, article.getDateFinEncheres());
 			stmt.setInt(5, article.getMiseAPrix());
-			stmt.setInt(6, article.getPrixVente());
-			stmt.setInt(7, idUser);
-			stmt.setInt(8, article.getNoCategorie());
+			stmt.setInt(6, article.getNoCategorie());
+			stmt.setInt(7, article.getNoArticle());
 		
 		
 		//Etape : executer la requete
 		
-		stmt.executeUpdate();
+			stmt.executeUpdate();
 		
-		//ResultSet un tableau 
+			stmt = conn.prepareStatement(UPDATE_RETRAIT);
+			
+			stmt.setString(1, article.getLieuRetrait().getRue());
+			stmt.setString(2, article.getLieuRetrait().getCode_postal());
+			stmt.setString(3, article.getLieuRetrait().getVille());
+			stmt.setInt(4, article.getNoArticle());
 
+			stmt.executeUpdate();
 		} catch (SQLException e) {
-			
-			
 			throw new DALException ("erreur update",e);
 		}	
 	}

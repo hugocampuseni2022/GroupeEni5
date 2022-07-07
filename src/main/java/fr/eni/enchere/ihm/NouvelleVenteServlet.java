@@ -87,7 +87,7 @@ public class NouvelleVenteServlet extends HttpServlet {
 					e.printStackTrace();
 				} catch (BLLException e) {
 					request.setAttribute("error", e.getMessage());
-					request.getRequestDispatcher("/WEB-INF/pages/NouvelleVente.jsp").forward(request, response);
+					doGet(request, response);
 					e.printStackTrace();
 				
 				}
@@ -99,6 +99,23 @@ public class NouvelleVenteServlet extends HttpServlet {
 				} catch (BLLException e) {
 					e.printStackTrace();
 					request.getRequestDispatcher("/WEB-INF/pages/NouvelleVente.jsp").forward(request, response);
+				}
+				
+			} else if("enregistrer2".equals(request.getParameterValues("btn")[0])) {
+				
+				try {
+					manager.validerArticle(new Article(request.getParameter("article"), request.getParameter("description"),Integer.parseInt(request.getParameterValues("categorie")[0]), Integer.parseInt(request.getParameter("prix")), Date.valueOf(request.getParameter("dateDebut")), Date.valueOf(request.getParameter("dateFin")), new Retrait(request.getParameter("rue"), request.getParameter("codePostal"), request.getParameter("ville"))));
+					
+					manager.updateArticle(new Article(Integer.parseInt(request.getParameter("no")), request.getParameter("article"), request.getParameter("description"),Integer.parseInt(request.getParameterValues("categorie")[0]), Integer.parseInt(request.getParameter("prix")), Date.valueOf(request.getParameter("dateDebut")), Date.valueOf(request.getParameter("dateFin")), new Retrait(request.getParameter("rue"), request.getParameter("codePostal"), request.getParameter("ville"))));
+					response.sendRedirect(request.getContextPath()+"/Accueil");
+				
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+				} catch (BLLException e) {
+					request.setAttribute("error", e.getMessage());
+					doGet(request, response);
+					e.printStackTrace();
+				
 				}
 				
 			} else {

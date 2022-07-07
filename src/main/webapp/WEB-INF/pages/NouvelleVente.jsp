@@ -38,11 +38,11 @@
 					            	<input type = "hidden" name ="no" value="${noArticle}"/>
 					                <div class="mb-2 d-flex justify-content-center">
 					                    <label for="article">Article :</label>
-					                    <input type="text" name="article" id="article" value="${article.getNomArticle()}"></input>
+					                    <input type="text" name="article" id="article" value="${article.getNomArticle()}" required></input>
 					                </div>
 					                <div class="d-flex justify-content-center mb-2">
 					                    <label for="description">Description :</label>
-					                    <textarea name="description" id="description" rows="3">${article.description}</textarea>
+					                    <textarea name="description" id="description" rows="3" required>${article.description}</textarea>
 					                </div>
 					                <div class="mb-2 d-flex justify-content-center">
 					                    <label for="categorie">Catégorie :</label>
@@ -65,15 +65,15 @@
 					                </div>
 					                <div class="mb-2 d-flex justify-content-center">
 					                    <label for="prix">Mise à prix :</label>
-					                    <input type="number" name="prix" id="prix" min="0" value="${article.miseAPrix}" step="5">
+					                    <input type="number" name="prix" id="prix" min="0" value="${article.miseAPrix}" step="5" required>
 					                </div>
 					                <div class="mb-2 d-flex justify-content-center">
 					                    <label for="dateDebut">Début de l'enchère :</label>
-					                    <input type="date" name="dateDebut" id="dateDebut" value="${article.dateDebutEncheres}">
+					                    <input type="date" name="dateDebut" id="dateDebut" value="${article.dateDebutEncheres}" required>
 					                </div>
 					                <div class="mb-2 d-flex justify-content-center">
 					                    <label for="dateFin">Fin de l'enchère :</label>
-					                    <input type="date" name="dateFin" id="dateFin" value="${article.dateFinEncheres}">
+					                    <input type="date" name="dateFin" id="dateFin" value="${article.dateFinEncheres}" required>
 					                </div>
 					                <div class="container">
 					                    <div class="row justify-content-center">
@@ -81,19 +81,19 @@
 					                            <legend >Retrait</legend>
 			                            		<div class="mb-2  d-flex justify-content-center">
 					                                <label for="rue">Rue :</label>
-					                                <input type="text" name="rue" id="rue" value="${article.lieuRetrait.rue}">
+					                                <input type="text" name="rue" id="rue" value="${article.lieuRetrait.rue}" required>
 					                            </div>
 					                            <div class="mb-2 d-flex justify-content-center">
 					                                <label for="codePostal">Code postal :</label>
-					                                <input type="text" name="codePostal" id="codePostal" value="${article.lieuRetrait.code_postal}">
+					                                <input type="text" name="codePostal" id="codePostal" value="${article.lieuRetrait.code_postal}" required>
 					                            </div>
 					                            <div class="mb-2 d-flex justify-content-center">
 					                                <label for="ville">Ville :</label>
-					                                <input type="text" name="ville" id="ville" value="${article.lieuRetrait.ville}">
+					                                <input type="text" name="ville" id="ville" value="${article.lieuRetrait.ville}" required>
 					                            </div>
 					                        </fieldset>
 					                        <div class="d-inline text-center">
-					                            <button class="button" name="btn" value="enregistrer">Enregistrer</button>
+					                            <button class="button" name="btn" value="enregistrer2">Enregistrer</button>
 					                            <button class="button" name="btn" value="annuler">Annuler</button>
 					                            <c:forEach var="utilisateur" items="${catalogue}">
 					                            	<c:if test="${utilisateur.getNoUtilisateur()==id}">
@@ -123,11 +123,11 @@
 		            	<input type = "hidden" name ="no" value="${noArticle}"/>
 		                <div class="mb-2 d-flex justify-content-center">
 		                    <label for="article">Article :</label>
-		                    <input type="text" name="article" id="article"></input>
+		                    <input type="text" name="article" id="article" required></input>
 		                </div>
 		                <div class="d-flex justify-content-center mb-2">
 		                    <label for="description">Description :</label>
-		                    <textarea name="description" id="description" rows="3"></textarea>
+		                    <textarea name="description" id="description" rows="3" required></textarea>
 		                </div>
 		                <div class="mb-2 d-flex justify-content-center">
 		                    <label for="categorie">Catégorie :</label>
@@ -143,15 +143,15 @@
 		                </div>
 		                <div class="mb-2 d-flex justify-content-center">
 		                    <label for="prix">Mise à prix :</label>
-		                    <input type="number" name="prix" id="prix" min="0" value="100" step="5">
+		                    <input type="number" name="prix" id="prix" min="0" value="100" step="5" required>
 		                </div>
 		                <div class="mb-2 d-flex justify-content-center">
 		                    <label for="dateDebut">Début de l'enchère :</label>
-		                    <input type="date" name="dateDebut" id="dateDebut">
+		                    <input type="date" name="dateDebut" id="dateDebut" required>
 		                </div>
 		                <div class="mb-2 d-flex justify-content-center">
 		                    <label for="dateFin">Fin de l'enchère :</label>
-		                    <input type="date" name="dateFin" id="dateFin">
+		                    <input type="date" name="dateFin" id="dateFin" required>
 		                </div>
 		                <div class="container">
 		                    <div class="row justify-content-center">
@@ -161,15 +161,15 @@
 		                            	<c:if test="${utilisateur.getNoUtilisateur()==id}">
 		                            		<div class="mb-2  d-flex justify-content-center">
 				                                <label for="rue">Rue :</label>
-				                                <input type="text" name="rue" id="rue" value="${utilisateur.getRue()}">
+				                                <input type="text" name="rue" id="rue" value="${utilisateur.getRue()}" required>
 				                            </div>
 				                            <div class="mb-2 d-flex justify-content-center">
 				                                <label for="codePostal">Code postal :</label>
-				                                <input type="text" name="codePostal" id="codePostal" value="${utilisateur.getCodePostale()}">
+				                                <input type="text" name="codePostal" id="codePostal" value="${utilisateur.getCodePostale()}" required>
 				                            </div>
 				                            <div class="mb-2 d-flex justify-content-center">
 				                                <label for="ville">Ville :</label>
-				                                <input type="text" name="ville" id="ville" value="${utilisateur.getVille()}">
+				                                <input type="text" name="ville" id="ville" value="${utilisateur.getVille()}" required>
 				                            </div>
 		                            	</c:if>
 		                            </c:forEach>
@@ -177,15 +177,6 @@
 		                        <div class="d-inline text-center">
 		                            <button class="button" name="btn" value="enregistrer">Enregistrer</button>
 		                            <button class="button" name="btn" value="annuler">Annuler</button>
-		                            <c:forEach var="utilisateur" items="${catalogue}">
-		                            	<c:if test="${utilisateur.getNoUtilisateur()==id}">
-			                            	<c:forEach var="article" items="${utilisateur.getListeArticle()}">
-			                            		<c:if test="${noArticle==article.getNoArticle()}">
-			                            			<button class="button" name="btn" value="annulerVente">Annuler la vente</button>
-			                            		</c:if>
-			                            	</c:forEach>
-		                            	</c:if>
-		                            </c:forEach>
 		                        </div>
 		                    </div>
 		                </div>

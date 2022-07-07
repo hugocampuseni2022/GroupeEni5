@@ -77,9 +77,9 @@ public class ArticleImpl implements ArticleManager {
 	}
 
 	@Override
-	public void updateArticle(Article article, int id) throws BLLException {
+	public void updateArticle(Article article) throws BLLException {
 		try {
-			daoArticle.update(article, id);
+			daoArticle.update(article);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			throw new BLLException("Erreur Update Article");
