@@ -34,7 +34,7 @@
 									<a href="<%=request.getContextPath()%>/Accueil?action=deconnexion">Déconnexion</a>
 								</li>
 								<li>
-									<a href="<%=request.getContextPath()%>/Profilj?pseudo=${username}">Mon profil</a>
+									<a href="<%=request.getContextPath()%>/Profil?pseudo=${username}">Mon profil</a>
 								</li>
 								<li>
 									<a href="<%=request.getContextPath()%>/NouvelleVente">Vendre un article</a>

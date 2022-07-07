@@ -82,7 +82,7 @@
 										                    <p class="data"> ${utilisateur.getTelephone()}</p>
 										                </div>
 													</c:if>
-													<form action="WinAuctionServlet" method="post">
+													<form action="WinAuction" method="post">
 														<c:choose>
 																<c:when test="${id== utilisateur.getNoUtilisateur()}">
 																	<button name="btn" value="Retrait Effectué" class="button">Retrait Effectué</button>
