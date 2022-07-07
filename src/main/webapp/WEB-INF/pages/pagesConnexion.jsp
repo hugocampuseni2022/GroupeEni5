@@ -25,6 +25,9 @@
                     <fieldset>
                         <legend class="text-center pb-3">Connexion</legend>
                         <div class="d-flex justify-content-center mb-2">
+                        	<p>${error}
+                        </div>
+                        <div class="d-flex justify-content-center mb-2">
                             <label for="identifiant" class="label-field">Identifiant : </label>
                             <input type="text" name="identifiant" id="identifiant" class="input-t"></input>
                         </div>
