@@ -31,7 +31,7 @@
 		 	
 			<c:forEach var="utilisateur" items="${catalogue}">
 				<c:if test="${id== utilisateur.getNoUtilisateur()}">
-					<form action="ModifProfilServlet" method="post">
+					<form action="ModifProfil" method="post">
 						<input type = "hidden" name ="idUtilisateur" value="${utilisateur.getNoUtilisateur()}"/></input>
 						
 							<div class="d-flex my-3 flex-column flex-sm-column flex-md-row justify-content-between">	
