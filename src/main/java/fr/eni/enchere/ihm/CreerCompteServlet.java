@@ -87,7 +87,7 @@ public class CreerCompteServlet extends HttpServlet {
 				}
 			}
 			else {
-				request.setAttribute("error2", "Mots de Passe differents de la Confirmation");
+				request.setAttribute("error2", "Mot de Passe different de la Confirmation");
 				request.getRequestDispatcher("/WEB-INF/pages/CreerCompte.jsp").forward(request, response);	
 			}
 		

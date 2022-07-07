@@ -105,7 +105,7 @@
 					
 						<div class = "d-flex my-2">
 							<div class = "form-label">
-								<label>Mots de passe : </label>
+								<label>Mot de passe : </label>
 							</div>
 							<div  class ="form-input">
 								<input type="password" name = "mot de passe" required></input> 
