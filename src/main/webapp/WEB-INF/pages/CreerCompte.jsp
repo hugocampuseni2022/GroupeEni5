@@ -25,8 +25,8 @@
 	<main class = "container">
 		<div class = "row justify-content-center back">
 			<form action="CreerCompte" method = "post" class="col-12 col-sm-12 col-md-8 row justify-content-center back">
-				<div class= "d-flex flex-column flex-sm-column flex-md-row justify-content-between my-2">
-					<div class="d-flex " >
+				<div class= "d-flex flex-column flex-sm-column flex-md-row justify-content-between">
+					<div class="d-flex my-2" >
 						<div class = "form-label">
 							<label>Pseudo : </label>
 						</div>
@@ -35,8 +35,8 @@
 						</div>
 					</div>
 				
-					<div class="d-flex">
-						<div class = "form-label">
+					<div class="d-flex my-2">
+						<div class = "form-label ">
 							<label >Nom : </label>
 						</div>
 						<div  class ="form-input">
@@ -44,8 +44,8 @@
 						</div>
 					</div>
 				</div>	
-				<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between my-2">
-						<div class = "d-flex">
+				<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between">
+						<div class = "d-flex my-2">
 							<div class = "form-label">
 								<label>Prénom : </label>
 							</div>
@@ -54,8 +54,7 @@
 							</div>
 						</div>
 
-						<div class="d-flex">
-							
+						<div class="d-flex my-2">
 							<div class = "form-label">
 								<label>Email : </label>
 							</div>
@@ -64,8 +63,8 @@
 							</div>
 						</div>
 				</div>
-					<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between my-2">
-						<div class = "d-flex">
+					<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between">
+						<div class = "d-flex my-2">
 							<div class = "form-label">
 								<label>Telephone : </label>
 							</div>
@@ -74,7 +73,7 @@
 							</div>
 						</div>
 						
-						<div class="d-flex">
+						<div class="d-flex my-2">
 							<div class = "form-label">
 								<label>Rue : </label>
 							</div>
@@ -83,8 +82,8 @@
 							</div>
 					</div>
 				</div>
-				<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between my-2">
-						<div class = "d-flex">
+				<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between">
+						<div class = "d-flex my-2">
 							<div class = "form-label">
 								<label>Code Postal : </label>
 							</div>
@@ -93,7 +92,7 @@
 							</div>
 						</div>
 					
-						<div class = "d-flex">
+						<div class = "d-flex my-2">
 							<div class = "form-label">
 								<label>Ville : </label>
 							</div>
@@ -102,9 +101,9 @@
 							</div>
 						</div>
 				</div>
-				<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between my-2">
+				<div class="d-flex flex-column flex-sm-column flex-md-row justify-content-between">
 					
-						<div class = "d-flex">
+						<div class = "d-flex my-2">
 							<div class = "form-label">
 								<label>Mots de passe : </label>
 							</div>
@@ -114,8 +113,8 @@
 						</div>
 				
 				
-						<div class = "d-flex">
-							<div class = "form-label">
+						<div class = "d-flex my-2">
+							<div class = "form-label my-2">
 								<label>Confirmation : </label>
 							</div>
 							<div  class ="form-input">
