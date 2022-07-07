@@ -19,8 +19,6 @@ import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.enchere.dal.UtilisateurDAO;
 
-
-
 /**
  * Servlet implementation class CreerCompteServlet
  */
@@ -28,7 +26,7 @@ import fr.eni.enchere.dal.UtilisateurDAO;
 public class CreerCompteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private UtilisateurManager UG;
+	private UtilisateurManager UM;
 	private HttpSession session;
 	private ArticleManager AM;
 	private List<Utilisateur> catalogue;
@@ -36,7 +34,7 @@ public class CreerCompteServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		AM = FactoryBLL.getManagerArticle();
-		UG = FactoryBLL.getManagerUtilisateur();
+		UM = FactoryBLL.getManagerUtilisateur();
 		
 	}
 	
@@ -79,7 +77,7 @@ public class CreerCompteServlet extends HttpServlet {
 			if (request.getParameter("mot de passe").equals(request.getParameter("Confirmation"))){
 				try {
 					
-					UG.creerCompteUtilisateur(new Utilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe")));
+					UM.creerCompteUtilisateur(new Utilisateur(request.getParameter("pseudo"), request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code postal"), request.getParameter("ville"), request.getParameter("mot de passe")));
 					session.setAttribute("connected", "true");
 					session.setAttribute("username", request.getParameter("pseudo"));
 					response.sendRedirect(request.getContextPath()+"/Accueil");
