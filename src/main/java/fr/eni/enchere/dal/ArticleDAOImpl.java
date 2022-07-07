@@ -336,7 +336,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 		
 	}
 
-	public void encherir(int idArticle, int idUser, Enchere enchere,int credit) throws DALException {
+	public void encherir(int idArticle, int idUser, Enchere enchere) throws DALException {
 		try (Connection conn = ConnectionProvider.getConnection()){
 			pStmt = conn.prepareStatement(INSERT_ENCHERE);
 			
@@ -348,7 +348,6 @@ public class ArticleDAOImpl implements ArticleDAO{
 			pStmt.executeUpdate();
 			
 			modifPrixDeVente(enchere.getMontant_Enchere(),idArticle);
-			updateCredit(idUser,credit-enchere.getMontant_Enchere());
 		} catch (SQLException e) {
 			throw new DALException ("erreur insert enchère", e);
 		}
@@ -396,7 +395,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 		try (Connection conn = ConnectionProvider.getConnection();){
 			pStmt = conn.prepareStatement(UPDATE_CREDIT);
 			
-			pStmt.setInt(1,(credit));
+			pStmt.setInt(1,credit);
 			pStmt.setInt(2,noUtilisateur);
 			
 			pStmt.executeUpdate();

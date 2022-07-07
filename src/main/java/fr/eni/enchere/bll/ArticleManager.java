@@ -28,7 +28,7 @@ public interface ArticleManager {
 	
 	List<Categorie> getCategories() throws BLLException;
 	
-	void encherir(int noArticle, int noUtilisateur, Enchere enchere, int credit) throws BLLException;
+	void encherir(int noArticle, int noUtilisateur, Enchere enchere) throws BLLException;
 	
 	List<Article> filtreClassique(String query) throws BLLException;
 	

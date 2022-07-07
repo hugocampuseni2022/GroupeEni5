@@ -96,7 +96,8 @@ public class EncherirServlet extends HttpServlet {
 							}
 							if (credit>=Integer.parseInt(request.getParameter("offre"))) {
 								try {
-									manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))),Integer.parseInt(request.getParameter("credit")));
+									manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))));
+									manager.updateCredit(Integer.parseInt(request.getParameter("id")), credit-Integer.parseInt(request.getParameter("offre")));
 									response.sendRedirect(request.getContextPath()+"/Accueil");
 								} catch (NumberFormatException e) {
 									// TODO Auto-generated catch block
@@ -119,10 +120,9 @@ public class EncherirServlet extends HttpServlet {
 											reEnchere = true;
 											offreModif = Integer.parseInt(request.getParameter("offre"))-e.getMontant_Enchere();
 											if (credit>=offreModif) {
-												System.out.println("test");
 												try {
-													System.out.println("Réenchère");
-													manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))),Integer.parseInt(request.getParameter("credit")));
+													manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))));
+													manager.updateCredit(Integer.parseInt(request.getParameter("id")), credit-offreModif);
 													response.sendRedirect(request.getContextPath()+"/Accueil");
 												} catch (NumberFormatException e1) {
 													// TODO Auto-generated catch block
@@ -152,7 +152,8 @@ public class EncherirServlet extends HttpServlet {
 										}
 										if (credit>=Integer.parseInt(request.getParameter("offre"))) {
 											try {
-												manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))),Integer.parseInt(request.getParameter("credit")));
+												manager.encherir(Integer.parseInt(request.getParameter("no")),Integer.parseInt(request.getParameter("id")),new Enchere(Timestamp.valueOf(LocalDateTime.now()),Integer.parseInt(request.getParameter("offre"))));
+												manager.updateCredit(Integer.parseInt(request.getParameter("id")), credit-Integer.parseInt(request.getParameter("offre")));
 												response.sendRedirect(request.getContextPath()+"/Accueil");
 											} catch (NumberFormatException e1) {
 												// TODO Auto-generated catch block
